@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState("user");
   const fetchData = async () => {
     const response = await fetch("https://planit-neqe.onrender.com/api/users"); // Replace with your live server's URL
     const data = await response.json();

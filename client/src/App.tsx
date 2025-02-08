@@ -3,6 +3,8 @@ import "./App.css";
 type User = {
   name: string;
   email: string;
+  password: string;
+  _id: string;
 };
 const url = import.meta.env.VITE_API_URL;
 

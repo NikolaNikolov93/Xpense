@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
-    "target": "ESNext",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "target": "ES6",
+    "module": "commonjs",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "typeRoots": ["./types", "node_modules/@types"],
-    "types": ["node"]
-  }
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node"], // Ensure this is present
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

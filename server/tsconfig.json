@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
+    "lib": ["ESNext"],
     "target": "ESNext",
     "module": "CommonJS",
+    "moduleResolution": "node",
     "outDir": "./dist",
     "rootDir": "./src",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": ["node"]
+
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["@openui5/ts-types-esm"]
   }
 }

@@ -22,14 +22,14 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@types/compression": "^1.7.5",
-    "@types/cors": "^2.8.17",
-    "@types/dotenv": "^6.1.1",
-    "@types/express": "^5.0.0",
-    "@types/helmet": "^0.0.48",
-    "@types/mongoose": "^5.11.96",
-    "@types/morgan": "^1.9.9",
-    "@types/node": "^22.13.1",
+    "compression": "^1.7.5",
+    "cors": "^2.8.17",
+    "dotenv": "^6.1.1",
+    "express": "^5.0.0",
+    "helmet": "^0.0.48",
+    "mongoose": "^5.11.96",
+    "morgan": "^1.9.9",
+    "node": "^22.13.1",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"

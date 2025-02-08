@@ -7,7 +7,7 @@ type User = {
 const url = import.meta.env.VITE_API_URL;
 
 function App() {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | null>(null);
   const fetchData = async () => {
     const response = await fetch(url); // Replace with your live server's URL
     const data = await response.json();

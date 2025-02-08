@@ -11,6 +11,7 @@ function App() {
   const fetchData = async () => {
     const response = await fetch(url); // Replace with your live server's URL
     const data = await response.json();
+    console.log(data[0]);
 
     setUser(data[0]);
   };

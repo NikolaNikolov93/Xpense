@@ -26,25 +26,12 @@ PLANit is a full-stack task management application built with modern web technol
 - TypeScript
 - MongoDB + Mongoose (for database)
 - JWT Authentication
-- Zod (for input validation)
-
-## 📂 Folder Structure
-
-```
-PLANit/
-│── client/          # Frontend (React + TypeScript)
-│── server/          # Backend (Node.js + Express)
-│── .gitignore       # Git ignore file
-│── README.md        # Project documentation
-│── package.json     # Project dependencies
-│── tsconfig.json    # TypeScript configuration
-```
 
 ## 🚀 Live Demo
 
 The application is deployed and accessible online. No installation is required.
 
-🔗 [Live Demo](#) (Update with actual link)
+🔗 [Live Demo](https://plan-it-virid.vercel.app/)
 
 ## 🎨 UI Preview
 
@@ -64,9 +51,9 @@ This project is for **academic purposes only** and is not intended for productio
 
 For questions or collaboration, feel free to reach out:
 
-- **Email**: .n.nikolov.business@outlook.com
-- **LinkedIn**: [Nikola Nikolov](www.linkedin.com/in/nikola-nikolov-a53b2925a)
-- **GitHub**: [Nikola Nikolov](https://github.com/NikolaNikolov93)
+- **Email**: n.nikolov.business@outlook.com
+- **LinkedIn**: www.linkedin.com/in/nikola-nikolov-a53b2925a
+- **GitHub**: https://github.com/NikolaNikolov93
 
 ---
 

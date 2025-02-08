@@ -4,13 +4,13 @@ type User = {
   name: string;
   email: string;
 };
+const url = import.meta.env.VITE_API_URL;
 
 function App() {
   const [user, setUser] = useState<User>();
   const fetchData = async () => {
-    const response = await fetch("https://planit-neqe.onrender.com/api/users"); // Replace with your live server's URL
+    const response = await fetch(url); // Replace with your live server's URL
     const data = await response.json();
-    console.log(data);
 
     setUser(data[0]);
   };
@@ -23,6 +23,7 @@ function App() {
       <h1>PLANTit</h1>
       <h2>In production!</h2>
       <h3>{user?.email}</h3>
+      <img style={{ height: "300px" }} src="planit-log.png" alt="" />
     </>
   );
 }

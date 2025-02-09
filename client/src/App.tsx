@@ -6,7 +6,7 @@ type User = {
   password: string;
   _id: string;
 };
-const env = import.meta.env.VITE_ENV_VARIBLE;
+const env = import.meta.env.VITE_ENV_VARIABLE;
 const url =
   env === "production"
     ? import.meta.env.VITE_API_URL

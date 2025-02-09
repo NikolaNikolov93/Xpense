@@ -6,7 +6,11 @@ type User = {
   password: string;
   _id: string;
 };
-const url = import.meta.env.VITE_API_URL_DEV;
+const env = import.meta.env.VUTE_EBV_VARIBLE;
+const url =
+  env === "production"
+    ? import.meta.env.VITE_API_URL
+    : import.meta.env.VITE_API_URL_DEV;
 
 function App() {
   const [user, setUser] = useState<User | null>(null);

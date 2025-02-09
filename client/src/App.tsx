@@ -6,7 +6,7 @@ type User = {
   password: string;
   _id: string;
 };
-const url = import.meta.env.VITE_API_URL;
+const url = import.meta.env.VITE_API_URL_DEV;
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -23,10 +23,10 @@ function App() {
   }, []);
   return (
     <>
-      <h1>PLANTit</h1>
+      <h1>PLANit</h1>
       <h2>In production!</h2>
       <h3>{user?.email}</h3>
-      <img style={{ height: "300px" }} src="planit-log.png" alt="" />
+      <img style={{ height: "300px" }} src="planit-logo.png" alt="" />
     </>
   );
 }

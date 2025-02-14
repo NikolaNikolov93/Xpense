@@ -16,12 +16,7 @@ const Card = styled.div`
   border-radius: 10px;
   background-color: var(--card-background-color);
 `;
-const CardsContainer = styled.section`
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  margin-bottom: 1em;
-`;
+
 const MainSection = styled.main`
   display: flex;
   gap: 0.5em;

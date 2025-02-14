@@ -1,36 +1,79 @@
-import { useEffect, useState } from "react";
+import styled from "styled-components";
 import "./App.css";
-type User = {
-  name: string;
-  email: string;
-  password: string;
-  _id: string;
-};
-const env = import.meta.env.VITE_ENV_VARIABLE;
-const url =
-  env === "production"
-    ? import.meta.env.VITE_API_URL
-    : import.meta.env.VITE_API_URL_DEV;
 
+const NavBar = styled.ul`
+  display: flex;
+  gap: 1em;
+  background-color: var(--sidebars-background-color);
+  padding: 0.5em 2em;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+`;
+
+const Card = styled.div`
+  padding: 0.5em 0.5em;
+  height: 200px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  background-color: var(--card-background-color);
+`;
+const CardsContainer = styled.section`
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  margin-bottom: 1em;
+`;
+const MainSection = styled.main`
+  display: flex;
+  gap: 0.5em;
+  padding: 0.5em;
+`;
+const MainSectionSubsection = styled.section`
+  flex-basis: calc((100% - 0.5em * 2) / 3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+`;
+const ProfileSection = styled(MainSectionSubsection)``;
+const TasksSection = styled(MainSectionSubsection)``;
+const ActionsSection = styled(MainSectionSubsection)``;
+const Button = styled.button`
+  background-color: var(--primary-accent);
+  padding: 1em 3em;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+  &:hover {
+    background-color: var(--button-hover);
+  }
+`;
 function App() {
-  const [user, setUser] = useState<User | null>(null);
-  const fetchData = async () => {
-    const response = await fetch(url); // Replace with your live server's URL
-    const data = await response.json();
-    console.log(data[0]);
-
-    setUser(data[0]);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
   return (
     <>
-      <h1>PLANit</h1>
-      <h2>In production!</h2>
-      <h3>{user?.email}</h3>
-      <img style={{ height: "300px" }} src="planit-logo.png" alt="" />
+      <nav>
+        <NavBar>
+          <li>Tasks</li>
+          <li>Calendar</li>
+          <li>Settings</li>
+        </NavBar>
+      </nav>
+      <MainSection>
+        <ProfileSection>
+          <Card>
+            <Button>Add Task</Button>
+          </Card>
+          <Card></Card>
+          <Card></Card>
+        </ProfileSection>
+        <TasksSection>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+        </TasksSection>
+        <ActionsSection>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+        </ActionsSection>
+      </MainSection>
     </>
   );
 }

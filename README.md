@@ -1,13 +1,13 @@
-# PLANit - Task Management App
+# Xpense - Expense Tracker App
 
-PLANit is a full-stack task management application built with modern web technologies. Designed as part of my junior developer portfolio, this project showcases my ability to create a complete web application from frontend to backend.
+Xpense is a full-stack expense tracking application designed to help users manage their finances efficiently. This project is part of my junior developer portfolio, demonstrating my ability to develop a complete web application from frontend to backend.
 
 ## 🚀 Features
 
 - **User Authentication** (JWT-based login/signup)
-- **Task Management** (Create, update, delete, and categorize tasks)
-- **Drag & Drop Functionality** (Reorder tasks easily)
-- **Deadline Reminders** (Set due dates for tasks)
+- **Expense Management** (Add, update, delete, and categorize expenses)
+- **Budget Tracking** (Set monthly budgets and monitor spending)
+- **Interactive Charts** 📊 (Visualize expenses with graphs)
 - **Dark Mode Support** 🌙
 - **Fully Responsive Design** 📱💻
 
@@ -31,7 +31,7 @@ PLANit is a full-stack task management application built with modern web technol
 
 The application is deployed and accessible online. No installation is required.
 
-🔗 [Live Demo](https://plan-it-virid.vercel.app/)
+🔗 [Live Demo](https://xpense-blue.vercel.app/)
 
 ## 🎨 UI Preview
 
@@ -39,9 +39,10 @@ The application is deployed and accessible online. No installation is required.
 
 ## 📌 Future Enhancements
 
-- ✅ Notifications for upcoming tasks
-- ✅ Share task lists with teammates
-- ✅ AI-powered task suggestions
+- ✅ Expense Categorization with AI suggestions
+- ✅ Export expenses as CSV/PDF
+- ✅ Recurring Expense Tracking
+- ✅ Multi-Currency Support
 
 ## 📝 License
 
@@ -52,8 +53,8 @@ This project is for **academic purposes only** and is not intended for productio
 For questions or collaboration, feel free to reach out:
 
 - **Email**: n.nikolov.business@outlook.com
-- **LinkedIn**: www.linkedin.com/in/nikola-nikolov-a53b2925a
-- **GitHub**: https://github.com/NikolaNikolov93
+- **LinkedIn**: [Nikola Nikolov](www.linkedin.com/in/nikola-nikolov-a53b2925a)
+- **GitHub**: [NikolaNikolov93](https://github.com/NikolaNikolov93)
 
 ---
 

@@ -1,6 +1,9 @@
 import styled from "styled-components";
+type SideBarProps = {
+  $isOpen: boolean;
+};
 
-export const SideBar = styled.nav<{ isOpen: boolean }>`
+export const SideBar = styled.nav<SideBarProps>`
   background-color: var(--sidebars-background-color);
   position: sticky;
   top: 0;
@@ -20,8 +23,8 @@ export const SideBar = styled.nav<{ isOpen: boolean }>`
 
   /* For mobile devices, hide the sidebar by default */
   @media (max-width: 768px) {
-    min-width: ${({ isOpen }) => (isOpen ? "100%" : "0")};
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+    min-width: ${({ $isOpen }) => ($isOpen ? "100%" : "0")};
+    display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
   }
 `;
 

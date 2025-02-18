@@ -48,7 +48,7 @@ function App() {
         <ToggleButton onClick={handleToggle}>
           {isOpen ? "×" : "☰"} {/* "×" is close, "☰" is hamburger icon */}
         </ToggleButton>
-        <Sidebar isOpen={isOpen} />
+        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
         <Container>
           <Routes>
             <Route path="/" element={<Home />} />

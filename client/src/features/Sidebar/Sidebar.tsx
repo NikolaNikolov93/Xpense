@@ -3,28 +3,42 @@ import { Logo, SideBar, StyledUl } from "./Sidebar.styles";
 
 type SidebarProps = {
   isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 };
 
-const Sidebar = ({ isOpen }: SidebarProps) => {
+const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   return (
-    <SideBar isOpen={isOpen}>
+    <SideBar $isOpen={isOpen}>
       <Logo src="xpense-logo.png" alt="" />
 
       <StyledUl>
         <li>
-          <Link to={"/"}>Home</Link>
+          <Link to={"/"} onClick={handleClose}>
+            Home
+          </Link>
         </li>
         <li>
-          <Link to={"/dashboard"}>Dashboard</Link>
+          <Link to={"/dashboard"} onClick={handleClose}>
+            Dashboard
+          </Link>
         </li>
         <li>
-          <Link to={"/login"}>Login</Link>
+          <Link to={"/login"} onClick={handleClose}>
+            Login
+          </Link>
         </li>
         <li>
-          <Link to={"/register"}>Register</Link>
+          <Link to={"/register"} onClick={handleClose}>
+            Register
+          </Link>
         </li>
         <li>
-          <Link to={"/logout"}>Logout</Link>
+          <Link to={"/logout"} onClick={handleClose}>
+            Logout
+          </Link>
         </li>
       </StyledUl>
     </SideBar>

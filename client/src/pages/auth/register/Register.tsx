@@ -23,14 +23,15 @@ const Register = () => {
     },
   });
 
-  const handleRegister = () => {
+  const handleRegister = (e: React.FormEvent) => {
+    e.preventDefault();
     mutation.mutate({ name, email, password });
   };
 
   return (
     <FormContainer>
       <h2>Register</h2>
-      <Form>
+      <Form onSubmit={handleRegister}>
         <Input
           type="text"
           placeholder="Name"
@@ -53,7 +54,7 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         {error && <p>Registration failed</p>}
-        <Button onClickCapture={handleRegister}>Register</Button>
+        <Button type="submit">Register</Button>
       </Form>
     </FormContainer>
   );

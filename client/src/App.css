@@ -1,9 +1,0 @@
-#root {
-  max-width: 1440px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  color: var(--primary-text-color);
-  display: flex;
-  min-height: 100dvh; /* Ensures it takes up the full viewport without overflow */
-}

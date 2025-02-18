@@ -1,5 +1,3 @@
-import styled from "styled-components";
-import "./App.css";
 import Sidebar from "./features/Sidebar/Sidebar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
@@ -8,31 +6,7 @@ import Login from "./pages/auth/login/Login";
 import Register from "./pages/auth/register/Register";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
-
-const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3em;
-  flex-grow: 1; /* Allows the content to fill the remaining space */
-  padding: 1em;
-`;
-const ToggleButton = styled.button`
-  display: none; /* Hidden by default */
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 2em;
-  background: none;
-  border: none;
-  color: var(--primary-text-color);
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: block; /* Show only on mobile */
-    z-index: 100;
-  }
-`;
+import { Container, ToggleButton } from "./App.styles";
 
 const queryClinet = new QueryClient();
 

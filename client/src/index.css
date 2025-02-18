@@ -2,6 +2,15 @@
 @import url("./styles//base/typography.css");
 @import "./styles/variables.css";
 
+#root {
+  max-width: 1440px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  color: var(--primary-text-color);
+  display: flex;
+  min-height: 100dvh; /* Ensures it takes up the full viewport without overflow */
+}
 body {
   background-color: var(--background-color);
 }

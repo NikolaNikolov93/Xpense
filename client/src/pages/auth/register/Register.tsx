@@ -1,10 +1,8 @@
-import { useState } from "react";
 import Button from "../../../components/button/Button.tsx";
 import { Form, Input, FormContainer, Message } from "../Forms.styles.ts";
-import { useMutation } from "@tanstack/react-query";
-import { register } from "../../../services/authService.ts";
 import { AnimatePresence } from "framer-motion";
 import { useForm } from "../../../hooks/useForm.tsx";
+import { useRegister } from "../../../hooks/useRegister.tsx";
 
 const Register = () => {
   const { formData, handleChange, resetForm } = useForm({
@@ -14,39 +12,23 @@ const Register = () => {
       password: "",
     },
   });
-  const [message, setMessage] = useState<{
-    text: string;
-    type: "success" | "error";
-  } | null>(null);
-
-  const mutation = useMutation({
-    mutationFn: (data: { name: string; email: string; password: string }) =>
-      register(data.name, data.email, data.password),
-    onSuccess: (data) => {
-      setMessage({ text: data.message, type: "success" });
-      resetForm();
-    },
-    onError: (error: any) => {
-      setMessage({
-        text: error.message || "Something went wrong. Please try again.",
-        type: "error",
-      });
-    },
-  });
+  const { mutation, message } = useRegister(); // Destructure message and mutation
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    mutation.mutate(formData);
+    mutation.mutate(formData, {
+      onSuccess: () => resetForm(),
+    });
   };
 
   return (
     <AnimatePresence>
       <FormContainer
         key="form-container"
-        layout // Enable layout animation
-        initial={{ height: "auto" }} // initial height before message appears
-        animate={{ height: message ? "auto" : "auto" }} // animate expansion when message appears
-        exit={{ height: "auto" }} // animate exit on form removal (if necessary)
+        layout
+        initial={{ height: "auto" }}
+        animate={{ height: message ? "auto" : "auto" }}
+        exit={{ height: "auto" }}
         transition={{ duration: 0.2 }}
       >
         <h2>Register</h2>

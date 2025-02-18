@@ -6,6 +6,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "types": ["node"], // Ensure this is present
+    "typeRoots": ["./node_modules/@types"],
     "outDir": "./dist",
     "rootDir": "./src"
   },

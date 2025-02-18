@@ -19,6 +19,7 @@ const Register = () => {
     },
     onError: (error: any) => {
       setError("Registration failed. Please try again.");
+      console.log(error);
     },
   });
 
@@ -51,6 +52,7 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {error && <p>Registration failed</p>}
         <Button onClickCapture={handleRegister}>Register</Button>
       </Form>
     </FormContainer>

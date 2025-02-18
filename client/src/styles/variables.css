@@ -4,5 +4,7 @@
   --card-background-color: #2a2a2a;
   --primary-text-color: #e0e0e0;
   --primary-accent: #8ab3f8;
-  --button-hover: #a5bfeb;
+  --button-hover: #a5bfeb; /* Lightened version of primary accent */
+  --box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
+  --box-shadow-glow: 0 0 5px var(--primary-accent); /* Adds a soft glow effect */
 }

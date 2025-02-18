@@ -8,18 +8,17 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   const mutation = useMutation({
     mutationFn: (data: { name: string; email: string; password: string }) =>
       register(data.name, data.email, data.password),
     onSuccess: (data) => {
-      console.log("Registered successfully:", data);
+      setMessage(data.message);
       // Handle success (e.g., redirect to login page)
     },
     onError: (error: any) => {
-      setError("Registration failed. Please try again.");
-      console.log(error);
+      setMessage(error.message);
     },
   });
 
@@ -53,7 +52,7 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {error && <p>Registration failed</p>}
+        {message && <p>Registration failed</p>}
         <Button type="submit">Register</Button>
       </Form>
     </FormContainer>

@@ -5,7 +5,7 @@ export const StyledButton = styled.button<{ disabled?: boolean }>`
   border: none;
   background-color: ${(props) =>
     props.disabled
-      ? "#b0b0b0"
+      ? "var(--button-disabled)"
       : "var(--primary-accent)"}; /* Grey when disabled, blue when active */
   color: #fff;
   font-size: 1em;
@@ -13,6 +13,9 @@ export const StyledButton = styled.button<{ disabled?: boolean }>`
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
-    background-color: var(--button-hover);
+    background-color: ${(props) =>
+      props.disabled
+        ? "var(--button-disabled)"
+        : "var(--button-hover)"}; /* Grey when disabled, blue when active */
   }
 `;

@@ -7,6 +7,7 @@
   --success-message-color: #4caf50;
   --error-message-color: #ff6b6b;
   --button-hover: #a5bfeb; /* Lightened version of primary accent */
+  --button-disabled: #b0b0b0;
   --box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
   --box-shadow-glow: 0 0 5px var(--primary-accent); /* Adds a soft glow effect */
 }

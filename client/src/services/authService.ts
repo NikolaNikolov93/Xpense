@@ -7,6 +7,7 @@ export const login = async (email: string, password: string) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({ email, password }),
     });
 
@@ -54,6 +55,25 @@ export const register = async (
     console.error("Registration Error:", error.message);
 
     // Explicitly return or rethrow the error message
+    throw new Error(error.message || "Something went wrong. Please try again.");
+  }
+};
+
+export const logout = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/auth/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      throw new Error("Logout failed");
+    }
+
+    const data = await response.json();
+    return data; // Return success message
+  } catch (error: any) {
+    console.error("Logout Error:", error.message);
     throw new Error(error.message || "Something went wrong. Please try again.");
   }
 };

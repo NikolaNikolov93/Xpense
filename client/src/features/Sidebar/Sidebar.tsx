@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { Logo, SideBar, StyledUl } from "./Sidebar.styles";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { useLogout } from "../../hooks/useLogout";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -7,6 +10,9 @@ type SidebarProps = {
 };
 
 const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
+  const user = useSelector((state: RootState) => state.user.user); // Access user from Redux store
+  const logout = useLogout();
+
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -25,21 +31,26 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
             Dashboard
           </Link>
         </li>
-        <li>
-          <Link to={"/login"} onClick={handleClose}>
-            Login
-          </Link>
-        </li>
-        <li>
-          <Link to={"/register"} onClick={handleClose}>
-            Register
-          </Link>
-        </li>
-        <li>
-          <Link to={"/logout"} onClick={handleClose}>
-            Logout
-          </Link>
-        </li>
+        {user != null ? (
+          <li>
+            <Link to={"/"} onClick={handleClose}>
+              <span onClick={logout}>Logout</span>
+            </Link>
+          </li>
+        ) : (
+          <>
+            <li>
+              <Link to={"/login"} onClick={handleClose}>
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link to={"/register"} onClick={handleClose}>
+                Register
+              </Link>
+            </li>
+          </>
+        )}
       </StyledUl>
     </SideBar>
   );

@@ -12,7 +12,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors());
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV === "production"
+      ? process.env.CLIENT_URL
+      : "http://localhost:5173",
+  credentials: true, // Allow cookies to be sent
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser()); // Enables reading HTTP-only cookies
 app.use(express.urlencoded({ extended: true }));

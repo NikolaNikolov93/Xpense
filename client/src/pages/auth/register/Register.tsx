@@ -92,7 +92,7 @@ const Register = () => {
           </AnimatePresence>
 
           <Button type="submit" disabled={mutation.isPending}>
-            Register
+            {mutation.isPaused ? "Loading.." : "Register"}
           </Button>
         </Form>
       </FormContainer>

@@ -37,7 +37,7 @@ const ToggleButton = styled.button`
 const queryClinet = new QueryClient();
 
 function App() {
-  const [isOpen, setIsOpen] = useState(true); // Control sidebar visibility
+  const [isOpen, setIsOpen] = useState(false); // Control sidebar visibility
 
   const handleToggle = () => {
     setIsOpen((prevState) => !prevState); // Toggle sidebar

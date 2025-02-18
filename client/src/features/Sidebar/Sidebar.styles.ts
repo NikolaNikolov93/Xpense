@@ -8,8 +8,7 @@ export const SideBar = styled.nav<{ isOpen: boolean }>`
   height: 100vh;
   min-width: 200px; /* Make it collapse */
   flex-basis: 250px;
-  display: ${({ isOpen }) =>
-    isOpen ? "flex" : "none"}; /* Show or hide based on isOpen */
+  display: flex;
   flex-direction: column;
   padding: 1em;
   box-sizing: border-box;

@@ -12,7 +12,7 @@ const Register = () => {
 
   const mutation = useMutation({
     mutationFn: (data: { name: string; email: string; password: string }) =>
-      register(data.email, data.password),
+      register(data.name, data.email, data.password),
     onSuccess: (data) => {
       console.log("Registered successfully:", data);
       // Handle success (e.g., redirect to login page)

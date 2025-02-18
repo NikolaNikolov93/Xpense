@@ -5,17 +5,28 @@ export const register = async (
   email: string,
   password: string
 ) => {
-  const response = await fetch(`${BASE_URL}/auth/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, email, password }),
-  });
+  try {
+    const response = await fetch(`${BASE_URL}/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, password }),
+    });
 
-  if (!response.ok) {
-    throw new Error("Registration failed");
+    // Extract response data
+    const data = await response.json();
+
+    if (!response.ok) {
+      // Ensure the backend message is passed correctly
+      throw new Error(data.message || "Registration failed");
+    }
+
+    return data; // Return success response
+  } catch (error: any) {
+    console.error("Registration Error:", error.message);
+
+    // Explicitly return or rethrow the error message
+    throw new Error(error.message || "Something went wrong. Please try again.");
   }
-
-  return response.json(); // Returning the response data
 };

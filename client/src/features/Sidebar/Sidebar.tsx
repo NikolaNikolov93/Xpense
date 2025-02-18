@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import { Logo, SideBar, StyledUl } from "./Sidebar.styles";
 
-const Sidebar = () => {
+type SidebarProps = {
+  isOpen: boolean;
+};
+
+const Sidebar = ({ isOpen }: SidebarProps) => {
   return (
-    <SideBar>
+    <SideBar isOpen={isOpen}>
       <Logo src="xpense-logo.png" alt="" />
+
       <StyledUl>
         <li>
           <Link to={"/"}>Home</Link>

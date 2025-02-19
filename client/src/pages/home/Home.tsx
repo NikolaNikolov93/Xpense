@@ -1,35 +1,11 @@
-import styled from "styled-components";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100dvh;
-  text-align: center;
-  gap: 1em;
-  text-shadow: 2px 2px 5px rgba(31, 31, 31, 0.5);
-`;
-
-const Logo = styled.img`
-  width: 200px;
-`;
-
-const Warning = styled.p`
-  background-color: var(--error-message-color);
-  color: var(--primary-text-color);
-  padding: 1em;
-  font-weight: bold;
-  max-width: 400px;
-`;
-
-const TestCredentials = styled.p`
-  background-color: var(--primary-accent);
-  color: var(--primary-text-color);
-  padding: 1em;
-  font-weight: bold;
-  max-width: 400px;
-`;
+import { FiGithub } from "react-icons/fi";
+import {
+  Container,
+  GitHubLink,
+  Logo,
+  TestCredentials,
+  Warning,
+} from "./Home.styles";
 
 const Home = () => {
   return (
@@ -47,7 +23,17 @@ const Home = () => {
       <TestCredentials>
         🔹 Test Login: **test@abv.bg** 🔹 Password: **123123**
       </TestCredentials>
-      <p>Follow development updates on GitHub.</p>
+      <p>
+        Follow development updates on{" "}
+        <GitHubLink
+          href="https://github.com/NikolaNikolov93/Xpense"
+          target="_blank"
+        >
+          GitHub
+          <FiGithub size={"1.5em"} />
+        </GitHubLink>
+        .
+      </p>
     </Container>
   );
 };

@@ -1,4 +1,5 @@
 import User from "../models/User";
+import AppError from "../utils/AppError";
 import { comparePassword, hashPassword } from "../utils/bcryptUtils";
 import { generateToken } from "../utils/jwtUtils";
 
@@ -8,12 +9,12 @@ export const registerUser = async (
   password: string
 ) => {
   if (!name || !email || !password) {
-    throw new Error("All fields are required");
+    throw new AppError("All fields are required", 400);
   }
 
   const userExists = await User.findOne({ $or: [{ name }, { email }] });
   if (userExists) {
-    throw new Error("Username or Email already exists");
+    throw new AppError("Username or Email already exists", 400);
   }
 
   const hashedPassword = await hashPassword(password);
@@ -31,17 +32,17 @@ export const registerUser = async (
  */
 export const loginUser = async (email: string, password: string) => {
   if (!email || !password) {
-    throw new Error("Email and password are required");
+    throw new AppError("Email and password are required", 400);
   }
 
   const user = await User.findOne({ email });
   if (!user) {
-    throw new Error("Invalid credentials");
+    throw new AppError("Invalid credentials", 401);
   }
 
   const isMatch = await comparePassword(password, user.password);
   if (!isMatch) {
-    throw new Error("Invalid credentials");
+    throw new AppError("Invalid credentials", 401);
   }
 
   // Generate JWT token

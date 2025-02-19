@@ -18,7 +18,7 @@ export const useLogout = () => {
       dispatch(removeUser());
 
       // Redirect to the login page after logout
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error("Logout Error:", error);
     }

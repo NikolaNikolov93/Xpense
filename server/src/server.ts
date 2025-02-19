@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 import connectDB from "./config/db";
 import authRoutes from "./routes/authRoutes";
 import { METHODS } from "http";
+import errorHandler from "./middlewares/errorHandler";
 
 dotenv.config();
 const app = express();
@@ -32,6 +33,7 @@ app.use(helmet());
 app.use(compression());
 
 app.use("/auth", authRoutes);
+app.use(errorHandler);
 
 connectDB();
 

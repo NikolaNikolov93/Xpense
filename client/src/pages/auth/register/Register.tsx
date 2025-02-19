@@ -3,6 +3,7 @@ import { Form, Input, FormContainer, Message } from "../Forms.styles.ts";
 import { AnimatePresence } from "framer-motion";
 import { useForm } from "../../../hooks/useForm.tsx";
 import { useRegister } from "../../../hooks/useRegister.tsx";
+import Spinner from "../../../components/spinner/Spinner.tsx";
 
 const Register = () => {
   const { formData, handleChange, resetForm } = useForm({
@@ -75,9 +76,11 @@ const Register = () => {
             )}
           </AnimatePresence>
 
-          <Button type="submit" disabled={mutation.isPending}>
-            {mutation.isPending ? "Loading.." : "Register"}
-          </Button>
+          {mutation.isPending ? (
+            <Spinner />
+          ) : (
+            <Button type="submit">Register</Button>
+          )}
         </Form>
       </FormContainer>
     </AnimatePresence>

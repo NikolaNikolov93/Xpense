@@ -3,6 +3,7 @@ import { useForm } from "../../../hooks/useForm.tsx";
 import { Form, Input, FormContainer, Message } from "../Forms.styles.ts";
 import { useLogin } from "../../../hooks/useLogin.tsx";
 import { AnimatePresence } from "framer-motion";
+import Spinner from "../../../components/spinner/Spinner.tsx";
 
 const Login = () => {
   const { formData, handleChange, resetForm } = useForm({
@@ -61,9 +62,11 @@ const Login = () => {
               </Message>
             )}
           </AnimatePresence>
-          <Button type="submit" disabled={mutation.isPending}>
-            {mutation.isPending ? "Loading.." : "Login"}
-          </Button>
+          {mutation.isPending ? (
+            <Spinner />
+          ) : (
+            <Button type="submit">Login</Button>
+          )}
         </Form>
       </FormContainer>
     </AnimatePresence>

@@ -19,24 +19,27 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
   return (
     <SideBar $isOpen={isOpen}>
       <Logo src="xpense-logo.png" alt="" />
-
+      {user && <p>{user.email}</p>}
       <StyledUl>
         <li>
           <Link to={"/"} onClick={handleClose}>
             Home
           </Link>
         </li>
-        <li>
-          <Link to={"/dashboard"} onClick={handleClose}>
-            Dashboard
-          </Link>
-        </li>
+
         {user != null ? (
-          <li>
-            <Link to={"/"} onClick={handleClose}>
-              <span onClick={logout}>Logout</span>
-            </Link>
-          </li>
+          <>
+            <li>
+              <Link to={"/dashboard"} onClick={handleClose}>
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link to={"/"} onClick={handleClose}>
+                <span onClick={logout}>Logout</span>
+              </Link>
+            </li>
+          </>
         ) : (
           <>
             <li>

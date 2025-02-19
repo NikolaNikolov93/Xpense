@@ -7,6 +7,7 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db";
 import authRoutes from "./routes/authRoutes";
+import { METHODS } from "http";
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,8 @@ const corsOptions = {
       ? process.env.CLIENT_URL
       : "http://localhost:5173",
   credentials: true, // Allow cookies to be sent
+  METHODS: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));

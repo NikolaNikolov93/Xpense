@@ -68,7 +68,9 @@ const Register = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                {message.text}
+                {message.text.split(". ").map((line, index) => (
+                  <div key={index}>{line}.</div> // This will render each error on a new line
+                ))}
               </Message>
             )}
           </AnimatePresence>

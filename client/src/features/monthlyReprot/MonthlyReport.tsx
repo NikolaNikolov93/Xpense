@@ -8,11 +8,16 @@ import {
 } from "recharts";
 import { useFetchExpenses } from "../../hooks/useFetchExpenses";
 import { ChartWrapper } from "./MonthlyReport.styles";
+import Spinner from "../../components/spinner/Spinner";
 const MonthlyReport = () => {
   const { data: expenses, isLoading, error } = useFetchExpenses();
 
-  if (isLoading) return <p>Loading chart...</p>;
-  if (error instanceof Error) return <p>Error loading data: {error.message}</p>;
+  if (isLoading) {
+    console.log(isLoading);
+
+    return <Spinner />;
+  }
+  if (error instanceof Error) return <p>Something went wrong...</p>;
 
   // Aggregate expenses by category
   const chartData = expenses?.reduce<{ category: string; total: number }[]>(

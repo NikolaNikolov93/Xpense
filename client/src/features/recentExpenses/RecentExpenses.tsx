@@ -1,15 +1,16 @@
 import { RecentExpensesWrapper, TableWrapper } from "./RecentExpenses.styles";
 import { useFetchExpenses } from "../../hooks/useFetchExpenses";
+import Spinner from "../../components/spinner/Spinner";
 
 const RecentExpenses = () => {
   const { data: expenses, error, isLoading } = useFetchExpenses();
 
   if (isLoading) {
-    return <p>Loading expenses...</p>;
+    return <Spinner />;
   }
 
   if (error instanceof Error) {
-    return <p>Error fetching expenses: {error.message}</p>;
+    return <p>Something went wrong...</p>;
   }
 
   return (

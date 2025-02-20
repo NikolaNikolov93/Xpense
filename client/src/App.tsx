@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { Container, ToggleButton } from "./App.styles";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import NotFound from "./pages/notFound/NotFound";
 
 const queryClinet = new QueryClient();
 
@@ -32,6 +33,7 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>
       </QueryClientProvider>

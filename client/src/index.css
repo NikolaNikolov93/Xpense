@@ -9,7 +9,7 @@
   position: relative;
   color: var(--primary-text-color);
   display: flex;
-  min-height: 100dvh; /* Ensures it takes up the full viewport without overflow */
+  min-height: 100dvh;
 }
 body {
   background-color: var(--background-color);

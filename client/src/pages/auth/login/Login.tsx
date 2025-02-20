@@ -4,6 +4,7 @@ import { Form, Input, FormContainer, Message } from "../Forms.styles.ts";
 import { useLogin } from "../../../hooks/useLogin.tsx";
 import { AnimatePresence } from "framer-motion";
 import Spinner from "../../../components/spinner/Spinner.tsx";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { formData, handleChange, resetForm } = useForm({
@@ -13,11 +14,15 @@ const Login = () => {
     },
   });
   const { mutation, message } = useLogin(); // Use the login hook
+  const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     mutation.mutate(formData, {
-      onSuccess: () => resetForm(),
+      onSuccess: () => {
+        resetForm();
+        navigate("/dashboard");
+      },
     });
   };
   return (

@@ -9,6 +9,7 @@ export const FormContainer = styled(motion.div)`
   background-color: var(--background-color);
   color: var(--primary-text-color);
   flex: 1;
+  max-width: 350px;
 `;
 
 export const Form = styled.form`
@@ -18,7 +19,6 @@ export const Form = styled.form`
   padding: 2em;
   box-shadow: var(--box-shadow);
   width: 100%;
-  max-width: 400px;
   gap: 0.8em;
 `;
 

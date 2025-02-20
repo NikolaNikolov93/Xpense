@@ -6,7 +6,7 @@ export const Container = styled.section`
   align-items: center;
   gap: 3em;
   flex-grow: 1; /* Allows the content to fill the remaining space */
-  padding: 1em;
+  margin: 1em;
 `;
 export const ToggleButton = styled.button`
   display: none; /* Hidden by default */

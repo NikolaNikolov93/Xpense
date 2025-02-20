@@ -2,7 +2,6 @@ import styled from "styled-components";
 type SideBarProps = {
   $isOpen: boolean;
 };
-
 export const SideBar = styled.nav<SideBarProps>`
   background-color: var(--sidebars-background-color);
   position: sticky;

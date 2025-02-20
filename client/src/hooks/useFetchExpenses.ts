@@ -11,7 +11,7 @@ interface Expense {
 }
 
 const fetchExpenses = async (): Promise<Expense[]> => {
-  const response = await fetch(`${BASE_URL}/expenses`, {
+  const response = await fetch(`api/expenses`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

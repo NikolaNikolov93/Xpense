@@ -46,7 +46,9 @@ export const logout = (
   try {
     res.cookie("token", "", {
       httpOnly: true,
-      expires: new Date(0),
+      secure: process.env.NODE_ENV === "production", // Only set to true in production
+      sameSite: "none", // For cross-site cookies
+      expires: new Date(0), // Expire the cookie immediately
     });
 
     res.status(200).json({ message: "Logged out successfully" });

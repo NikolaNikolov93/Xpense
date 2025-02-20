@@ -3,9 +3,10 @@ import jwt from "jsonwebtoken";
 import User from "../models/User";
 
 export interface AuthRequest extends Request {
-  user?: any; // Declare `user` as an optional property
+  user?: any; // User property from your JWT verification
+  cookies: { [key: string]: string }; // Explicitly define cookies property
+  body: any; // Or use a more specific type for the body, like { title: string; amount: number; category: string }
 }
-
 export const authMiddleware = async (
   req: AuthRequest, // Use AuthRequest type here
   res: Response,

@@ -7,6 +7,8 @@ export const RecentExpensesWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: var(--box-shadow);
+
   h3 {
     border-bottom: 1px solid var(--primary-accent);
     margin-bottom: 1em;
@@ -36,4 +38,8 @@ export const RecentExpensesWrapper = styled.section`
 `;
 export const TableWrapper = styled.div`
   padding: 0.5em;
+`;
+export const LoadingWrapper = styled.div`
+  flex-basis: calc((100% - 2em) / 2);
+  font-size: 1.5em;
 `;

@@ -1,4 +1,8 @@
-import { RecentExpensesWrapper, TableWrapper } from "./RecentExpenses.styles";
+import {
+  LoadingWrapper,
+  RecentExpensesWrapper,
+  TableWrapper,
+} from "./RecentExpenses.styles";
 import { useFetchExpenses } from "../../hooks/useFetchExpenses";
 import Spinner from "../../components/spinner/Spinner";
 
@@ -6,11 +10,15 @@ const RecentExpenses = () => {
   const { data: expenses, error, isLoading } = useFetchExpenses();
 
   if (isLoading) {
-    return <Spinner />;
+    return (
+      <LoadingWrapper>
+        <Spinner />
+      </LoadingWrapper>
+    );
   }
 
   if (error instanceof Error) {
-    return <p>Something went wrong...</p>;
+    return <LoadingWrapper>Something went wrong...</LoadingWrapper>;
   }
 
   return (

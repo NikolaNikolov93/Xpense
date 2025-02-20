@@ -7,6 +7,7 @@ export const ChartWrapper = styled.div`
   padding: 1em 0em;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
 
   .recharts-cartesian-grid line {
     stroke: #8ab3f8; /* Your accent color */
@@ -21,4 +22,8 @@ export const ChartWrapper = styled.div`
   @media (max-width: 660px) {
     flex-basis: 100%;
   }
+`;
+export const LoadingWrapper = styled.div`
+  flex-basis: calc((100% - 2em) / 2);
+  font-size: 1.5em;
 `;

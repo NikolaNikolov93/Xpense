@@ -9,8 +9,4 @@ export const DashboardWrapper = styled.section`
   h1 {
     flex: 1 1 100%;
   }
-  > :not(h1) {
-    box-shadow: var(--box-shadow);
-    border-radius: 10px;
-  }
 `;

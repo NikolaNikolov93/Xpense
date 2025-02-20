@@ -1,8 +1,3 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/:match*",
-      "destination": "https://xpense-gqrg.onrender.com/:match*"
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }

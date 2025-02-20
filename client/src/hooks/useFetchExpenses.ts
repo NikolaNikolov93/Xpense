@@ -1,4 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import { BASE_URL } from "../constants";
 
 // Define the type for the Expense
 interface Expense {
@@ -10,7 +11,7 @@ interface Expense {
 }
 
 const fetchExpenses = async (): Promise<Expense[]> => {
-  const response = await fetch(`api/expenses`, {
+  const response = await fetch(`${BASE_URL}/expenses`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

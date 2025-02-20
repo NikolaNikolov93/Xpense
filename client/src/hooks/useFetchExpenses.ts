@@ -1,5 +1,4 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { BASE_URL } from "../constants";
 
 // Define the type for the Expense
 interface Expense {

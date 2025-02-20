@@ -12,11 +12,7 @@ import Spinner from "../../components/spinner/Spinner";
 const MonthlyReport = () => {
   const { data: expenses, isLoading, error } = useFetchExpenses();
 
-  if (isLoading) {
-    console.log(isLoading);
-
-    return;
-  }
+  if (isLoading) return <Spinner />;
   if (error instanceof Error) return <p>Something went wrong...</p>;
 
   // Aggregate expenses by category
@@ -35,18 +31,14 @@ const MonthlyReport = () => {
 
   return (
     <ChartWrapper>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={chartData}>
-            <XAxis dataKey="category" />
-            <YAxis />
-            <Tooltip />
-            <Bar dataKey="total" fill="#8ab3f8" />
-          </BarChart>
-        </ResponsiveContainer>
-      )}
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={chartData}>
+          <XAxis dataKey="category" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="total" fill="#8ab3f8" />
+        </BarChart>
+      </ResponsiveContainer>
     </ChartWrapper>
   );
 };

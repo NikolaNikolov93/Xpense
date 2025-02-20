@@ -9,11 +9,10 @@
   position: relative;
   color: var(--primary-text-color);
   display: flex;
-  min-height: 100dvh;
-  background-color: var(--background-color);
+  min-height: 100dvh; /* Ensures it takes up the full viewport without overflow */
 }
 body {
-  background-color: var(--sidebars-background-color);
+  background-color: var(--background-color);
 }
 /* Scrollbar for Webkit browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {

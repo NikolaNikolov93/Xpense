@@ -6,6 +6,7 @@ import { DashboardWrapper } from "./Dashboard.styles";
 const Dashboard = () => {
   return (
     <DashboardWrapper>
+      <h1>Dashboard</h1>
       <RecentExpenses />
       <QuickAccess />
       <MonthlyReport />

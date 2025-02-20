@@ -2,14 +2,12 @@ import styled from "styled-components";
 
 export const RecentExpensesWrapper = styled.section`
   background-color: var(--card-background-color);
-  padding: 1em;
-  box-shadow: var(--box-shadow);
+  padding: 1em 0em;
+  h3 {
+    border-bottom: 1px solid var(--primary-accent);
+    margin-bottom: 1em;
+  }
   table {
-    width: 100%;
-    margin-top: 1em;
-    background: var(--card-background-color);
-    color: var(--primary-text-color);
-    overflow: hidden;
   }
 
   th,
@@ -27,4 +25,7 @@ export const RecentExpensesWrapper = styled.section`
   tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
+`;
+export const TableWrapper = styled.div`
+  padding: 1em;
 `;

@@ -31,5 +31,6 @@ export const useFetchExpenses = (): UseQueryResult<Expense[], Error> => {
   return useQuery<Expense[], Error>({
     queryKey: ["expenses"], // Correctly typed queryKey
     queryFn: fetchExpenses,
+    refetchInterval: 10000,
   });
 };

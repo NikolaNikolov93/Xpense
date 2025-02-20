@@ -20,7 +20,7 @@ export const SideBar = styled.nav<SideBarProps>`
   transition: min-width 0.3s, display 0.3s ease-in-out; /* Smooth transition */
 
   /* For mobile devices, hide the sidebar by default */
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     min-width: ${({ $isOpen }) => ($isOpen ? "100%" : "0")};
     display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
   }

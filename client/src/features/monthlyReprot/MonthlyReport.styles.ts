@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const ChartWrapper = styled.div`
   width: 100%;
-  max-width: 600px;
+  flex-basis: calc((100% - 2em) / 2);
   background-color: var(--card-background-color);
-  padding: 1em;
+  padding: 1em 0em;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
@@ -17,5 +17,8 @@ export const ChartWrapper = styled.div`
     background-color: white;
     border-radius: 5px;
     padding: 8px;
+  }
+  @media (max-width: 660px) {
+    flex-basis: 100%;
   }
 `;

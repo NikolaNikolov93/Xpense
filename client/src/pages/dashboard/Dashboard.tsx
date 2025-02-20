@@ -8,7 +8,9 @@ const Dashboard = () => {
     <DashboardWrapper>
       <h1>Dashboard</h1>
       <RecentExpenses />
+      <RecentExpenses />
       <QuickAccess />
+      <MonthlyReport />
       <MonthlyReport />
     </DashboardWrapper>
   );

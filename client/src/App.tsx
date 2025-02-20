@@ -7,6 +7,7 @@ import Register from "./pages/auth/register/Register";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { Container, ToggleButton } from "./App.styles";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 const queryClinet = new QueryClient();
 
@@ -26,9 +27,11 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route element={<PrivateRoute />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
           </Routes>
         </Container>
       </QueryClientProvider>

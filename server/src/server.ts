@@ -7,7 +7,7 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db";
 import authRoutes from "./routes/authRoutes";
-import { METHODS } from "http";
+import expenseRoutes from "./routes/expenseRoutes";
 import errorHandler from "./middlewares/errorHandler";
 
 dotenv.config();
@@ -33,6 +33,7 @@ app.use(helmet());
 app.use(compression());
 
 app.use("/auth", authRoutes);
+app.use("/expenses", expenseRoutes); // Register expense routes
 app.use(errorHandler);
 
 connectDB();

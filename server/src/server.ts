@@ -31,10 +31,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(compression());
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
 
 app.use("/auth", authRoutes);
 app.use("/expenses", expenseRoutes); // Register expense routes

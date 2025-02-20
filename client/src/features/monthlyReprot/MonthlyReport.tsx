@@ -15,7 +15,7 @@ const MonthlyReport = () => {
   if (isLoading) {
     console.log(isLoading);
 
-    return <Spinner />;
+    return;
   }
   if (error instanceof Error) return <p>Something went wrong...</p>;
 
@@ -35,14 +35,18 @@ const MonthlyReport = () => {
 
   return (
     <ChartWrapper>
-      <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={chartData}>
-          <XAxis dataKey="category" />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="total" fill="#8ab3f8" />
-        </BarChart>
-      </ResponsiveContainer>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={chartData}>
+            <XAxis dataKey="category" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="total" fill="#8ab3f8" />
+          </BarChart>
+        </ResponsiveContainer>
+      )}
     </ChartWrapper>
   );
 };

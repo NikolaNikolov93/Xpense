@@ -7,7 +7,7 @@ export const Container = styled.section`
   gap: 3em;
   flex-grow: 1; /* Allows the content to fill the remaining space */
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
-  padding: 1em;
+  padding: 0em 1em;
 `;
 export const ToggleButton = styled.button`
   display: none; /* Hidden by default */

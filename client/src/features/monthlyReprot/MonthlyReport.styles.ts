@@ -1,0 +1,21 @@
+import styled from "styled-components";
+
+export const ChartWrapper = styled.div`
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--card-background-color);
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .recharts-cartesian-grid line {
+    stroke: #8ab3f8; /* Your accent color */
+    stroke-dasharray: 3 3;
+  }
+
+  .recharts-tooltip {
+    background-color: white;
+    border-radius: 5px;
+    padding: 8px;
+  }
+`;

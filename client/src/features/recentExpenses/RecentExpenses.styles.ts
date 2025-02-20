@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const RecentExpensesWrapper = styled.section`
   background-color: var(--card-background-color);
   padding: 1em 0em;
+
   h3 {
     border-bottom: 1px solid var(--primary-accent);
     margin-bottom: 1em;
@@ -12,8 +13,9 @@ export const RecentExpensesWrapper = styled.section`
 
   th,
   td {
-    padding: 12px;
+    padding: 0.8em 0.2em;
     border-bottom: 1px solid var(--primary-accent);
+    text-align: center;
   }
 
   th {
@@ -27,5 +29,5 @@ export const RecentExpensesWrapper = styled.section`
   }
 `;
 export const TableWrapper = styled.div`
-  padding: 1em;
+  padding: 0.5em;
 `;

@@ -16,16 +16,32 @@ const RecentExpenses = () => {
     <RecentExpensesWrapper>
       <h3>Recent Expenses</h3>
       {expenses && expenses.length > 0 ? (
-        <ul>
-          {expenses.map((expense) => (
-            <li key={expense._id}>
-              <h4>{expense.title}</h4>
-              <p>{expense.category}</p>
-              <p>${expense.amount}</p>
-              <p>{new Date(expense.date).toLocaleDateString()}</p>
-            </li>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {expenses.map((expense) => (
+              <tr key={expense._id}>
+                <td>{expense.title}</td>
+                <td>{expense.category}</td>
+                <td>${expense.amount.toFixed(2)}</td>
+                <td>
+                  {new Intl.DateTimeFormat("en-GB", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                  }).format(new Date(expense.date))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
         <p>No expenses found.</p>
       )}

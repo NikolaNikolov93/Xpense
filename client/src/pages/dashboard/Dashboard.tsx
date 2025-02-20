@@ -1,14 +1,15 @@
 import MonthlyReport from "../../features/monthlyReprot/MonthlyReport";
 import QuickAccess from "../../features/quickAccess/QuickAccess";
 import RecentExpenses from "../../features/recentExpenses/RecentExpenses";
+import { DashboardWrapper } from "./Dashboard.styles";
 
 const Dashboard = () => {
   return (
-    <div>
+    <DashboardWrapper>
       <RecentExpenses />
       <QuickAccess />
       <MonthlyReport />
-    </div>
+    </DashboardWrapper>
   );
 };
 

@@ -10,9 +10,10 @@
   color: var(--primary-text-color);
   display: flex;
   min-height: 100dvh;
+  background-color: var(--background-color);
 }
 body {
-  background-color: var(--background-color);
+  background-color: var(--sidebars-background-color);
 }
 /* Scrollbar for Webkit browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {

@@ -14,7 +14,6 @@ export const SideBar = styled.nav<SideBarProps>`
   flex-direction: column;
   padding: 1em;
   box-sizing: border-box;
-  box-shadow: var(--box-shadow);
   align-items: center;
   gap: 2em;
   font-size: 1.5em;

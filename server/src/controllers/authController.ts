@@ -28,11 +28,11 @@ export const login = async (
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "none",
+      sameSite: "lax",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
-    res.status(200).json({ message: "Login successful", user, token }); // ---> REMOVE TOKEN!
+    res.status(200).json({ message: "Login successful", user });
   } catch (error) {
     next(error);
   }
@@ -46,8 +46,8 @@ export const logout = (
   try {
     res.cookie("token", "", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Only set to true in production
-      sameSite: "none", // For cross-site cookies
+      secure: true, // Only set to true in production
+      sameSite: "lax", // For cross-site cookies
       expires: new Date(0), // Expire the cookie immediately
     });
 

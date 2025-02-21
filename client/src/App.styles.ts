@@ -20,7 +20,7 @@ export const ToggleButton = styled.button`
   color: var(--primary-text-color);
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     display: block; /* Show only on mobile */
     z-index: 100;
   }

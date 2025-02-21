@@ -29,6 +29,7 @@ export const login = async (
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      domain: "xpense-blue.vercel.app",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
@@ -47,7 +48,7 @@ export const logout = (
     res.cookie("token", "", {
       httpOnly: true,
       secure: true, // Only set to true in production
-      domain: process.env.CLIENT_URL,
+      domain: "xpense-blue.vercel.app",
       sameSite: "none", // For cross-site cookies
       expires: new Date(0), // Expire the cookie immediately
     });

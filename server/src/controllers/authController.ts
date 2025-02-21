@@ -28,7 +28,7 @@ export const login = async (
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "lax",
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
@@ -47,7 +47,7 @@ export const logout = (
     res.cookie("token", "", {
       httpOnly: true,
       secure: true, // Only set to true in production
-      sameSite: "lax", // For cross-site cookies
+      sameSite: "none", // For cross-site cookies
       expires: new Date(0), // Expire the cookie immediately
     });
 

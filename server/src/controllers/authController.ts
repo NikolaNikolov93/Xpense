@@ -47,6 +47,7 @@ export const logout = (
     res.cookie("token", "", {
       httpOnly: true,
       secure: true, // Only set to true in production
+      domain: process.env.CLIENT_URL,
       sameSite: "none", // For cross-site cookies
       expires: new Date(0), // Expire the cookie immediately
     });

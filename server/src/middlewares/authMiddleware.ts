@@ -13,6 +13,8 @@ export const authMiddleware = async (
   next: NextFunction
 ): Promise<void | any> => {
   // Return void or Promise<void>
+  console.log("🔍 Checking authentication...");
+  console.log("Cookies:", req.cookies);
 
   const token = req.cookies.token; // Get the token from the cookie
 

@@ -18,7 +18,7 @@ const corsOptions = {
   origin:
     process.env.NODE_ENV === "production"
       ? process.env.CLIENT_URL
-      : "http://localhost:5173",
+      : process.env.DEV_URL,
   credentials: true, // Allow cookies to be sent
   METHODS: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],

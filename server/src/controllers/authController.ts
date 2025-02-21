@@ -32,7 +32,7 @@ export const login = async (
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
-    res.status(200).json({ message: "Login successful", user });
+    res.status(200).json({ message: "Login successful", user, token }); // ---> REMOVE TOKEN!
   } catch (error) {
     next(error);
   }

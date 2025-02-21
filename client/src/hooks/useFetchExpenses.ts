@@ -11,10 +11,13 @@ interface Expense {
 }
 
 const fetchExpenses = async (): Promise<Expense[]> => {
+  const token = localStorage.getItem("authToken"); // Get token from localStorage ---> REMOVE
+
   const response = await fetch(`${BASE_URL}/expenses`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Send token in Authorization header --- > REMOVE
     },
     credentials: "include", // Ensure cookies are sent with the request
   });

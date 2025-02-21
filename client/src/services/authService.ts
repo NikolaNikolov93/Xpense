@@ -1,13 +1,11 @@
 import { BASE_URL } from "../constants";
 
 export const login = async (email: string, password: string) => {
-  const token = localStorage.getItem("authToken"); // Get token from localStorage ---> REMOVE
   try {
     const response = await fetch(`${BASE_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Send token in Authorization header --- > REMOVE
       },
       credentials: "include",
       body: JSON.stringify({ email, password }),

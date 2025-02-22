@@ -7,6 +7,7 @@ export interface AuthRequest extends Request {
   cookies: { [key: string]: string }; // Explicitly define cookies property
   body: any; // Or use a more specific type for the body, like { title: string; amount: number; category: string }
   headers: any;
+  query: any;
 }
 export const authMiddleware = async (
   req: AuthRequest, // Use AuthRequest type here

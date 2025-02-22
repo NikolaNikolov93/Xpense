@@ -10,8 +10,9 @@ export const RecentExpensesWrapper = styled.section`
   box-shadow: var(--box-shadow);
 
   h3 {
-    border-bottom: 1px solid var(--primary-accent);
+    border-bottom: 1px solid var(--secondary-accent);
     margin-bottom: 1em;
+    /* width: 100%; */
   }
   table {
   }

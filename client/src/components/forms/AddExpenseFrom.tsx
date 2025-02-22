@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FormWrapper, Input, SubmitButton } from "./AddExpenseFrom.styles";
+import { FormWrapper, Input } from "./AddExpenseFrom.styles";
+import Button from "../button/Button";
 
 interface AddExpenseFormProps {
   onSubmit: (expenseData: {
@@ -52,7 +53,7 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ onSubmit }) => {
         onChange={(e: any) => setCategory(e.target.value)}
         required
       />
-      <SubmitButton type="submit">Add Expense</SubmitButton>
+      <Button type="submit">Add Expense</Button>
     </FormWrapper>
   );
 };

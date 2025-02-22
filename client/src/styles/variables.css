@@ -9,6 +9,6 @@
   --error-message-color: #f44336; /* Slightly deeper red for error messages */
   --button-hover: #fc5884; /* Lightened, but with a bit more vibrance */
   --button-disabled: #8e8e8e; /* Softer grey for disabled buttons */
-  --box-shadow: 4px 0 10px rgba(0, 0, 0, 0.6); /* Stronger shadow for a more defined look */
+  --box-shadow: 4px 0 10px rgb(0, 0, 0); /* Stronger shadow for a more defined look */
   --box-shadow-glow: 0 0 8px var(--primary-accent); /* Brighter glow for emphasis */
 }

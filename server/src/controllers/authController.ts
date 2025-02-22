@@ -23,6 +23,7 @@ export const login = async (
   try {
     const { email, password } = req.body;
     const { user, token } = await loginUser(email, password);
+    localStorage.setItem("token", token); // Store token
 
     // Set JWT as an HTTP-only cookie
     res.cookie("token", token, {

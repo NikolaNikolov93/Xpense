@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/expenses/:path*",
-      "destination": "https://xpense-gqrg.onrender.com/expenses/:path*"
+      "source": "/:path*",
+      "destination": "https://xpense-gqrg.onrender.com/:path*"
     }
   ]
 }

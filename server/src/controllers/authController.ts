@@ -23,7 +23,6 @@ export const login = async (
   try {
     const { email, password } = req.body;
     const { user, token } = await loginUser(email, password);
-    localStorage.setItem("token", token); // Store token
 
     // Set JWT as an HTTP-only cookie
     res.cookie("token", token, {
@@ -33,7 +32,7 @@ export const login = async (
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
-    res.status(200).json({ message: "Login successful", user });
+    res.status(200).json({ message: "Login successful", user, token });
   } catch (error) {
     next(error);
   }

@@ -17,6 +17,8 @@ export const useLogin = () => {
       login(data.email, data.password),
     onSuccess: (data) => {
       setMessage({ text: data.message, type: "success" });
+      localStorage.setItem("token", data.token); // Store token
+
       dispatch(setUser({ name: data.user.name, email: data.user.email }));
     },
     onError: (error: any) => {

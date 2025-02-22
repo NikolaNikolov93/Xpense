@@ -31,7 +31,6 @@ export const login = async (
       sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
-    console.log("When logging in the set token is:", token);
 
     res.status(200).json({ message: "Login successful", user });
   } catch (error) {

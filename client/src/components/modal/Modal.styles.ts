@@ -17,7 +17,8 @@ export const ModalContent = styled.div`
   background: var(--card-background-color);
   padding: 1em;
   position: relative;
-  min-width: 400px;
+  min-width: 350px;
+  max-width: 450px;
 `;
 
 export const CloseButton = styled.button`

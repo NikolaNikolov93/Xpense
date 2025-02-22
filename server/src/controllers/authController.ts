@@ -29,9 +29,9 @@ export const login = async (
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      domain: "xpense-blue.vercel.app",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
+    console.log("When logging in the set token is:", token);
 
     res.status(200).json({ message: "Login successful", user });
   } catch (error) {
@@ -48,7 +48,6 @@ export const logout = (
     res.cookie("token", "", {
       httpOnly: true,
       secure: true, // Only set to true in production
-      domain: "xpense-blue.vercel.app",
       sameSite: "none", // For cross-site cookies
       expires: new Date(0), // Expire the cookie immediately
     });

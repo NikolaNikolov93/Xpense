@@ -2,7 +2,7 @@ import Button from "../../components/button/Button";
 import { ActionsWrapper, QuickAccessWrapper } from "./QuickAccess.styles";
 import Modal from "../../components/modal/Modal"; // Import the Modal component
 import { useState } from "react";
-import AddExpenseForm from "../../components/forms/addExpenseForm";
+import AddExpenseForm from "../../components/forms/AddExpenseFrom";
 
 const QuickAccess = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility

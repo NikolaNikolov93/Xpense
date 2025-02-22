@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormWrapper, Input, SubmitButton } from "./addExpenseForm.styles";
+import { FormWrapper, Input, SubmitButton } from "./AddExpenseFrom.styles";
 
 interface AddExpenseFormProps {
   onSubmit: (expenseData: {

@@ -18,7 +18,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
   };
   return (
     <SideBar $isOpen={isOpen}>
-      <Logo src="xpense-logo.png" alt="" />
+      <Logo src="logo-new.png" alt="" />
       {user && <p>{user.email}</p>}
       <StyledUl>
         <li>

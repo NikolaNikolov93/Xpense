@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledButton = styled.button`
   padding: 0.8em;
   border: none;
-  background-color: var(--primary-accent);
+  background-color: var(--secondary-accent);
   color: #fff;
   font-size: 1em;
   cursor: pointer;

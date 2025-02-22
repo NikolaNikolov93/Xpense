@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <Container>
       <h1>Xpense</h1>
-      <Logo src="xpense-logo.png" alt="Xpense Logo" />
+      <Logo src="logo-new.png" alt="Xpense Logo" />
       <h2>🚧 Under Development 🚧</h2>
       <p>
         This is a **work-in-progress** project and is not intended for real

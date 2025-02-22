@@ -17,7 +17,7 @@ export const ModalContent = styled.div`
   background: var(--card-background-color);
   padding: 1em;
   position: relative;
-  min-width: 350px;
+  min-width: 300px;
   max-width: 450px;
 `;
 

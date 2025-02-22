@@ -12,6 +12,7 @@ interface Expense {
 
 const fetchExpenses = async (): Promise<Expense[]> => {
   const token = localStorage.getItem("token");
+
   const response = await fetch(`${BASE_URL}/expenses`, {
     method: "GET",
     headers: {

@@ -13,10 +13,12 @@ export const authMiddleware = async (
   next: NextFunction
 ): Promise<void | any> => {
   // Return void or Promise<void>
-  console.log("🔍 Checking authentication...");
-  console.log("Cookies:", req.cookies);
+  // console.log("🔍 Checking authentication...");
+  // console.log("Cookies:", req.cookies);
+  const authHeader = req.headers["authorization"];
+  console.log("LocalStorageToken:", authHeader.split(" ")[1]);
 
-  const token = req.cookies.token; // Get the token from the cookie
+  const token = authHeader.split(" ")[1]; // Get the token from the cookie
 
   if (!token) {
     return res

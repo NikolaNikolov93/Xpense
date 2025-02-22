@@ -13,13 +13,11 @@ export const authMiddleware = async (
   res: Response,
   next: NextFunction
 ): Promise<void | any> => {
-  // Return void or Promise<void>
-  // console.log("🔍 Checking authentication...");
-  // console.log("Cookies:", req.cookies);
   const authHeader = req.headers["authorization"];
-  console.log("LocalStorageToken", authHeader);
 
-  const token = req.cookies.token || authHeader.split(" ")[1]; // Get the token from the cookie
+  // req.cookies.token -----> THE ACTUAL COOCKIE IS AVAILABLE BUT NOT USED. ITS BLOCKED FOR BEING A THIRD PARTY COOKIE. MUST BE PLACED INSTEAD OF authHeader!
+
+  const token = authHeader.split(" ")[1]; // Get the token from LOCAL STORAGE
 
   if (!token) {
     return res

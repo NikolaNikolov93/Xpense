@@ -1,16 +1,12 @@
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
-import { useFetchExpenses } from "../../hooks/useFetchExpenses";
+import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
 import { ChartWrapper, LoadingWrapper } from "./MonthlyReport.styles";
 import Spinner from "../../components/spinner/Spinner";
+import { useFetchLastMonthExpenses } from "../../hooks/useFetchLastMonthExpenses";
+
+const COLORS = ["#8ab3f8", "#a5bfeb", "#6f92d3", "#c4daf9", "#5678b9"]; // Define colors for the slices
+
 const MonthlyReport = () => {
-  const { data: expenses, isLoading, error } = useFetchExpenses();
+  const { data: expenses, isLoading, error } = useFetchLastMonthExpenses();
 
   if (isLoading)
     return (
@@ -38,14 +34,29 @@ const MonthlyReport = () => {
   return (
     <ChartWrapper>
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={chartData}>
-          <XAxis dataKey="category" />
-          <YAxis />
+        <PieChart>
+          <Pie
+            data={chartData}
+            dataKey="total"
+            nameKey="category"
+            cx="50%"
+            cy="50%"
+            outerRadius={100}
+            fill="#8ab3f8"
+            label
+          >
+            {chartData?.map((_, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
           <Tooltip />
-          <Bar dataKey="total" fill="#8ab3f8" />
-        </BarChart>
+        </PieChart>
       </ResponsiveContainer>
     </ChartWrapper>
   );
 };
+
 export default MonthlyReport;

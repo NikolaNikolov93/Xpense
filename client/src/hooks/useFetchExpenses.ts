@@ -13,7 +13,7 @@ interface Expense {
 const fetchExpenses = async (): Promise<Expense[]> => {
   const token = localStorage.getItem("token");
 
-  const response = await fetch(`${BASE_URL}/expenses`, {
+  const response = await fetch(`${BASE_URL}/expenses/latest?limit=5`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`, // Send token in Authorization header

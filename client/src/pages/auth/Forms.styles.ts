@@ -6,7 +6,6 @@ export const FormContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--background-color);
   color: var(--primary-text-color);
   flex: 1;
   max-width: 350px;

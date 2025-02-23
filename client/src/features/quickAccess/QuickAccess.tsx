@@ -16,15 +16,6 @@ const QuickAccess = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  const handleAddExpense = (expenseData: {
-    title: string;
-    amount: number;
-    category: string;
-  }) => {
-    console.log("Expense submitted: ", expenseData);
-    // Here, you can add the logic to send the data to the backend or state management
-    closeModal(); // Close the modal after submission
-  };
 
   return (
     <QuickAccessWrapper>
@@ -36,7 +27,7 @@ const QuickAccess = () => {
 
       {/* Modal for adding expense */}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <AddExpenseForm onSubmit={handleAddExpense} />
+        <AddExpenseForm isModalClosed={() => setIsModalOpen(false)} />
       </Modal>
     </QuickAccessWrapper>
   );

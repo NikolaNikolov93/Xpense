@@ -12,7 +12,7 @@ export const addExpense = async (req: AuthRequest, res) => {
     const newExpense = new Expense({
       userId: req.user.id, // Get user ID from middleware
       title,
-      amount,
+      amount: parseFloat(amount),
       category,
     });
 

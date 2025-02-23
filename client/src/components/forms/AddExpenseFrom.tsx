@@ -1,27 +1,31 @@
-import React, { useState } from "react";
 import { FormWrapper, Input } from "./AddExpenseFrom.styles";
 import Button from "../button/Button";
+import { useForm } from "../../hooks/useForm";
+import { useAddExpense } from "../../hooks/useAddExpense";
+import Spinner from "../spinner/Spinner";
 
 interface AddExpenseFormProps {
-  onSubmit: (expenseData: {
-    title: string;
-    amount: number;
-    category: string;
-  }) => void;
+  isModalClosed: () => void; // Function to close the modal
 }
 
-const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ onSubmit }) => {
-  const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [category, setCategory] = useState("");
+const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
+  const { mutate, isPending, isError, error } = useAddExpense();
+  const { formData, handleChange, resetForm } = useForm({
+    initialValues: {
+      title: "",
+      amount: "",
+      category: "",
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ title, amount, category });
-    // Reset form
-    setTitle("");
-    setAmount(0);
-    setCategory("");
+    mutate(formData, {
+      onSuccess: () => {
+        resetForm(); // Reset form after successful submission
+        isModalClosed();
+      },
+    });
   };
 
   return (
@@ -29,18 +33,20 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ onSubmit }) => {
       <h2>Add Expense</h2>
       <Input
         type="text"
-        value={title}
+        value={formData.title}
+        name="title"
         placeholder="Add title.."
-        onChange={(e: any) => setTitle(e.target.value)}
+        onChange={handleChange}
         required
       />
 
       <Input
         type="number"
         id="amount"
-        value={amount}
+        name="amount"
+        value={formData.amount}
         placeholder="Amount"
-        onChange={(e: any) => setAmount(e.target.value)}
+        onChange={handleChange}
         required
         min="0" // Ensures the number is non-negative
         step="0.01" // Allows for decimal values
@@ -48,12 +54,14 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ onSubmit }) => {
 
       <Input
         type="text"
-        value={category}
+        name="category"
+        value={formData.category}
         placeholder="Add category.."
-        onChange={(e: any) => setCategory(e.target.value)}
+        onChange={handleChange}
         required
       />
-      <Button type="submit">Add Expense</Button>
+      {isPending ? <Spinner /> : <Button type="submit">Add Expense</Button>}
+      {isError && <p>{error.message}</p>}
     </FormWrapper>
   );
 };

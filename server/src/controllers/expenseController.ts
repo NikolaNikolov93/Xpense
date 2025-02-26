@@ -36,58 +36,35 @@ export const getLatestExpenses = async (req: AuthRequest, res) => {
   }
 };
 
-export const getLatestMonth = async (req: AuthRequest, res) => {
+export const getExpensesForLastNDays = async (req: AuthRequest, res) => {
   try {
     const today = new Date();
+    const { days } = req.query; // Get the 'days' query parameter
 
-    // Get the first and last days of last month
-    const firstDayOfLastMonth = new Date(
-      today.getFullYear(),
-      today.getMonth() - 1,
-      1
-    );
+    // Ensure 'days' is a number and has a default value of 30 if not provided
+    const numberOfDays = parseInt(days as string) || 30;
 
-    const lastDayOfLastMonth = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      0
-    );
-    lastDayOfLastMonth.setHours(23, 59, 59, 999); // Ensure full range for the last day
+    // Calculate the date for 'numberOfDays' ago
+    const startDate = new Date();
+    startDate.setDate(today.getDate() - numberOfDays); // Get the date for X days ago
 
-    console.log("First Day of Last Month:", firstDayOfLastMonth);
-    console.log("Last Day of Last Month:", lastDayOfLastMonth);
+    // Ensure the time for 'startDate' starts from 00:00:00.000
+    startDate.setHours(0, 0, 0, 0);
 
-    // Fetch last month's expenses
-    let expenses = await Expense.find({
+    // Fetch expenses from the last 'numberOfDays' days
+    const expenses = await Expense.find({
       userId: req.user.id,
       date: {
-        $gte: firstDayOfLastMonth,
-        $lte: lastDayOfLastMonth,
+        $gte: startDate, // Greater than or equal to 'numberOfDays' ago
+        $lte: today, // Less than or equal to today
       },
-    }).sort({ date: -1 });
-
-    // If no expenses in last month, fetch last 30 days instead
-    if (expenses.length === 0) {
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(today.getDate() - 30);
-      thirtyDaysAgo.setHours(0, 0, 0, 0); // Start of the day
-
-      console.log(
-        "No expenses found for last month. Fetching last 30 days instead."
-      );
-      console.log("From:", thirtyDaysAgo, "To:", today);
-
-      expenses = await Expense.find({
-        userId: req.user.id,
-        date: {
-          $gte: thirtyDaysAgo,
-          $lte: today,
-        },
-      }).sort({ date: -1 });
-    }
+    }).sort({ date: -1 }); // Sort by date, newest first
 
     res.json(expenses);
   } catch (error) {
-    throw new AppError("Error fetching expenses for last month", 500);
+    throw new AppError(
+      `Error fetching expenses for the last ${req.query.days || 30} days`,
+      500
+    );
   }
 };

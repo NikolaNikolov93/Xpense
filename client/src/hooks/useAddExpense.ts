@@ -39,7 +39,7 @@ export const useAddExpense = (): UseMutationResult<void, Error, NewExpense> => {
     onSuccess: () => {
       // Invalidate and refetch expenses after adding a new one
       queryClient.invalidateQueries({ queryKey: ["expenses"] });
-      queryClient.invalidateQueries({ queryKey: ["lastMonthExpenses"] });
+      queryClient.invalidateQueries({ queryKey: ["last30DaysExpenses"] });
     },
   });
 };

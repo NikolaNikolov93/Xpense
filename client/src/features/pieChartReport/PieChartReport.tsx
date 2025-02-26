@@ -1,20 +1,18 @@
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
-import { ChartWrapper, LoadingWrapper } from "./MonthlyReport.styles";
 import Spinner from "../../components/spinner/Spinner";
-import { useFetchLastMonthExpenses } from "../../hooks/useFetchLastMonthExpenses";
 import EmptyData from "../../components/emptyData/EmptyData";
+import { ChartWrapper, LoadingWrapper } from "./PieChartReport.styles";
+import { PieChartColorS, PieChartReportProps } from "../../types/types";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
-// Color palette from your CSS root variables
-const COLORS = [
-  "var(--primary-accent)", // Primary accent for a strong visual pop
-  "var(--secondary-accent)", // Secondary accent for a call-to-action feel
-  "#8ab3f8", // Lighter blue for variety
-  "#6f92d3", // Blue shades for balance
-  "#5678b9", // A darker blue for contrast
-];
-
-const MonthlyReport = () => {
-  const { data: expenses, isLoading, error } = useFetchLastMonthExpenses();
+const PieChartReport: React.FC<PieChartReportProps> = ({
+  expenses,
+  isLoading,
+  error,
+  days,
+}) => {
+  const user = useSelector((state: RootState) => state.user.user); // Access user from Redux store
 
   if (isLoading)
     return (
@@ -45,8 +43,15 @@ const MonthlyReport = () => {
     []
   );
 
+  // Calculate the total amount spent
+  const totalAmountSpent = chartData?.reduce(
+    (sum, item) => sum + item.total,
+    0
+  );
+
   return (
     <ChartWrapper>
+      <h4>{`Expenses for the past ${days} days`}</h4>
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <Pie
@@ -63,7 +68,7 @@ const MonthlyReport = () => {
             {chartData?.map((_, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
+                fill={PieChartColorS[index % PieChartColorS.length]}
                 style={{
                   cursor: "pointer",
                   transition: "transform 0.3s ease-in-out",
@@ -83,8 +88,15 @@ const MonthlyReport = () => {
           />
         </PieChart>
       </ResponsiveContainer>
+      {totalAmountSpent !== undefined && (
+        <div>
+          <strong>{`Total: ${totalAmountSpent.toFixed(2)} ${
+            user?.currency
+          }`}</strong>
+        </div>
+      )}
     </ChartWrapper>
   );
 };
 
-export default MonthlyReport;
+export default PieChartReport;

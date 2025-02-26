@@ -8,7 +8,9 @@ const UserBalance = () => {
   return (
     <UserBalanceWrapper>
       <h4>{`Hello, ${user?.name}!`}</h4>
-      <h4>{`Your current total balance is: ${user?.totalBalance} ${user?.currency}`}</h4>
+      <h4>{`Your current total balance is: ${user?.totalBalance.toFixed(2)} ${
+        user?.currency
+      }`}</h4>
     </UserBalanceWrapper>
   );
 };

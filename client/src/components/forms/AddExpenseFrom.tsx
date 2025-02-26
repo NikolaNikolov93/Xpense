@@ -3,12 +3,17 @@ import Button from "../button/Button";
 import { useForm } from "../../hooks/useForm";
 import { useAddExpense } from "../../hooks/useAddExpense";
 import Spinner from "../spinner/Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { updateUserBalance } from "../../redux/userSlice";
 
 interface AddExpenseFormProps {
   isModalClosed: () => void; // Function to close the modal
 }
 
 const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user.user); // Get the user from Redux
   const { mutate, isPending, isError, error } = useAddExpense();
   const { formData, handleChange, resetForm } = useForm({
     initialValues: {
@@ -19,11 +24,16 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
   });
 
   const handleSubmit = (e: React.FormEvent) => {
+    const expenseAmount = parseFloat(formData.amount);
     e.preventDefault();
     mutate(formData, {
       onSuccess: () => {
         resetForm(); // Reset form after successful submission
         isModalClosed();
+        if (user) {
+          const newBalance = user.totalBalance - expenseAmount;
+          dispatch(updateUserBalance(newBalance)); // Update balance in Redux store
+        }
       },
     });
   };

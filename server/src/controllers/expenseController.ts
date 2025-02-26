@@ -1,14 +1,30 @@
 import { AuthRequest } from "../middlewares/authMiddleware";
 import Expense from "../models/Expense";
+import User from "../models/User";
 import AppError from "../utils/AppError";
 
 export const addExpense = async (req: AuthRequest, res) => {
   try {
     const { title, amount, category } = req.body;
+
     if (!title || !amount || !category) {
       // Throwing an AppError with a 400 Bad Request status if required fields are missing
       throw new AppError("Missing required fields", 400);
     }
+
+    // Retrieve the current user's balance
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      throw new AppError("User not found", 404);
+    }
+
+    // Check if the user has enough balance (optional validation)
+    if (user.totalBalance < amount) {
+      throw new AppError("Insufficient balance", 400);
+    }
+
+    // Create a new expense
     const newExpense = new Expense({
       userId: req.user.id, // Get user ID from middleware
       title,
@@ -16,8 +32,18 @@ export const addExpense = async (req: AuthRequest, res) => {
       category,
     });
 
+    // Save the expense
     await newExpense.save();
-    res.status(201).json(newExpense);
+
+    // Update the user's balance by subtracting the expense amount
+    user.totalBalance -= parseFloat(amount); // Decrease balance
+    await user.save(); // Save the updated user balance
+
+    // Return the created expense and updated user balance
+    res.status(201).json({
+      expense: newExpense,
+      updatedBalance: user.totalBalance, // Include the updated balance in the response
+    });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }

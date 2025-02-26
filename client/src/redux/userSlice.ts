@@ -39,11 +39,16 @@ const userSlice = createSlice({
       state.user = null;
       state.isAuthenticated = false;
     },
+    updateUserBalance: (state, action: PayloadAction<number>) => {
+      if (state.user) {
+        state.user.totalBalance = action.payload;
+      }
+    },
   },
 });
 
 // Export actions
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser, updateUserBalance } = userSlice.actions;
 
 // Export the reducer
 export default userSlice.reducer;

@@ -5,9 +5,12 @@ import {
 } from "./RecentExpenses.styles";
 import { useFetchExpenses } from "../../hooks/useFetchExpenses";
 import Spinner from "../../components/spinner/Spinner";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const RecentExpenses = () => {
   const { data: expenses, error, isLoading } = useFetchExpenses();
+  const user = useSelector((state: RootState) => state.user.user); // Access user from Redux store
 
   if (isLoading) {
     return (
@@ -40,7 +43,7 @@ const RecentExpenses = () => {
                 <tr key={expense._id}>
                   <td>{expense.title}</td>
                   <td>{expense.category}</td>
-                  <td>${expense.amount.toFixed(2)}</td>
+                  <td>{`${expense.amount.toFixed(2)} ${user?.currency}`}</td>
                   <td>
                     {new Intl.DateTimeFormat("en-GB", {
                       day: "2-digit",

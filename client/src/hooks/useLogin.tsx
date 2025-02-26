@@ -19,7 +19,14 @@ export const useLogin = () => {
       setMessage({ text: data.message, type: "success" });
       localStorage.setItem("token", data.token); // Store token
 
-      dispatch(setUser({ name: data.user.name, email: data.user.email }));
+      dispatch(
+        setUser({
+          name: data.user.name,
+          email: data.user.email,
+          currency: data.user.currency,
+          totalBalance: data.user.totalBalance,
+        })
+      );
     },
     onError: (error: any) => {
       setMessage({

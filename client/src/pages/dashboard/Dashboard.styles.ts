@@ -9,4 +9,7 @@ export const DashboardWrapper = styled.section`
   h1 {
     flex: 1 1 100%;
   }
+  > * {
+    border-radius: 30px;
+  }
 `;

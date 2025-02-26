@@ -3,7 +3,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define the type for user state
 interface UserState {
-  user: { name: string; email: string } | null;
+  user: {
+    name: string;
+    email: string;
+    currency: string;
+    totalBalance: number;
+  } | null;
   isAuthenticated: boolean;
 }
 
@@ -20,7 +25,12 @@ const userSlice = createSlice({
   reducers: {
     setUser: (
       state,
-      action: PayloadAction<{ name: string; email: string }>
+      action: PayloadAction<{
+        name: string;
+        email: string;
+        currency: string;
+        totalBalance: number;
+      }>
     ) => {
       state.user = action.payload;
       state.isAuthenticated = true;

@@ -19,6 +19,9 @@ export const ChartWrapper = styled.div`
     border-radius: 5px;
     padding: 8px;
   }
+  img {
+    width: 200px;
+  }
   @media (max-width: 660px) {
     flex-basis: 100%;
   }

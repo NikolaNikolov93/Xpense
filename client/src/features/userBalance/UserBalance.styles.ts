@@ -9,4 +9,7 @@ export const UserBalanceWrapper = styled.div`
   align-items: center;
   gap: 1em;
   box-shadow: var(--box-shadow);
+  @media (max-width: 960px) {
+    flex-basis: 100%;
+  }
 `;

@@ -12,10 +12,10 @@ const Dashboard = () => {
     error: is30DaysError,
   } = useFetchExpensesForLastNDays(30);
   const {
-    data: expensesForLast2Days,
-    isLoading: is2DaysLoading,
-    error: is2DaysError,
-  } = useFetchExpensesForLastNDays(2);
+    data: expensesForLast7Days,
+    isLoading: is7DaysLoading,
+    error: is7DaysError,
+  } = useFetchExpensesForLastNDays(7);
 
   return (
     <DashboardWrapper>
@@ -24,10 +24,10 @@ const Dashboard = () => {
       <RecentExpenses />
       <QuickAccess />
       <PieChartReport
-        expenses={expensesForLast2Days}
-        isLoading={is2DaysLoading}
-        error={is2DaysError}
-        days={2}
+        expenses={expensesForLast7Days}
+        isLoading={is7DaysLoading}
+        error={is7DaysError}
+        days={7}
       />
       <PieChartReport
         expenses={expensesForLast30Days}

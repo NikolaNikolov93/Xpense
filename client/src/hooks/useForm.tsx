@@ -8,7 +8,9 @@ export const useForm = <T,>({ initialValues }: UseFormProps<T>) => {
   const [formData, setFormData] = useState<T>(initialValues);
 
   // Generic handler for form inputs
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,

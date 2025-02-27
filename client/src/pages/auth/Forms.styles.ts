@@ -30,7 +30,7 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-color: var(--button-hover);
+    border-color: var(--primary-accent);
     box-shadow: var(--box-shadow-glow);
   }
 `;

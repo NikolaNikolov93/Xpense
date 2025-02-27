@@ -1,4 +1,4 @@
-import { FormWrapper, Input } from "./AddExpenseFrom.styles";
+import { FormWrapper, Input, Select } from "./AddExpenseFrom.styles";
 import Button from "../button/Button";
 import { useForm } from "../../hooks/useForm";
 import { useAddExpense } from "../../hooks/useAddExpense";
@@ -6,6 +6,7 @@ import Spinner from "../spinner/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { updateUserBalance } from "../../redux/userSlice";
+import { CATEGORIES } from "../../constants";
 
 interface AddExpenseFormProps {
   isModalClosed: () => void; // Function to close the modal
@@ -62,14 +63,19 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
         step="0.01" // Allows for decimal values
       />
 
-      <Input
-        type="text"
+      <Select
         name="category"
         value={formData.category}
-        placeholder="Add category.."
         onChange={handleChange}
         required
-      />
+      >
+        <option value="">Please select a category</option>
+        {CATEGORIES.map((category) => (
+          <option key={category} value={category}>
+            {category}
+          </option>
+        ))}
+      </Select>
       {isPending ? <Spinner /> : <Button type="submit">Add Expense</Button>}
       {isError && <p>{error.message}</p>}
     </FormWrapper>

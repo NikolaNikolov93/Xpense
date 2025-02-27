@@ -24,9 +24,9 @@ const addExpense = async (expense: NewExpense): Promise<void> => {
     credentials: "include",
     body: JSON.stringify(expense),
   });
-
+  const data = await response.json();
   if (!response.ok) {
-    throw new Error("Failed to add expense");
+    throw new Error(data.message || "Failed to add expense");
   }
 };
 
@@ -44,6 +44,9 @@ export const useAddExpense = (): UseMutationResult<void, Error, NewExpense> => {
           queryKey: [`last${days}DaysExpenses`],
         });
       }
+    },
+    onError: (error: any) => {
+      return error.message;
     },
   });
 };

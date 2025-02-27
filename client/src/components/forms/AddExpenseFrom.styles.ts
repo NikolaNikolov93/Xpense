@@ -6,6 +6,14 @@ export const FormWrapper = styled.form`
   align-items: center;
   gap: 1em;
   background: var(--card-background-color);
+  input,
+  select {
+    &:focus {
+      outline: none;
+      border-color: var(--primary-accent);
+      box-shadow: var(--box-shadow-glow);
+    }
+  }
 `;
 
 export const Label = styled.label`
@@ -14,6 +22,10 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+  padding: 0.8em;
+  font-size: 1em;
+`;
+export const Select = styled.select`
   padding: 0.8em;
   font-size: 1em;
 `;

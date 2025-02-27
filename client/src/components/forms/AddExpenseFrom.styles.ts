@@ -19,4 +19,6 @@ export const FormWrapper = styled.form`
 `;
 
 export const Input = styled.input``;
-export const Select = styled.select``;
+export const Select = styled.select`
+  color: black;
+`;

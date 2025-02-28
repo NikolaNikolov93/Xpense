@@ -13,6 +13,7 @@ export const useLogout = () => {
       // Call the logout service function
       const data = await logout();
       console.log(data.message); // Success message from backend (e.g., "Logged out successfully")
+      localStorage.removeItem("token");
 
       // Dispatch Redux action to clear the user data from store
       dispatch(removeUser());

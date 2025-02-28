@@ -1,16 +1,8 @@
 // redux/userSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { User, UserState } from "../types/types";
 
 // Define the type for user state
-interface UserState {
-  user: {
-    name: string;
-    email: string;
-    currency: string;
-    totalBalance: number;
-  } | null;
-  isAuthenticated: boolean;
-}
 
 // Initial state for the user slice
 const initialState: UserState = {
@@ -23,15 +15,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (
-      state,
-      action: PayloadAction<{
-        name: string;
-        email: string;
-        currency: string;
-        totalBalance: number;
-      }>
-    ) => {
+    setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
       state.isAuthenticated = true;
     },

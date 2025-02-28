@@ -21,10 +21,12 @@ export const useLogin = () => {
 
       dispatch(
         setUser({
+          id: data.user._id,
           name: data.user.name,
           email: data.user.email,
           currency: data.user.currency,
           totalBalance: data.user.totalBalance,
+          profilePicture: data.user.profilePicture,
         })
       );
     },

@@ -25,6 +25,16 @@ export const SideBar = styled.nav<SideBarProps>`
     display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
   }
 `;
+export const UserSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: center;
+`;
+export const StyledImg = styled.img`
+  width: 80px;
+  border-radius: 50%;
+`;
 
 export const StyledUl = styled.ul`
   display: flex;
@@ -32,5 +42,5 @@ export const StyledUl = styled.ul`
   gap: 0.5em;
 `;
 export const Logo = styled.img`
-  width: 60px;
+  width: 80px;
 `;

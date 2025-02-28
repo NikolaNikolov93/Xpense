@@ -19,3 +19,17 @@ export const PieChartColorS = [
   "#6f92d3", // Blue shades for balance
   "#5678b9", // A darker blue for contrast
 ];
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  currency: string;
+  totalBalance: number;
+  profilePicture: string;
+};
+
+export type UserState = {
+  user: User | null;
+  isAuthenticated: boolean;
+};

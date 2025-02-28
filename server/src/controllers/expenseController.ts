@@ -45,7 +45,7 @@ export const addExpense = async (req: AuthRequest, res) => {
       updatedBalance: user.totalBalance, // Include the updated balance in the response
     });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: error.message });
   }
 };
 export const getLatestExpenses = async (req: AuthRequest, res) => {

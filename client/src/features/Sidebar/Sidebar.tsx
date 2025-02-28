@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import { Logo, SideBar, StyledUl } from "./Sidebar.styles";
+import {
+  Logo,
+  SideBar,
+  StyledImg,
+  StyledUl,
+  UserSection,
+} from "./Sidebar.styles";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useLogout } from "../../hooks/useLogout";
@@ -18,8 +24,15 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
   };
   return (
     <SideBar $isOpen={isOpen}>
-      <Logo src="logo-new.png" alt="" />
-      {user && <p>{user.email}</p>}
+      {user ? (
+        <UserSection>
+          <h4>{user.name}</h4>
+          <StyledImg src={user.profilePicture} />
+        </UserSection>
+      ) : (
+        <Logo src="logo-new.png" alt="" />
+      )}
+
       <StyledUl>
         <li>
           <Link to={"/"} onClick={handleClose}>
@@ -30,10 +43,16 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
         {user != null ? (
           <>
             <li>
+              <Link to={"/profile"} onClick={handleClose}>
+                Profile
+              </Link>
+            </li>
+            <li>
               <Link to={"/dashboard"} onClick={handleClose}>
                 Dashboard
               </Link>
             </li>
+
             <li>
               <Link to={"/"} onClick={handleClose}>
                 <span onClick={logout}>Logout</span>

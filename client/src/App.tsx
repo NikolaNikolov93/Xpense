@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Container, ToggleButton } from "./App.styles";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import NotFound from "./pages/notFound/NotFound";
+import Profile from "./pages/profile/Profile";
 
 const queryClinet = new QueryClient();
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/profile" element={<Profile />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

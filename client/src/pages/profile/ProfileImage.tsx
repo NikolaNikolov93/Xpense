@@ -8,7 +8,7 @@ import { ProfileImageTypes } from "../../types/types";
 
 const ProfileImage: React.FC<ProfileImageTypes> = ({
   profilePicture,
-  userName,
+  name,
 }) => {
   return (
     <ImageSection>
@@ -16,7 +16,7 @@ const ProfileImage: React.FC<ProfileImageTypes> = ({
       <StyledEditImageButton>
         <MdOutlineEdit />
       </StyledEditImageButton>
-      <h3>{userName}</h3>
+      <h3>{name}</h3>
     </ImageSection>
   );
 };

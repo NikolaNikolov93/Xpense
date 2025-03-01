@@ -16,7 +16,10 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<User>) => {
-      state.user = action.payload;
+      state.user = {
+        ...action.payload,
+        totalBalance: action.payload.totalBalance ?? 0,
+      };
       state.isAuthenticated = true;
     },
     removeUser: (state) => {
@@ -28,11 +31,19 @@ const userSlice = createSlice({
         state.user.totalBalance = action.payload;
       }
     },
+    updateUserProfile: (state, action) => {
+      if (state.user) {
+        state.user.name = action.payload.name;
+        state.user.currency = action.payload.currency;
+        state.user.totalBalance = action.payload.totalBalance;
+      }
+    },
   },
 });
 
 // Export actions
-export const { setUser, removeUser, updateUserBalance } = userSlice.actions;
+export const { setUser, removeUser, updateUserBalance, updateUserProfile } =
+  userSlice.actions;
 
 // Export the reducer
 export default userSlice.reducer;

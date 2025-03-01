@@ -34,11 +34,11 @@ export type UserState = {
   isAuthenticated: boolean;
 };
 export type ProfileImageTypes = {
-  profilePicture: string | undefined;
-  userName: string | undefined;
+  profilePicture: string;
+  name: string;
 };
 export type ProfileInfoTypes = {
-  userName: string | undefined;
-  currency: string | undefined;
-  totalBalance: number | undefined;
+  name: string;
+  currency: string;
+  totalBalance: number;
 };

@@ -8,23 +8,34 @@ import {
   ProfleInfoSection,
   StyledForm,
 } from "./ProfileInfo.styles";
+import { updateUserProfile } from "../../redux/userSlice";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../services/authService";
 
 const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   currency,
-  userName,
+  name,
   totalBalance,
 }) => {
   const [isEditModeOff, setIsEditModeOff] = useState(true);
+  const dispatch = useDispatch();
   const { formData, handleChange } = useForm({
     initialValues: {
       currency: currency,
-      userName: userName,
-      totalBalance: totalBalance,
+      name: name,
+      totalBalance: 0,
     },
   });
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("User data Changed:", formData);
+    const updatedUser = {
+      name: formData.name,
+      currency: formData.currency,
+      totalBalance: totalBalance + Number(formData.totalBalance),
+    };
+    dispatch(updateUserProfile(updatedUser));
+    updateUser(updatedUser);
+    setIsEditModeOff(true);
   };
   return (
     <ProfleInfoSection>
@@ -34,8 +45,8 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
           <input
             disabled={isEditModeOff}
             type="text"
-            name="userName"
-            value={formData.userName}
+            name="name"
+            value={formData.name}
             onChange={handleChange}
           />
         </FormField>
@@ -50,7 +61,7 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
           />
         </FormField>
         <FormField>
-          <label>Total Balance:</label>
+          <label>Add to balance:</label>
           <input
             disabled={isEditModeOff}
             type="number"
@@ -59,6 +70,7 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
             onChange={handleChange}
           />
         </FormField>
+        <p>{`Current balance is: ${totalBalance} ${currency}`}</p>
         <ButtonsSection>
           <Button
             type="button"

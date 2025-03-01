@@ -1,4 +1,5 @@
 import { BASE_URL } from "../constants";
+const token = localStorage.getItem("token");
 
 export const login = async (email: string, password: string) => {
   try {
@@ -74,6 +75,36 @@ export const logout = async () => {
     return data; // Return success message
   } catch (error: any) {
     console.error("Logout Error:", error.message);
+    throw new Error(error.message || "Something went wrong. Please try again.");
+  }
+};
+
+export const updateUser = async (userData: {
+  name?: string;
+  currency?: string;
+  totalBalance?: number;
+}): Promise<any> => {
+  // Ensure the return type is Promise<any>
+  try {
+    const response = await fetch(`${BASE_URL}/auth/updateUser`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      credentials: "include",
+      body: JSON.stringify(userData),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Update failed");
+    }
+
+    return data; // Return updated user data
+  } catch (error: any) {
+    console.error("Update Error:", error.message);
     throw new Error(error.message || "Something went wrong. Please try again.");
   }
 };

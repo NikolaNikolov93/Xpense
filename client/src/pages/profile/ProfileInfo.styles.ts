@@ -5,9 +5,10 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5em;
 `;
 export const FormField = styled.div`
-  padding: 1em;
+  padding: 0.3em;
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -27,7 +28,6 @@ export const ButtonsSection = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 1em;
   button {
     width: 100px;
   }

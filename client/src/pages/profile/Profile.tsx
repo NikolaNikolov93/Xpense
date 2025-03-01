@@ -4,18 +4,19 @@ import { RootState } from "../../redux/store";
 import ProfileImage from "./ProfileImage";
 import ProfileInfo from "./ProfileInfo";
 const Profile = () => {
-  const user = useSelector((state: RootState) => state.user.user); // Access user from Redux store
-
+  const { user, isAuthenticated } = useSelector(
+    (state: RootState) => state.user
+  );
+  if (!isAuthenticated || !user) {
+    return <p>Loading user profile...</p>; // Or redirect the user to a login page
+  }
   return (
     <ProfileWrapper>
-      <ProfileImage
-        profilePicture={user?.profilePicture}
-        userName={user?.name}
-      />
+      <ProfileImage profilePicture={user.profilePicture} name={user.name} />
       <ProfileInfo
-        userName={user?.name}
-        currency={user?.currency}
-        totalBalance={user?.totalBalance}
+        name={user.name}
+        currency={user.currency}
+        totalBalance={user.totalBalance}
       />
     </ProfileWrapper>
   );

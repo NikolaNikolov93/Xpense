@@ -12,4 +12,7 @@ export const StyledButton = styled.button`
   &:hover {
     background-color: var(--button-hover);
   }
+  &:disabled {
+    background-color: var(--button-disabled);
+  }
 `;

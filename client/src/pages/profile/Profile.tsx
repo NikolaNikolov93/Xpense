@@ -1,24 +1,22 @@
 import { useSelector } from "react-redux";
-import {
-  ImageSection,
-  ProfileWrapper,
-  StyledEditImageButton,
-  StyledImage,
-} from "./Profile.styles";
+import { ProfileWrapper } from "./Profile.styles";
 import { RootState } from "../../redux/store";
-import { MdOutlineEdit } from "react-icons/md";
+import ProfileImage from "./ProfileImage";
+import ProfileInfo from "./ProfileInfo";
 const Profile = () => {
   const user = useSelector((state: RootState) => state.user.user); // Access user from Redux store
 
   return (
     <ProfileWrapper>
-      <ImageSection>
-        <StyledImage src={user?.profilePicture}></StyledImage>
-        <StyledEditImageButton>
-          <MdOutlineEdit />
-        </StyledEditImageButton>
-        <h3>{user?.name}</h3>
-      </ImageSection>
+      <ProfileImage
+        profilePicture={user?.profilePicture}
+        userName={user?.name}
+      />
+      <ProfileInfo
+        userName={user?.name}
+        currency={user?.currency}
+        totalBalance={user?.totalBalance}
+      />
     </ProfileWrapper>
   );
 };

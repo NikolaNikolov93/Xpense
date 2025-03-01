@@ -33,3 +33,12 @@ export type UserState = {
   user: User | null;
   isAuthenticated: boolean;
 };
+export type ProfileImageTypes = {
+  profilePicture: string | undefined;
+  userName: string | undefined;
+};
+export type ProfileInfoTypes = {
+  userName: string | undefined;
+  currency: string | undefined;
+  totalBalance: number | undefined;
+};

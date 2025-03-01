@@ -7,32 +7,40 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { updateUserBalance } from "../../redux/userSlice";
 import { CATEGORIES } from "../../constants";
+import { AddExpenseFormProps } from "../../types/types";
 
-interface AddExpenseFormProps {
-  isModalClosed: () => void; // Function to close the modal
-}
-
+// AddExpenseForm Component - Allows the user to add an expense.
 const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
+  // Dispatch action to update user balance in Redux store
   const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.user.user); // Get the user from Redux
+
+  // Get the current user from the Redux store
+  const user = useSelector((state: RootState) => state.user.user);
+
+  // Use custom hook for adding expenses with React Query
   const { mutate, isPending, isError, error } = useAddExpense();
+
+  // Use custom form hook for managing form state
   const { formData, handleChange, resetForm } = useForm({
     initialValues: {
-      title: "",
+      title: "", // Initialize form fields with empty values
       amount: "",
       category: "",
     },
   });
 
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
-    const expenseAmount = parseFloat(formData.amount);
     e.preventDefault();
+    const expenseAmount = parseFloat(formData.amount); // Convert amount to float
+
+    // Mutate the form data and handle success
     mutate(formData, {
       onSuccess: () => {
         resetForm(); // Reset form after successful submission
-        isModalClosed();
+        isModalClosed(); // Close the modal
         if (user) {
-          const newBalance = user.totalBalance - expenseAmount;
+          const newBalance = user.totalBalance - expenseAmount; // Calculate new balance
           dispatch(updateUserBalance(newBalance)); // Update balance in Redux store
         }
       },
@@ -42,15 +50,18 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
   return (
     <FormWrapper onSubmit={handleSubmit}>
       <h2>Add Expense</h2>
+
+      {/* Input for the title of the expense */}
       <Input
         type="text"
         value={formData.title}
         name="title"
         placeholder="Add title.."
         onChange={handleChange}
-        required
+        required // Make the title input field required
       />
 
+      {/* Input for the amount of the expense */}
       <Input
         type="number"
         id="amount"
@@ -59,10 +70,11 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
         placeholder="Amount"
         onChange={handleChange}
         required
-        min="0" // Ensures the number is non-negative
+        min="0" // Ensures that the amount is non-negative
         step="0.01" // Allows for decimal values
       />
 
+      {/* Dropdown for selecting the category of the expense */}
       <Select
         name="category"
         value={formData.category}
@@ -76,7 +88,11 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
           </option>
         ))}
       </Select>
+
+      {/* Show a spinner when the expense is being added */}
       {isPending ? <Spinner /> : <Button type="submit">Add Expense</Button>}
+
+      {/* Display an error message if there's an error while adding the expense */}
       {isError && <p>{error.message}</p>}
     </FormWrapper>
   );

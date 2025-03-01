@@ -10,14 +10,14 @@ import {
 } from "./ProfileInfo.styles";
 import { updateUserProfile } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../../services/authService";
+import { useUpdateUser } from "../../hooks/useUpdateUser";
+import Spinner from "../../components/spinner/Spinner";
 
 const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   currency,
   name,
   totalBalance,
 }) => {
-  const token = localStorage.getItem("token");
   const [isEditModeOff, setIsEditModeOff] = useState(true);
   const dispatch = useDispatch();
   const { formData, handleChange } = useForm({
@@ -27,6 +27,12 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
       totalBalance: 0,
     },
   });
+  const {
+    mutate: updateUserMutation,
+    isPending,
+    isError,
+    error,
+  } = useUpdateUser();
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const updatedUser = {
@@ -35,9 +41,7 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
       totalBalance: totalBalance + Number(formData.totalBalance),
     };
     dispatch(updateUserProfile(updatedUser));
-    if (token) {
-      updateUser(updatedUser, token);
-    }
+    updateUserMutation(updatedUser);
     setIsEditModeOff(true);
   };
   return (
@@ -74,17 +78,22 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
           />
         </FormField>
         <p>{`Current balance is: ${totalBalance} ${currency}`}</p>
-        <ButtonsSection>
-          <Button
-            type="button"
-            onClick={() => setIsEditModeOff(!isEditModeOff)}
-          >
-            Edit
-          </Button>
-          <Button disabled={isEditModeOff} type="submit">
-            Save
-          </Button>
-        </ButtonsSection>
+        {isError && <p>{error.message}</p>}
+        {isPending ? (
+          <Spinner />
+        ) : (
+          <ButtonsSection>
+            <Button
+              type="button"
+              onClick={() => setIsEditModeOff(!isEditModeOff)}
+            >
+              Edit
+            </Button>
+            <Button disabled={isEditModeOff} type="submit">
+              Save
+            </Button>
+          </ButtonsSection>
+        )}
       </StyledForm>
     </ProfleInfoSection>
   );

@@ -12,14 +12,6 @@ export type PieChartReportProps = {
   days: number;
 };
 
-export const PieChartColorS = [
-  "var(--primary-accent)", // Primary accent for a strong visual pop
-  "var(--secondary-accent)", // Secondary accent for a call-to-action feel
-  "#8ab3f8", // Lighter blue for variety
-  "#6f92d3", // Blue shades for balance
-  "#5678b9", // A darker blue for contrast
-];
-
 export type User = {
   id: string;
   name: string;
@@ -41,4 +33,11 @@ export type ProfileInfoTypes = {
   name: string;
   currency: string;
   totalBalance: number;
+};
+export interface AddExpenseFormProps {
+  isModalClosed: () => void; // Function to close the modal
+}
+export type SidebarProps = {
+  isOpen: boolean; // Boolean to control whether the sidebar is open or closed
+  setIsOpen: (isOpen: boolean) => void; // Function to set the sidebar open state
 };

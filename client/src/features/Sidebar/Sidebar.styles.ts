@@ -9,8 +9,8 @@ export const SideBar = styled.nav<SideBarProps>`
   left: 0;
   height: 100vh;
   min-width: 200px; /* Make it collapse */
-  flex-basis: 250px;
   display: flex;
+  flex-basis: 250px;
   flex-direction: column;
   padding: 1em;
   box-sizing: border-box;

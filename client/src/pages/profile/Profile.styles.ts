@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ProfileWrapper = styled.section`
   padding: 1em 2em;
-  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;

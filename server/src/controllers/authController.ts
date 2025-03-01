@@ -63,10 +63,6 @@ export const logout = (
 export const updateUser = async (req: AuthRequest, res) => {
   try {
     const { name, currency, totalBalance } = req.body; // Extract the user data from the request body
-    console.log(name);
-    console.log(currency);
-    console.log(totalBalance);
-    console.log(req.user.id);
 
     // Check if the data is provided
     if (!name && !currency && totalBalance === undefined) {

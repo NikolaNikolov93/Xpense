@@ -17,6 +17,7 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   name,
   totalBalance,
 }) => {
+  const token = localStorage.getItem("token");
   const [isEditModeOff, setIsEditModeOff] = useState(true);
   const dispatch = useDispatch();
   const { formData, handleChange } = useForm({
@@ -34,7 +35,9 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
       totalBalance: totalBalance + Number(formData.totalBalance),
     };
     dispatch(updateUserProfile(updatedUser));
-    updateUser(updatedUser);
+    if (token) {
+      updateUser(updatedUser, token);
+    }
     setIsEditModeOff(true);
   };
   return (

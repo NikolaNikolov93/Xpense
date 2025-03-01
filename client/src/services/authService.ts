@@ -1,5 +1,4 @@
 import { BASE_URL } from "../constants";
-const token = localStorage.getItem("token");
 
 export const login = async (email: string, password: string) => {
   try {
@@ -79,11 +78,14 @@ export const logout = async () => {
   }
 };
 
-export const updateUser = async (userData: {
-  name?: string;
-  currency?: string;
-  totalBalance?: number;
-}): Promise<any> => {
+export const updateUser = async (
+  userData: {
+    name?: string;
+    currency?: string;
+    totalBalance?: number;
+  },
+  token: string
+): Promise<any> => {
   // Ensure the return type is Promise<any>
   try {
     const response = await fetch(`${BASE_URL}/auth/updateUser`, {

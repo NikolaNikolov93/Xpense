@@ -19,6 +19,7 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   totalBalance,
 }) => {
   const [isEditModeOff, setIsEditModeOff] = useState(true);
+  const [message, setMessage] = useState<string | null>(null); // Store the success/error message
   const dispatch = useDispatch();
   const { formData, handleChange } = useForm({
     initialValues: {
@@ -32,6 +33,7 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
     isPending,
     isError,
     error,
+    isSuccess,
   } = useUpdateUser();
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -43,6 +45,9 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
     dispatch(updateUserProfile(updatedUser));
     updateUserMutation(updatedUser);
     setIsEditModeOff(true);
+    if (isSuccess) {
+      setMessage("Update successful!");
+    }
   };
   return (
     <ProfleInfoSection>
@@ -79,6 +84,7 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
         </FormField>
         <p>{`Current balance is: ${totalBalance} ${currency}`}</p>
         {isError && <p>{error.message}</p>}
+        {message && <p>{message}</p>}
         {isPending ? (
           <Spinner />
         ) : (

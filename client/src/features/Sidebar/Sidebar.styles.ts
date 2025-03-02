@@ -23,6 +23,7 @@ export const SideBar = styled.nav<SideBarProps>`
   @media (max-width: 960px) {
     min-width: ${({ $isOpen }) => ($isOpen ? "100%" : "0")};
     display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
+    position: ${({ $isOpen }) => ($isOpen ? "fixed" : "sticky")};
   }
 `;
 export const UserSection = styled.div`

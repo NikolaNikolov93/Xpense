@@ -18,6 +18,7 @@ export const SideBar = styled.nav<SideBarProps>`
   gap: 2em;
   font-size: 1.5em;
   transition: min-width 0.3s, display 0.3s ease-in-out; /* Smooth transition */
+  z-index: 99;
 
   /* For mobile devices, hide the sidebar by default */
   @media (max-width: 960px) {

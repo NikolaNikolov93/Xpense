@@ -46,8 +46,6 @@ The application is deployed and accessible online. No installation is required.
 ![Screenshot of Dashboard](client/src/assets/dashboard-page.png)
 ![Screenshot of Profile](client/src/assets/profile-page.png)
 
-> Screenshots coming soon!
-
 ## 📌 Future Enhancements
 
 - ✅ Update and delete expenses

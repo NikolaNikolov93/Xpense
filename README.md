@@ -7,7 +7,10 @@ Xpense is a full-stack expense tracking application designed to help users manag
 - **User Authentication** (JWT-based login/signup)
 - **Expense Management** (Add, update, delete, and categorize expenses)
 - **Budget Tracking** (Set monthly budgets and monitor spending)
-- **Interactive Charts** 📊 (Visualize expenses with graphs)
+- **Profile Management** (Update user information and upload profile picture)
+- **Balance Management** (Add money to your balance)
+- **Dashboard Overview** (Displays total balance, most recent 5 expenses, and two pie chart reports for the past 7 and 30 days)
+- **Interactive Charts** 📊 (Visualize expenses with pie charts for the past 7 and 30 days)
 - **Dark Mode Support** 🌙
 - **Fully Responsive Design** 📱💻
 
@@ -19,6 +22,10 @@ Xpense is a full-stack expense tracking application designed to help users manag
 - React Query (for efficient data fetching)
 - Styled Components (for modular styling)
 - Framer Motion (for animations)
+- Recharts (for interactive charts)
+- React Router DOM (for routing)
+- Redux Toolkit (for state management)
+- React-Redux (to integrate Redux with React)
 
 ### Backend
 
@@ -35,14 +42,17 @@ The application is deployed and accessible online. No installation is required.
 
 ## 🎨 UI Preview
 
+![Screenshot of HomePage](client/src/assets/home-page.png)
+![Screenshot of Dashboard](client/src/assets/dashboard-page.png)
+![Screenshot of Profile](client/src/assets/profile-page.png)
+
 > Screenshots coming soon!
 
 ## 📌 Future Enhancements
 
-- ✅ Expense Categorization with AI suggestions
-- ✅ Export expenses as CSV/PDF
-- ✅ Recurring Expense Tracking
-- ✅ Multi-Currency Support
+- ✅ Update and delete expenses
+- ✅ Light theme
+- ✅ Generate reports with multiple filter options
 
 ## 📝 License
 

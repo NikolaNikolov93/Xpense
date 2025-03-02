@@ -7,6 +7,8 @@ import {
   FormField,
   ProfleInfoSection,
   StyledForm,
+  StyledProfileInfoErrorMessage,
+  StyledUpProfileInfoSuccessMessage,
 } from "./ProfileInfo.styles";
 import { updateUserProfile } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
@@ -19,7 +21,6 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   totalBalance,
 }) => {
   const [isEditModeOff, setIsEditModeOff] = useState(true);
-  const [message, setMessage] = useState<string | null>(null); // Store the success/error message
   const dispatch = useDispatch();
   const { formData, handleChange } = useForm({
     initialValues: {
@@ -45,9 +46,6 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
     dispatch(updateUserProfile(updatedUser));
     updateUserMutation(updatedUser);
     setIsEditModeOff(true);
-    if (isSuccess) {
-      setMessage("Update successful!");
-    }
   };
   return (
     <ProfleInfoSection>
@@ -83,8 +81,16 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
           />
         </FormField>
         <p>{`Current balance is: ${totalBalance} ${currency}`}</p>
-        {isError && <p>{error.message}</p>}
-        {message && <p>{message}</p>}
+        {isError && (
+          <StyledProfileInfoErrorMessage>
+            {error.message}
+          </StyledProfileInfoErrorMessage>
+        )}
+        {isSuccess && (
+          <StyledUpProfileInfoSuccessMessage>
+            Your data was updated successfully.
+          </StyledUpProfileInfoSuccessMessage>
+        )}
         {isPending ? (
           <Spinner />
         ) : (

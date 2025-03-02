@@ -24,29 +24,27 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
 
   return (
     <SideBar $isOpen={isOpen}>
-      {" "}
-      {/* Sidebar container with conditional styling based on isOpen */}
-      {/* Conditionally render user section if a user is logged in */}
       {user ? (
         <UserSection>
-          <h4>{user.name}</h4> {/* Display user's name */}
-          <StyledImg src={user.profilePicture} alt="User profile" />{" "}
-          {/* Display user's profile picture */}
+          <StyledImg
+            src={
+              user.profilePicture != ""
+                ? user.profilePicture
+                : "profile-default2.png"
+            }
+            alt="User profile"
+          />
         </UserSection>
       ) : (
         // If no user is logged in, display the logo
         <Logo src="logo-new.png" alt="App Logo" />
       )}
-      {/* Sidebar navigation links */}
       <StyledUl>
-        {/* Link to the home page */}
         <li>
           <Link to={"/"} onClick={handleClose}>
             Home
           </Link>
         </li>
-
-        {/* If a user is logged in, show profile, dashboard, and logout options */}
         {user != null ? (
           <>
             <li>
@@ -59,12 +57,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                 Dashboard
               </Link>
             </li>
-
-            {/* Logout button */}
             <li>
               <Link to={"/"} onClick={handleClose}>
-                <span onClick={logout}>Logout</span>{" "}
-                {/* Trigger logout on click */}
+                <span onClick={logout}>Logout</span>
               </Link>
             </li>
           </>

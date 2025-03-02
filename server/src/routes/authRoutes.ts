@@ -4,6 +4,7 @@ import {
   logout,
   register,
   updateUser,
+  updateUserProfilePicture,
 } from "../controllers/authController";
 import { sanitizeInput } from "../middlewares/sanitizeMiddleware";
 import {
@@ -35,6 +36,11 @@ router.put(
   sanitizeInput,
   handleValidationErrors,
   updateUser
+);
+router.put(
+  "/updateUserProfilePicture",
+  authMiddleware, // Add the authMiddleware here to ensure the user is authenticated
+  updateUserProfilePicture
 );
 
 router.post("/logout", logout);

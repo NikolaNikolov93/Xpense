@@ -110,3 +110,31 @@ export const updateUser = async (
     throw new Error(error.message || "Something went wrong. Please try again.");
   }
 };
+
+export const updateUserProfilePic = async (
+  updatedPicture: string,
+  token: string
+): Promise<any> => {
+  try {
+    const response = await fetch(`${BASE_URL}/auth/updateUserProfilePicture`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      credentials: "include",
+      body: JSON.stringify({ updatedPicture: updatedPicture }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || `Update failed: ${response.statusText}`);
+    }
+
+    return data; // Return updated user data from response
+  } catch (error: any) {
+    console.error("Update Error:", error.message);
+    throw new Error(error.message || "Something went wrong. Please try again.");
+  }
+};

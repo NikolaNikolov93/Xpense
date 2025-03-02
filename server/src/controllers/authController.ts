@@ -102,3 +102,65 @@ export const updateUser = async (req: AuthRequest, res) => {
     }
   }
 };
+
+export const updateUserProfilePicture = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const { updatedPicture } = req.body; // New
+
+    if (!updatedPicture) {
+      throw new AppError("No profile picture provided.", 400);
+    }
+
+    // Validate the base64 image format (for example, check if it starts with 'data:image/')
+    if (!updatedPicture.startsWith("data:image/")) {
+      throw new AppError(
+        "Invalid image format. Please upload a valid image.",
+        400
+      );
+    }
+
+    // Optionally, you can limit the image size by validating the Base64 string size
+    if (updatedPicture.length > 5 * 1024 * 1024) {
+      // Limit to 5MB
+      throw new AppError(
+        "Image is too large. Please upload an image smaller than 5MB.",
+        400
+      );
+    }
+
+    // Retrieve the user from the database using the user ID (assuming req.user contains the authenticated user info)
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      throw new AppError("User not found.", 404);
+    }
+
+    // Save the Base64 image to the user's profile (you could store it in a file, cloud storage, etc.)
+    // Here, we're saving the image as a Base64 string in the user's profile
+
+    user.profilePicture = updatedPicture; // Update the user's profile picture field
+
+    // Save the updated user
+    await user.save();
+
+    // Respond with the updated user data, including the new profile picture
+    res.status(200).json({
+      message: "Profile picture updated successfully.",
+      profilePicture: user.profilePicture, // You can return the Base64 or a URL if it's stored somewhere else
+    });
+  } catch (error) {
+    if (error instanceof AppError) {
+      // Handle custom AppError
+      res.status(error.statusCode).json({ message: error.message });
+    } else {
+      // Handle general errors
+      res
+        .status(500)
+        .json({ message: "Server error. Please try again later." });
+    }
+  }
+};

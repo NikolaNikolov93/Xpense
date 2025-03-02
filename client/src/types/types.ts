@@ -41,3 +41,8 @@ export type SidebarProps = {
   isOpen: boolean; // Boolean to control whether the sidebar is open or closed
   setIsOpen: (isOpen: boolean) => void; // Function to set the sidebar open state
 };
+export type ModalProps = {
+  children: React.ReactNode; // Content to be displayed inside the modal
+  isOpen: boolean; // Controls the visibility of the modal
+  onClose: () => void; // Callback function to close the modal
+};

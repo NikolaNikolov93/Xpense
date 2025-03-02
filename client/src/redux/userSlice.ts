@@ -31,6 +31,11 @@ const userSlice = createSlice({
         state.user.totalBalance = action.payload;
       }
     },
+    updateUserProfilePicture: (state, action: PayloadAction<string>) => {
+      if (state.user) {
+        state.user.profilePicture = action.payload; // Update the profile picture with Base64 string
+      }
+    },
     updateUserProfile: (state, action) => {
       if (state.user) {
         state.user.name = action.payload.name;
@@ -42,8 +47,13 @@ const userSlice = createSlice({
 });
 
 // Export actions
-export const { setUser, removeUser, updateUserBalance, updateUserProfile } =
-  userSlice.actions;
+export const {
+  setUser,
+  removeUser,
+  updateUserBalance,
+  updateUserProfile,
+  updateUserProfilePicture,
+} = userSlice.actions;
 
 // Export the reducer
 export default userSlice.reducer;

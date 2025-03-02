@@ -60,13 +60,9 @@ const PieChartReport: React.FC<PieChartReportProps> = ({
 
   return (
     <ChartWrapper>
-      {/* Display the title of the report */}
       <h4>{`Expenses for the past ${days} days`}</h4>
-
-      {/* Responsive container to ensure the chart is responsive */}
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
-          {/* Pie chart component that displays the expenses by category */}
           <Pie
             data={chartData} // Provide the data for the pie chart
             dataKey="total" // The data key for the chart (amount spent)
@@ -78,7 +74,6 @@ const PieChartReport: React.FC<PieChartReportProps> = ({
             label // Show labels on the pie slices
             isAnimationActive={true} // Enable animation
           >
-            {/* Render a cell (pie slice) for each category */}
             {chartData?.map((_, index) => (
               <Cell
                 key={`cell-${index}`} // Unique key for each cell
@@ -90,7 +85,6 @@ const PieChartReport: React.FC<PieChartReportProps> = ({
               />
             ))}
           </Pie>
-          {/* Tooltip for showing additional information when hovering over a slice */}
           <Tooltip
             contentStyle={{
               backgroundColor: "#2b2b2b", // Dark background for the tooltip
@@ -103,8 +97,6 @@ const PieChartReport: React.FC<PieChartReportProps> = ({
           />
         </PieChart>
       </ResponsiveContainer>
-
-      {/* Display the total amount spent, if available */}
       {totalAmountSpent !== undefined && (
         <div>
           <strong>{`Total: ${totalAmountSpent.toFixed(2)} ${

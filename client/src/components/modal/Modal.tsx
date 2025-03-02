@@ -1,23 +1,15 @@
 import React from "react";
 import { ModalWrapper, ModalContent, CloseButton } from "./Modal.styles";
+import { ModalProps } from "../../types/types";
 
-// Define the props for the Modal component
-interface ModalProps {
-  children: React.ReactNode; // Children that will be rendered inside the modal
-  isOpen: boolean; // Whether the modal is open or closed
-  onClose: () => void; // Function to close the modal
-}
-
-// Modal component - A reusable modal that displays content when isOpen is true
+// Reusable Modal component that conditionally renders based on isOpen
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  if (!isOpen) return null; // Return null to prevent rendering if the modal is not open
+  if (!isOpen) return null; // Prevent rendering if the modal is closed
 
   return (
     <ModalWrapper>
       <ModalContent>
-        {/* Close button to trigger modal close */}
-        <CloseButton onClick={onClose}>X</CloseButton>
-        {children} {/* Render the modal content passed as children */}
+        <CloseButton onClick={onClose}>X</CloseButton> {children}
       </ModalContent>
     </ModalWrapper>
   );

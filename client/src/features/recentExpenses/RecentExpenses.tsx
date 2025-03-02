@@ -31,31 +31,25 @@ const RecentExpenses: React.FC = () => {
 
   return (
     <RecentExpensesWrapper>
-      <h3>Recent Expenses</h3> {/* Title of the section */}
+      <h3>Recent Expenses</h3>
       <TableWrapper>
-        {/* Check if there are any expenses to display */}
         {expenses && expenses.length > 0 ? (
           <table>
             <thead>
               <tr>
-                <th>Title</th> {/* Column for expense title */}
-                <th>Category</th> {/* Column for expense category */}
-                <th>Amount</th> {/* Column for expense amount */}
-                <th>Date</th> {/* Column for expense date */}
+                <th>Title</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
-              {/* Iterate over expenses and display each expense in a row */}
               {expenses.map((expense) => (
                 <tr key={expense._id}>
-                  {" "}
-                  {/* Unique key for each row */}
-                  <td>{expense.title}</td> {/* Expense title */}
-                  <td>{expense.category}</td> {/* Expense category */}
-                  <td>{`${expense.amount.toFixed(2)} ${user?.currency}`}</td>{" "}
-                  {/* Display amount with currency */}
+                  <td>{expense.title}</td>
+                  <td>{expense.category}</td>
+                  <td>{`${expense.amount.toFixed(2)} ${user?.currency}`}</td>
                   <td>
-                    {/* Format the date to display in a readable format */}
                     {new Intl.DateTimeFormat("en-GB", {
                       day: "2-digit",
                       month: "2-digit",

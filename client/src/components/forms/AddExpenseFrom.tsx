@@ -51,8 +51,7 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
     <FormWrapper onSubmit={handleSubmit}>
       <h2>Add Expense</h2>
 
-      {/* Input for the title of the expense */}
-      <Input
+      <Input //Input for the title of the expense
         type="text"
         value={formData.title}
         name="title"
@@ -61,8 +60,7 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
         required // Make the title input field required
       />
 
-      {/* Input for the amount of the expense */}
-      <Input
+      <Input //Input for the amount of the expense
         type="number"
         id="amount"
         name="amount"
@@ -74,8 +72,7 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
         step="0.01" // Allows for decimal values
       />
 
-      {/* Dropdown for selecting the category of the expense */}
-      <Select
+      <Select //Dropdown for selecting the category of the expense
         name="category"
         value={formData.category}
         onChange={handleChange}
@@ -89,10 +86,7 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
         ))}
       </Select>
 
-      {/* Show a spinner when the expense is being added */}
       {isPending ? <Spinner /> : <Button type="submit">Add Expense</Button>}
-
-      {/* Display an error message if there's an error while adding the expense */}
       {isError && <p>{error.message}</p>}
     </FormWrapper>
   );

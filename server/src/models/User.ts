@@ -9,8 +9,7 @@ const UserSchema = new mongoose.Schema(
     totalBalance: { type: Number, default: 0 },
     profilePicture: {
       type: String,
-      default:
-        "https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg",
+      default: "",
     },
   },
   { timestamps: true }

@@ -21,18 +21,12 @@ const QuickAccess: React.FC = () => {
 
   return (
     <QuickAccessWrapper>
-      <h3>Quick Access</h3>{" "}
-      {/* Display a heading for the Quick Access section */}
+      <h3>Quick Access</h3>
       <ActionsWrapper>
-        {/* Button to open the modal for adding an expense */}
         <Button onClick={openModal}>Add expense</Button>
-
-        {/* Button for generating a report, without an onClick handler for now */}
         <Button>Generate report</Button>
       </ActionsWrapper>
-      {/* Modal for adding an expense */}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {/* AddExpenseForm component inside the modal. It will be passed a callback to close the modal when the form is submitted */}
         <AddExpenseForm isModalClosed={() => setIsModalOpen(false)} />
       </Modal>
     </QuickAccessWrapper>

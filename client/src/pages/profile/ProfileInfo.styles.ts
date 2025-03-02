@@ -32,3 +32,9 @@ export const ButtonsSection = styled.div`
     width: 100px;
   }
 `;
+export const StyledUpProfileInfoSuccessMessage = styled.h5`
+  color: var(--success-message-color);
+`;
+export const StyledProfileInfoErrorMessage = styled.h5`
+  color: var(--error-message-color);
+`;

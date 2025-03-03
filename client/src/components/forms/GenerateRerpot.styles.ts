@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalContent = styled.div`
-  padding: 1.5rem;
+  padding: 1em;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -14,6 +14,12 @@ export const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8em;
+  input,
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
   input,
   select:active {
     box-shadow: var(--box-shadow-glow);

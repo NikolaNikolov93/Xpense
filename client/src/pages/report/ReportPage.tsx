@@ -12,7 +12,6 @@ const ReportPage: React.FC = () => {
     sortOrder: queryParams.get("sortOrder"),
     category: queryParams.get("category"),
   };
-  console.log(queryParams.get("category"));
 
   // Fetch the report data using the custom hook
   const { data, isLoading, isError, error } = useGenerateReport(query);

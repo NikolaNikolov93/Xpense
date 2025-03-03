@@ -99,7 +99,6 @@ export const getCustomReport = async (req: AuthRequest, res) => {
   try {
     const userId = req.user.id; // Get logged-in user's ID
     const { fromDate, toDate, category, sortOrder } = req.query;
-    console.log(req.query);
 
     // Build query filters
     let filters: any = { userId: userId }; // Correcting 'user' to 'userId'
@@ -118,7 +117,6 @@ export const getCustomReport = async (req: AuthRequest, res) => {
 
     // Fetch expenses based on filters
     const expenses = await Expense.find(filters).sort(sortOptions);
-    console.log(expenses);
 
     res.status(200).json(expenses);
   } catch (error) {

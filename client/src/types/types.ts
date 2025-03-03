@@ -35,7 +35,7 @@ export type ProfileInfoTypes = {
   totalBalance: number;
 };
 export interface AddExpenseFormProps {
-  isModalClosed: () => void; // Function to close the modal
+  closeModal: () => void; // Function to close the modal
 }
 export type SidebarProps = {
   isOpen: boolean; // Boolean to control whether the sidebar is open or closed

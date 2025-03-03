@@ -10,7 +10,7 @@ import { CATEGORIES } from "../../constants";
 import { AddExpenseFormProps } from "../../types/types";
 
 // AddExpenseForm Component - Allows the user to add an expense.
-const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
+const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ closeModal }) => {
   // Dispatch action to update user balance in Redux store
   const dispatch = useDispatch();
 
@@ -37,8 +37,10 @@ const AddExpenseForm: React.FC<AddExpenseFormProps> = ({ isModalClosed }) => {
     // Mutate the form data and handle success
     mutate(formData, {
       onSuccess: () => {
+        console.log("uscess");
+
         resetForm(); // Reset form after successful submission
-        isModalClosed(); // Close the modal
+        closeModal(); // Close the modal
         if (user) {
           const newBalance = user.totalBalance - expenseAmount; // Calculate new balance
           dispatch(updateUserBalance(newBalance)); // Update balance in Redux store

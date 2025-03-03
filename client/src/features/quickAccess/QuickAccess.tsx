@@ -3,31 +3,41 @@ import { ActionsWrapper, QuickAccessWrapper } from "./QuickAccess.styles"; // Im
 import Modal from "../../components/modal/Modal"; // Import Modal component
 import { useState } from "react"; // Import useState hook from React
 import AddExpenseForm from "../../components/forms/AddExpenseFrom"; // Import AddExpenseForm component
+import GenerateReport from "../../components/forms/GenerateReport";
 
 // QuickAccess component - Provides quick actions such as adding an expense or generating a report
 const QuickAccess: React.FC = () => {
   // State to manage the visibility of the modal
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  // Function to open the modal when the user clicks the "Add expense" button
-  const openModal = () => {
-    setIsModalOpen(true); // Set the modal to be open
-  };
-
-  // Function to close the modal when the user clicks the close button or completes the form
-  const closeModal = () => {
-    setIsModalOpen(false); // Set the modal to be closed
-  };
+  const [isAddExpenseModalOpen, setIsAddExpenseModalOpen] =
+    useState<boolean>(false);
+  const [isGenerateReportModalOpen, setIsGenerateReportModalOpen] =
+    useState<boolean>(false);
 
   return (
     <QuickAccessWrapper>
       <h3>Quick Access</h3>
       <ActionsWrapper>
-        <Button onClick={openModal}>Add expense</Button>
-        <Button>Generate report</Button>
+        <Button onClick={() => setIsAddExpenseModalOpen(true)}>
+          Add expense
+        </Button>
+        <Button onClick={() => setIsGenerateReportModalOpen(true)}>
+          Generate report
+        </Button>
       </ActionsWrapper>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <AddExpenseForm isModalClosed={() => setIsModalOpen(false)} />
+
+      <Modal
+        isOpen={isAddExpenseModalOpen}
+        onClose={() => setIsAddExpenseModalOpen(false)}
+      >
+        <AddExpenseForm closeModal={() => setIsAddExpenseModalOpen(false)} />
+      </Modal>
+      <Modal
+        isOpen={isGenerateReportModalOpen}
+        onClose={() => setIsGenerateReportModalOpen(false)}
+      >
+        <GenerateReport
+          closeModal={() => setIsGenerateReportModalOpen(false)}
+        />
       </Modal>
     </QuickAccessWrapper>
   );

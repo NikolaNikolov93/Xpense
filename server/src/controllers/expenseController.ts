@@ -94,3 +94,35 @@ export const getExpensesForLastNDays = async (req: AuthRequest, res) => {
     );
   }
 };
+// Controller to fetch filtered expenses
+export const getCustomReport = async (req: AuthRequest, res) => {
+  try {
+    const userId = req.user.id; // Get logged-in user's ID
+    const { fromDate, toDate, category, sortOrder } = req.query;
+    console.log(req.query);
+
+    // Build query filters
+    let filters: any = { userId: userId }; // Correcting 'user' to 'userId'
+    if (fromDate) filters.date = { $gte: new Date(fromDate as string) };
+    if (toDate)
+      filters.date = { ...filters.date, $lte: new Date(toDate as string) };
+    if (category) filters.category = category;
+
+    // Default sorting order: Newest to Oldest
+    let sortOptions: any = { date: -1 };
+
+    // Adjust sorting based on the `sortOrder` parameter
+    if (sortOrder === "oldest") sortOptions = { date: 1 };
+    if (sortOrder === "highAmount") sortOptions = { amount: -1 };
+    if (sortOrder === "lowAmount") sortOptions = { amount: 1 };
+
+    // Fetch expenses based on filters
+    const expenses = await Expense.find(filters).sort(sortOptions);
+    console.log(expenses);
+
+    res.status(200).json(expenses);
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ message: "Server error, please try again" });
+  }
+};

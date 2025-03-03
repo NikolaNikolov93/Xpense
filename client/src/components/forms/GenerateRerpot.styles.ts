@@ -8,7 +8,11 @@ export const ModalContent = styled.div`
   max-width: 400px;
 `;
 
-export const ModalHeader = styled.div``;
+export const ModalHeader = styled.div`
+  h2 {
+    text-shadow: var(--box-shadow);
+  }
+`;
 
 export const ModalBody = styled.div`
   display: flex;
@@ -19,6 +23,8 @@ export const ModalBody = styled.div`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    padding: 0.6em;
+    color: black;
   }
   input,
   select:active {
@@ -34,11 +40,6 @@ export const ModalFooter = styled.div`
   justify-content: space-between;
 `;
 
-export const Select = styled.select`
-  padding: 0.6em;
-  border: 1px solid #ccc;
-`;
+export const Select = styled.select``;
 
-export const Input = styled.input`
-  padding: 0.6em;
-`;
+export const Input = styled.input``;

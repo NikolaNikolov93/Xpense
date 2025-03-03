@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const ReportContainer = styled.div`
-  padding: 1em;
+  padding: 1em 0em;
   color: var(--primary-text-color);
+  h1 {
+  }
 `;
 
 export const FiltersWrapper = styled.div`

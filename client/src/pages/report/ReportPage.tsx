@@ -1,5 +1,16 @@
 import { useLocation } from "react-router-dom";
 import useGenerateReport from "../../hooks/useGenerateCustomReport";
+import Spinner from "../../components/spinner/Spinner";
+import {
+  ReportContainer,
+  FiltersWrapper,
+  Table,
+  TableHeader,
+  TableRow,
+  TableCell,
+  TableHeaderCell,
+  NoDataMessage,
+} from "./ReportPage.styles"; // Import styled components
 
 const ReportPage: React.FC = () => {
   const location = useLocation();
@@ -16,49 +27,53 @@ const ReportPage: React.FC = () => {
   // Fetch the report data using the custom hook
   const { data, isLoading, isError, error } = useGenerateReport(query);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Spinner />;
   if (isError) return <div>Error: {error?.message}</div>;
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Generated Report</h2>
+    <ReportContainer>
+      <h1>Generated Report</h1>
 
       {/* Display filters used in the report */}
-      <div style={{ marginBottom: "20px" }}>
-        <strong>Filters:</strong>
-        <p>From: {query.fromDate}</p>
-        <p>To: {query.toDate}</p>
-        <p>Sort By: {query.sortOrder}</p>
-        <p>Category: {query.category || "All Categories"}</p>
-      </div>
+      <FiltersWrapper>
+        <h4>Filters:</h4>
+        {query.fromDate != "" ? <p>From: {query.fromDate}</p> : <></>}
+        {query.toDate != "" ? <p>To: {query.toDate}</p> : <></>}
+
+        {query.sortOrder != "" ? <p>Sort by: {query.sortOrder}</p> : <></>}
+
+        {query.category != "" ? <p>Category: {query.category}</p> : <></>}
+      </FiltersWrapper>
 
       {/* Report Table */}
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr style={{ borderBottom: "2px solid #ccc" }}>
-            <th style={{ padding: "8px", textAlign: "left" }}>ID</th>
-            <th style={{ padding: "8px", textAlign: "left" }}>Amount</th>
-            <th style={{ padding: "8px", textAlign: "left" }}>Date</th>
-            <th style={{ padding: "8px", textAlign: "left" }}>Category</th>
-          </tr>
-        </thead>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderCell>ID</TableHeaderCell>
+            <TableHeaderCell>Amount</TableHeaderCell>
+            <TableHeaderCell>Date</TableHeaderCell>
+            <TableHeaderCell>Category</TableHeaderCell>
+          </TableRow>
+        </TableHeader>
         <tbody>
           {data?.map((expense: any) => (
-            <tr key={expense._id} style={{ borderBottom: "1px solid #ccc" }}>
-              <td style={{ padding: "8px" }}>{expense._id}</td>
-              <td style={{ padding: "8px" }}>${expense.amount.toFixed(2)}</td>
-              <td style={{ padding: "8px" }}>
+            <TableRow key={expense._id}>
+              <TableCell>{expense.title}</TableCell>
+              <TableCell>${expense.amount.toFixed(2)}</TableCell>
+              <TableCell>
                 {new Date(expense.date).toLocaleDateString()}
-              </td>
-              <td style={{ padding: "8px" }}>{expense.category}</td>
-            </tr>
+              </TableCell>
+              <TableCell>{expense.category}</TableCell>
+            </TableRow>
           ))}
         </tbody>
-      </table>
+      </Table>
 
       {/* If no data */}
-      {data?.length === 0 && <p>No expenses match the filter criteria.</p>}
-    </div>
+      {data?.length === 0 && (
+        <NoDataMessage>No expenses match the filter criteria.</NoDataMessage>
+      )}
+    </ReportContainer>
   );
 };
 

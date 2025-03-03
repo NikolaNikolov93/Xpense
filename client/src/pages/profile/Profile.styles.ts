@@ -8,4 +8,5 @@ export const ProfileWrapper = styled.section`
   justify-content: center;
   gap: 3em;
   box-shadow: var(--box-shadow);
+  background-color: var(--card-background-color);
 `;

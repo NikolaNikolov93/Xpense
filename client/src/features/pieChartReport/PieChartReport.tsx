@@ -43,9 +43,14 @@ const PieChartReport: React.FC<PieChartReportProps> = ({
     (acc, expense) => {
       const existing = acc.find((item) => item.category === expense.category); // Check if category already exists in the accumulator
       if (existing) {
-        existing.total += expense.amount; // Add amount to existing category
+        existing.total = parseFloat(
+          (existing.total + expense.amount).toFixed(2)
+        ); // Round to 2 decimal places
       } else {
-        acc.push({ category: expense.category, total: expense.amount }); // Add new category with the amount
+        acc.push({
+          category: expense.category,
+          total: parseFloat(expense.amount.toFixed(2)),
+        });
       }
       return acc; // Return the updated accumulator
     },

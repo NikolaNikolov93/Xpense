@@ -42,7 +42,7 @@ export const TableRow = styled.tr`
 `;
 
 export const TableCell = styled.td`
-  padding: 0.7em;
+  padding: 0.7em 0.3em;
   text-align: left;
 `;
 

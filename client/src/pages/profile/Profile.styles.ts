@@ -9,4 +9,5 @@ export const ProfileWrapper = styled.section`
   gap: 3em;
   box-shadow: var(--box-shadow);
   background-color: var(--card-background-color);
+  border-radius: 8px;
 `;

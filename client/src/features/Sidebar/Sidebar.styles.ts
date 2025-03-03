@@ -34,7 +34,7 @@ export const UserSection = styled.div`
   align-items: center;
 `;
 export const StyledImg = styled.img`
-  width: 80px;
+  width: 100px;
   border-radius: 50%;
 `;
 

@@ -8,7 +8,10 @@ export const ImageSection = styled.div`
   gap: 0.5em;
 `;
 export const StyledImage = styled.img`
-  width: 100%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
   border-radius: 50%;
 `;
 export const StyledEditImageButton = styled.div`
@@ -19,7 +22,6 @@ export const StyledEditImageButton = styled.div`
   overflow: hidden;
   background-color: var(--secondary-accent);
   border-radius: 50%;
-
   padding: 0.2em;
   cursor: pointer;
   font-size: 1.5em;

@@ -2,10 +2,15 @@ import styled from "styled-components";
 
 export const ReportContainer = styled.div`
   padding: 1em 0em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: var(--primary-text-color);
 `;
 
 export const FiltersWrapper = styled.div`
+  min-width: 200px;
   margin-bottom: 1em;
   background: var(--card-background-color);
   padding: 1em 0em;

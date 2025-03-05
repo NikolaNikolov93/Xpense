@@ -6,9 +6,9 @@ export const useUpdateUser = () => {
 
   return useMutation({
     mutationFn: (updatedUser: {
-      name: string;
-      currency: string;
-      totalBalance: number;
+      name?: string;
+      currency?: string;
+      totalBalance?: number;
     }) => {
       if (!token) throw new Error("No authentication token found");
       return updateUser(updatedUser, token);

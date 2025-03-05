@@ -26,7 +26,7 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
     initialValues: {
       currency: currency,
       name: name,
-      totalBalance: 0,
+      sumToAdd: "",
     },
   });
   const {
@@ -41,7 +41,7 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
     const updatedUser = {
       name: formData.name,
       currency: formData.currency,
-      totalBalance: totalBalance + Number(formData.totalBalance),
+      totalBalance: totalBalance + Number(formData.sumToAdd),
     };
     dispatch(updateUserProfile(updatedUser));
     updateUserMutation(updatedUser);
@@ -75,8 +75,8 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
           <input
             disabled={isEditModeOff}
             type="number"
-            name="totalBalance"
-            value={formData.totalBalance}
+            name="sumToAdd"
+            value={formData.sumToAdd}
             onChange={handleChange}
           />
         </FormField>

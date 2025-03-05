@@ -4,7 +4,7 @@ import { useUpdateUser } from "../../hooks/useUpdateUser";
 import Button from "../button/Button";
 import { AddToBalanceWrapper, StyledForm } from "./AddToBalance.styles";
 import { useDispatch } from "react-redux";
-import { updateUserProfile } from "../../redux/userSlice";
+import { updateUserBalance } from "../../redux/userSlice";
 import Spinner from "../spinner/Spinner";
 
 type AddToBalanceProps = {
@@ -30,7 +30,7 @@ const AddToBalance: React.FC<AddToBalanceProps> = ({ totalBalance }) => {
     const updatedUser = {
       totalBalance: totalBalance + Number(formData.sumToAdd),
     };
-    dispatch(updateUserProfile(updatedUser));
+    dispatch(updateUserBalance(updatedUser.totalBalance));
     updateUserMutation(updatedUser);
     resetForm();
   };

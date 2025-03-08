@@ -1,8 +1,22 @@
 {
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/react"
+    }
+  ],
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "https://xpense-gqrg.onrender.com/:path*"
+      "source": "/auth/(.*)",
+      "destination": "/auth/$1"
+    },
+    {
+      "source": "/expenses/(.*)",
+      "destination": "/expenses/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }

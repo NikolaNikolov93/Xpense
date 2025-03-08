@@ -11,6 +11,7 @@ import {
   TableHeaderCell,
   NoDataMessage,
 } from "./ReportPage.styles"; // Import styled components
+import { formatDate } from "../../utils/formatDate";
 
 const ReportPage: React.FC = () => {
   const location = useLocation();
@@ -37,8 +38,12 @@ const ReportPage: React.FC = () => {
       {/* Display filters used in the report */}
       <FiltersWrapper>
         <h4>Filters:</h4>
-        {query.fromDate != "" ? <p>From: {query.fromDate}</p> : <></>}
-        {query.toDate != "" ? <p>To: {query.toDate}</p> : <></>}
+        {query.fromDate != "" ? (
+          <p>From: {formatDate(query.fromDate)}</p>
+        ) : (
+          <></>
+        )}
+        {query.toDate != "" ? <p>To: {formatDate(query.toDate)}</p> : <></>}
 
         {query.sortOrder != "" ? <p>Sort by: {query.sortOrder}</p> : <></>}
 

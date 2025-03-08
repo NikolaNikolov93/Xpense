@@ -8,7 +8,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "https://xpense-gqrg.onrender.com/$1"
+      "destination": "https://xpense-gqrg.onrender.com"
     },
     {
       "source": "/(.*)",

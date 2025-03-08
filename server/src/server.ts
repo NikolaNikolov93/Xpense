@@ -9,6 +9,7 @@ import connectDB from "./config/db";
 import authRoutes from "./routes/authRoutes";
 import expenseRoutes from "./routes/expenseRoutes";
 import errorHandler from "./middlewares/errorHandler";
+import path from "path";
 
 dotenv.config();
 const app = express();
@@ -35,6 +36,15 @@ app.use(compression());
 app.use("/auth", authRoutes);
 app.use("/expenses", expenseRoutes); // Register expense routes
 app.use(errorHandler);
+if (process.env.NODE_ENV === "production") {
+  // Set static folder to the React build folder
+  app.use(express.static(path.join(__dirname, "client", "build")));
+
+  // Serve the React app for any route not handled by the API
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 connectDB();
 

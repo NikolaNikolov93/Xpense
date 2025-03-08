@@ -1,8 +1,18 @@
 {
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/react"
+    }
+  ],
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "https://xpense-gqrg.onrender.com/:path*"
+      "source": "/(.*)",
+      "destination": "https://xpense-gqrg.onrender.com/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }

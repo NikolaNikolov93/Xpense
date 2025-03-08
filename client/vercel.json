@@ -8,11 +8,11 @@
   "rewrites": [
     {
       "source": "/auth/(.*)",
-      "destination": "/auth/$1"
+      "destination": "https://xpense-gqrg.onrender.com/auth/$1"
     },
     {
       "source": "/expenses/(.*)",
-      "destination": "/expenses/$1"
+      "destination": "https://xpense-gqrg.onrender.com/expenses/$1"
     },
     {
       "source": "/(.*)",

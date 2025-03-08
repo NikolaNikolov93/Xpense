@@ -1,6 +1,8 @@
 // redux/userSlice.ts
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User, UserState } from "../types/types";
+import { refreshUserData } from "../services/authService";
+import { BASE_URL } from "../constants";
 
 // Define the type for user state
 
@@ -9,6 +11,20 @@ const initialState: UserState = {
   user: null,
   isAuthenticated: false,
 };
+export const fetchFreshUserData = createAsyncThunk(
+  `${BASE_URL}auth/fetchFreshUserData`,
+  async (token: string, { rejectWithValue }) => {
+    try {
+      const response = await refreshUserData(token);
+      if (!response) {
+        return rejectWithValue("Failed to refresh user data...");
+      }
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.message || "The token expired");
+    }
+  }
+);
 
 // Create the user slice
 const userSlice = createSlice({
@@ -43,6 +59,17 @@ const userSlice = createSlice({
         state.user.totalBalance = action.payload.totalBalance;
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchFreshUserData.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isAuthenticated = true;
+      })
+      .addCase(fetchFreshUserData.rejected, (state) => {
+        state.user = null;
+        state.isAuthenticated = false;
+      });
   },
 });
 

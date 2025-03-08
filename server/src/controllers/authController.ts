@@ -164,3 +164,21 @@ export const updateUserProfilePicture = async (
     }
   }
 };
+
+export const refreshUserData = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const user = await User.findById(req.user.id).select("-password"); // Exclude password
+
+    if (!user) {
+      throw new AppError("User not found.", 404);
+    }
+
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+};

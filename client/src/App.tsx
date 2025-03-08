@@ -5,21 +5,36 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/auth/login/Login";
 import Register from "./pages/auth/register/Register";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, ToggleButton } from "./App.styles";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import NotFound from "./pages/notFound/NotFound";
 import Profile from "./pages/profile/Profile";
 import ReportPage from "./pages/report/ReportPage";
+import { useDispatch } from "react-redux";
+import { RootState } from "./redux/store";
+import { fetchFreshUserData } from "./redux/userSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const queryClinet = new QueryClient();
 
 function App() {
   const [isOpen, setIsOpen] = useState(false); // Control sidebar visibility
 
+  const dispatch = useDispatch<ThunkDispatch<RootState, unknown, any>>();
+  const token = localStorage.getItem("token");
+
   const handleToggle = () => {
     setIsOpen((prevState) => !prevState); // Toggle sidebar
   };
+  /**
+   * Refresh thse user data if VALID! token is available
+   */
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchFreshUserData(token));
+    }
+  }, [token, dispatch]); // Depend on token and dispatch
   return (
     <>
       <QueryClientProvider client={queryClinet}>

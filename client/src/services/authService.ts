@@ -138,3 +138,22 @@ export const updateUserProfilePic = async (
     throw new Error(error.message || "Something went wrong. Please try again.");
   }
 };
+
+export const refreshUserData = async (token: string): Promise<any> => {
+  const response = await fetch(`${BASE_URL}/auth/refreshUserData`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    credentials: "include",
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Failed to refresh user data");
+  }
+
+  return data; // Return updated user data
+};

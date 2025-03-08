@@ -2,6 +2,7 @@ import express from "express";
 import {
   login,
   logout,
+  refreshUserData,
   register,
   updateUser,
   updateUserProfilePicture,
@@ -44,5 +45,7 @@ router.put(
 );
 
 router.post("/logout", logout);
+
+router.get("/refreshUserData", authMiddleware, refreshUserData);
 
 export default router;

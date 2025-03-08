@@ -101,10 +101,19 @@ export const getCustomReport = async (req: AuthRequest, res) => {
     const { fromDate, toDate, category, sortOrder } = req.query;
 
     // Build query filters
-    let filters: any = { userId: userId }; // Correcting 'user' to 'userId'
-    if (fromDate) filters.date = { $gte: new Date(fromDate as string) };
-    if (toDate)
-      filters.date = { ...filters.date, $lte: new Date(toDate as string) };
+    let filters: any = { userId: userId };
+    if (fromDate) {
+      const from = new Date(fromDate as string);
+      from.setHours(0, 0, 0, 0); // Set the time to the start of the day
+      filters.date = { $gte: from };
+    }
+
+    // Process 'toDate' - set to the end of the day (23:59:59.999)
+    if (toDate) {
+      const to = new Date(toDate as string);
+      to.setHours(23, 59, 59, 999); // Set the time to the end of the day
+      filters.date = { ...filters.date, $lte: to };
+    }
     if (category) filters.category = category;
 
     // Default sorting order: Newest to Oldest

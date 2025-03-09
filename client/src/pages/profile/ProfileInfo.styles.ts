@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ProfleInfoSection = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 0.5em;
 `;
 export const StyledForm = styled.form`
   display: flex;

@@ -11,18 +11,24 @@ import {
   StyledUpProfileInfoSuccessMessage,
 } from "./ProfileInfo.styles";
 import { updateUserProfile } from "../../redux/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useUpdateUser } from "../../hooks/useUpdateUser";
 import Spinner from "../../components/spinner/Spinner";
 import { toggleTheme } from "../../redux/themeSlice";
+import { ThemeSwticher } from "../dashboard/Dashboard.styles";
+import { RootState } from "../../redux/store";
 
 const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   currency,
   name,
   totalBalance,
 }) => {
-  const [isEditModeOff, setIsEditModeOff] = useState(true);
   const dispatch = useDispatch();
+
+  //Edit mode state handler
+  const [isEditModeOff, setIsEditModeOff] = useState(true);
+
+  //Custom from hanlding hook
   const { formData, handleChange } = useForm({
     initialValues: {
       currency: currency,
@@ -30,6 +36,8 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
       sumToAdd: "",
     },
   });
+
+  //Custom hook for updateing user
   const {
     mutate: updateUserMutation,
     isPending,
@@ -37,6 +45,8 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
     error,
     isSuccess,
   } = useUpdateUser();
+
+  //Handle data submiting and updates the Redux state
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const updatedUser = {
@@ -48,14 +58,18 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
     updateUserMutation(updatedUser);
     setIsEditModeOff(true);
   };
-  const themeDistpatch = useDispatch();
+
+  //Import theme switching handlers
+  const theme = useSelector((state: RootState) => state.theme.theme);
 
   const handleThemeToggle = () => {
-    themeDistpatch(toggleTheme());
+    dispatch(toggleTheme());
   };
+
   return (
     <ProfleInfoSection>
-      <Button onClick={() => handleThemeToggle()}>Theme</Button>
+      <p>Swtich to {theme === "light" ? "dark theme" : "light theme"}</p>
+      <ThemeSwticher onClick={() => handleThemeToggle()}></ThemeSwticher>
       <StyledForm onSubmit={handleSubmit}>
         <FormField>
           <label>Username:</label>

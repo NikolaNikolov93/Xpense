@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const Site = styled.section`
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.sidebarBackgroundColor};
 `;
 export const SiteWrapper = styled.section`
   max-width: 1440px;

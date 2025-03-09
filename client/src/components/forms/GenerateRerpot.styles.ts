@@ -26,10 +26,7 @@ export const ModalBody = styled.div`
     padding: 0.6em;
     color: black;
   }
-  input,
-  select:active {
-    box-shadow: ${(props) => props.theme.boxShadowGlow};
-  }
+
   label {
     font-weight: bold;
   }

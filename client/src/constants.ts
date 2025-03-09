@@ -21,10 +21,17 @@ export const CATEGORIES = [
   "Other",
 ];
 
-export const PieChartColorS = [
-  "var(--primary-accent)", // Primary accent for a strong visual pop
-  "var(--secondary-accent)", // Secondary accent for a call-to-action feel
-  "#8ab3f8", // Lighter blue for variety
-  "#6f92d3", // Blue shades for balance
-  "#5678b9", // A darker blue for contrast
+export const LightThemePieChartColors = [
+  "#1d72b8",
+  "#f39c12",
+  "#8ab3f8",
+  "#6f92d3",
+  "#5678b9",
+];
+export const DarkThemePieChartColors = [
+  "#4a90e2",
+  "#ffcc00",
+  "#ff6b6b",
+  "#66cdaa",
+  "#d77cf8",
 ];

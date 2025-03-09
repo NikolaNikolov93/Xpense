@@ -3,7 +3,10 @@ import Spinner from "../../components/spinner/Spinner"; // Import the Spinner co
 import EmptyData from "../../components/emptyData/EmptyData"; // Import the EmptyData component
 import { ChartWrapper, LoadingWrapper } from "./PieChartReport.styles"; // Import styled components for layout
 import { PieChartReportProps } from "../../types/types"; // Import component props
-import { PieChartColorS } from "../../constants"; // Import chart colors
+import {
+  DarkThemePieChartColors,
+  LightThemePieChartColors,
+} from "../../constants"; // Import chart colors
 import { useSelector } from "react-redux"; // Import Redux hooks
 import { RootState } from "../../redux/store"; // Import RootState type for accessing the Redux store
 
@@ -16,6 +19,11 @@ const PieChartReport: React.FC<PieChartReportProps> = ({
 }) => {
   // Access the user data from the Redux store
   const user = useSelector((state: RootState) => state.user.user);
+
+  //Access the theme data from the Redux store and set the Piechart colors based on the theme
+  const theme = useSelector((state: RootState) => state.theme.theme);
+  const chartColors =
+    theme === "light" ? LightThemePieChartColors : DarkThemePieChartColors;
 
   // Show a spinner if the data is still loading
   if (isLoading)
@@ -82,7 +90,7 @@ const PieChartReport: React.FC<PieChartReportProps> = ({
             {chartData?.map((_, index) => (
               <Cell
                 key={`cell-${index}`} // Unique key for each cell
-                fill={PieChartColorS[index % PieChartColorS.length]} // Assign a color from the PieChartColorS array
+                fill={chartColors[index % chartColors.length]} // Assign a color from the PieChartColorS array
                 style={{
                   cursor: "pointer", // Change cursor to pointer for interactivity
                   transition: "transform 0.3s ease-in-out", // Smooth transition for hover effects

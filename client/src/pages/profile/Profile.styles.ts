@@ -7,7 +7,7 @@ export const ProfileWrapper = styled.section`
   align-items: center;
   justify-content: center;
   gap: 3em;
-  box-shadow: var(--box-shadow);
-  background-color: var(--card-background-color);
+  box-shadow: ${(props) => props.theme.boxShadow};
+  background-color: ${(props) => props.theme.cardBackgroundColor};
   border-radius: 30px;
 `;

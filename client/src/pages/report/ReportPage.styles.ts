@@ -6,30 +6,30 @@ export const ReportContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--primary-text-color);
+  color: ${(props) => props.theme.textColor};
 `;
 
 export const FiltersWrapper = styled.div`
   min-width: 200px;
   margin-bottom: 1em;
-  background: var(--card-background-color);
+  background: ${(props) => props.theme.cardBackgroundColor};
   padding: 1em 0em;
   border-radius: 8px;
-  box-shadow: var(--box-shadow);
+  box-shadow: ${(props) => props.theme.boxShadow};
 `;
 
 export const Table = styled.table`
   width: 100%;
 
   border-collapse: collapse;
-  background: var(--card-background-color);
-  box-shadow: var(--box-shadow);
+  background: ${(props) => props.theme.cardBackgroundColor};
+  box-shadow: ${(props) => props.theme.boxShadow};
   border-radius: 8px;
   overflow: hidden;
 `;
 
 export const TableHeader = styled.thead`
-  background: var(--primary-accent);
+  background: ${(props) => props.theme.accentColor};
   color: white;
 `;
 
@@ -54,7 +54,7 @@ export const TableHeaderCell = styled.th`
 
 export const NoDataMessage = styled.p`
   margin-top: 1em;
-  color: var(--error-message-color);
+  color: ${(props) => props.theme.errorMessageColor};
   text-align: center;
   font-size: 1.1rem;
 `;

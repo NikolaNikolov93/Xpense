@@ -2,18 +2,18 @@
 @import url("./styles//base/typography.css");
 @import "./styles/variables.css";
 
-#root {
+/* #root {
   max-width: 1440px;
   margin: 0 auto;
   text-align: center;
   position: relative;
   color: var(--primary-text-color);
   display: flex;
-  min-height: 100dvh; /* Ensures it takes up the full viewport without overflow */
-}
-body {
+  min-height: 100dvh;
+} */
+/* body {
   background-color: var(--sidebars-background-color);
-}
+} */
 /* Scrollbar for Webkit browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
   width: 8px;

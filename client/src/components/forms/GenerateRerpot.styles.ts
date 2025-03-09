@@ -10,7 +10,7 @@ export const ModalContent = styled.div`
 
 export const ModalHeader = styled.div`
   h2 {
-    text-shadow: var(--box-shadow);
+    text-shadow: ${(props) => props.theme.boxShadow};
   }
 `;
 
@@ -28,7 +28,7 @@ export const ModalBody = styled.div`
   }
   input,
   select:active {
-    box-shadow: var(--box-shadow-glow);
+    box-shadow: ${(props) => props.theme.boxShadowGlow};
   }
   label {
     font-weight: bold;

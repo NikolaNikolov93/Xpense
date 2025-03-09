@@ -3,7 +3,7 @@ type SideBarProps = {
   $isOpen: boolean;
 };
 export const SideBar = styled.nav<SideBarProps>`
-  background-color: var(--sidebars-background-color);
+  background-color: ${(props) => props.theme.sidebarBackgroundColor};
   position: sticky;
   top: 0;
   left: 0;

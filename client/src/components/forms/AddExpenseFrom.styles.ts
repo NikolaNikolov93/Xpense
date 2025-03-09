@@ -12,8 +12,8 @@ export const FormWrapper = styled.form`
     font-size: 1em;
     &:focus {
       outline: none;
-      border-color: var(--primary-accent);
-      box-shadow: var(--box-shadow-glow);
+      border-color: ${(props) => props.theme.accentColor};
+      box-shadow: ${(props) => props.theme.boxShadowGlow};
     }
   }
 `;

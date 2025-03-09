@@ -14,7 +14,7 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  background: var(--card-background-color);
+  background: ${(props) => props.theme.cardBackgroundColor};
   padding: 1em;
   position: relative;
   min-width: 300px;
@@ -29,5 +29,5 @@ export const CloseButton = styled.button`
   border: none;
   font-size: 1.5em;
   cursor: pointer;
-  color: var(--primary-text-color);
+  color: ${(props) => props.theme.textColor};
 `;

@@ -1,21 +1,24 @@
 // redux/store.ts
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
+import themeReducer from "./themeSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // Correct import for localStorage
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user"],
+  whitelist: ["user", "theme"],
 };
 
-const persistedReducer = persistReducer(persistConfig, userReducer);
+const persistedUserReducer = persistReducer(persistConfig, userReducer);
+const persistedThemeReducer = persistReducer(persistConfig, themeReducer);
 
 // Configure store
 export const store = configureStore({
   reducer: {
-    user: persistedReducer,
+    user: persistedUserReducer,
+    theme: persistedThemeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

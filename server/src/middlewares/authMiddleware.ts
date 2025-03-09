@@ -31,6 +31,6 @@ export const authMiddleware = async (
     req.user = await User.findById(decoded.id).select("-password"); // Attach user to request
     next(); // Proceed to the next middleware or route handler
   } catch (error) {
-    res.status(400).json({ message: "Invalid token." });
+    res.status(401).json({ message: "Invalid token." });
   }
 };

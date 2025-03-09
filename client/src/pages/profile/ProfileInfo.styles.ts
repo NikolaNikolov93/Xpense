@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const ProfleInfoSection = styled.div``;
+export const ProfleInfoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -33,8 +36,8 @@ export const ButtonsSection = styled.div`
   }
 `;
 export const StyledUpProfileInfoSuccessMessage = styled.h5`
-  color: var(--success-message-color);
+  color: ${(props) => props.theme.successMessageColor};
 `;
 export const StyledProfileInfoErrorMessage = styled.h5`
-  color: var(--error-message-color);
+  color: ${(props) => props.theme.errorMessageColor};
 `;

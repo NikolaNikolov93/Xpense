@@ -6,7 +6,7 @@ export const FormContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--primary-text-color);
+  color: ${(props) => props.theme.textColor};
   flex: 1;
   max-width: 350px;
 `;
@@ -14,30 +14,30 @@ export const FormContainer = styled(motion.div)`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  background-color: var(--card-background-color);
+  background-color: ${(props) => props.theme.cardBackgroundColor};
   padding: 2em;
-  box-shadow: var(--box-shadow);
+  box-shadow: ${(props) => props.theme.boxShadow};
   width: 100%;
   gap: 0.8em;
 `;
 
 export const Input = styled.input`
   padding: 0.8em;
-  border: 1px solid var(--primary-accent);
-  background-color: var(--sidebars-background-color);
-  color: var(--primary-text-color);
+  border: 1px solid ${(props) => props.theme.accentColor};
+  background-color: ${(props) => props.theme.sidebarBackgroundColor};
+  color: ${(props) => props.theme.textColor};
   font-size: 1rem;
 
   &:focus {
     outline: none;
-    border-color: var(--primary-accent);
-    box-shadow: var(--box-shadow-glow);
+    border-color: ${(props) => props.theme.accentColor};
+    box-shadow: ${(props) => props.theme.boxShadowGlow};
   }
 `;
 export const Message = styled(motion.p)<{ type: "success" | "error" }>`
   color: ${(props) =>
     props.type === "success"
-      ? "var(--success-message-color)"
-      : "var(--error-message-color)"};
+      ? props.theme.successMessageColor
+      : props.theme.errorMessageColor};
   padding: 0.8em;
 `;

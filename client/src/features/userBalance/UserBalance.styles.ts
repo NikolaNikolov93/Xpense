@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const UserBalanceWrapper = styled.div`
-  background-color: var(--card-background-color);
+  background-color: ${(props) => props.theme.cardBackgroundColor};
   padding: 1em 0em;
   flex-basis: calc((100% - 2em) / 2);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1em;
-  box-shadow: var(--box-shadow);
-  @media (max-width: 960px) {
+  box-shadow: ${(props) => props.theme.boxShadow};
+  @media (max-width: 1003px) {
     flex-basis: 100%;
   }
 `;

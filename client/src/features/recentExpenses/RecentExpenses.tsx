@@ -26,7 +26,7 @@ const RecentExpenses: React.FC = () => {
 
   // Handle error state if fetching expenses failed
   if (error instanceof Error) {
-    return <LoadingWrapper>Something went wrong...</LoadingWrapper>;
+    return <LoadingWrapper>{error.message}</LoadingWrapper>;
   }
 
   return (

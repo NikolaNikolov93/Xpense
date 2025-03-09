@@ -13,11 +13,12 @@ export const NotFoundContainer = styled.div`
 `;
 
 export const NotFoundTitle = styled.h1`
-  color: var(--error-message-color); /* Red accent to make it stand out */
+  color: ${(props) =>
+    props.theme.errorMessageColor}; /* Red accent to make it stand out */
 `;
 
 export const NotFoundText = styled.p`
-  color: var(--primary-text-color);
+  color: ${(props) => props.theme.textColor};
 `;
 
 export const NotFoundImage = styled.img`
@@ -26,13 +27,14 @@ export const NotFoundImage = styled.img`
 
 export const HomeLink = styled(Link)`
   padding: 1em 2em;
-  background-color: var(--primary-accent); /* Xpense accent color */
-  color: var(--primary-text-color);
-  text-shadow: var(--box-shadow);
+  background-color: ${(props) =>
+    props.theme.accentColor}; /* Xpense accent color */
+  color: ${(props) => props.theme.textColor};
+  text-shadow: ${(props) => props.theme.boxShadow};
   font-weight: bold;
   transition: background 0.3s ease-in-out;
 
   &:hover {
-    background-color: var(--button-hover); /* Hover effect */
+    background-color: ${(props) => props.theme.buttonHover}; /* Hover effect */
   }
 `;

@@ -16,11 +16,8 @@ const UserBalance = () => {
       {user && (
         <>
           <h4>{`Hello, ${user?.name}!`}</h4>
-          <h4>
-            {`Your current total balance is: ${user?.totalBalance.toFixed(2)} ${
-              user?.currency
-            }`}
-          </h4>
+          <h5>{`Your current total balance is: `}</h5>
+          <h5>{`${user?.totalBalance.toFixed(2)} ${user?.currency}`}</h5>
           <Button onClick={() => setIsModalOpen(true)}>Add to balance</Button>
           <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
             <AddToBalance totalBalance={user?.totalBalance} />

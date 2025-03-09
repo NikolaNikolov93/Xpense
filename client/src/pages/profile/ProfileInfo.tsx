@@ -14,6 +14,7 @@ import { updateUserProfile } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
 import { useUpdateUser } from "../../hooks/useUpdateUser";
 import Spinner from "../../components/spinner/Spinner";
+import { toggleTheme } from "../../redux/themeSlice";
 
 const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   currency,
@@ -47,8 +48,14 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
     updateUserMutation(updatedUser);
     setIsEditModeOff(true);
   };
+  const themeDistpatch = useDispatch();
+
+  const handleThemeToggle = () => {
+    themeDistpatch(toggleTheme());
+  };
   return (
     <ProfleInfoSection>
+      <Button onClick={() => handleThemeToggle()}>Theme</Button>
       <StyledForm onSubmit={handleSubmit}>
         <FormField>
           <label>Username:</label>

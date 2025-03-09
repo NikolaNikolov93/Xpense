@@ -49,8 +49,6 @@ The application is deployed and accessible online. No installation is required.
 ## 📌 Future Enhancements
 
 - ✅ Update and delete expenses
-- ✅ Light theme
-- ✅ Generate reports with multiple filter options
 
 ## 📝 License
 

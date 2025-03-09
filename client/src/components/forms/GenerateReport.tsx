@@ -14,22 +14,27 @@ import { useNavigate } from "react-router-dom";
 const GenerateReport: React.FC<{ closeModal: () => void }> = ({
   closeModal,
 }) => {
+  /**
+   * Reusable custom from handling hook
+   */
   const { formData, handleChange, resetForm } = useForm({
     initialValues: {
-      fromDate: "", // Initialize form fields with empty values
+      fromDate: "",
       toDate: "",
       sortOrder: "",
       category: "",
     },
   });
+
+  //hook used to navigate to the set URL
   const navigate = useNavigate();
 
+  //Genarate report hanlder --> Encodes the form data and navigates the user
   const handleGenerateReport = () => {
     const fromDate = encodeURIComponent(formData.fromDate);
     const toDate = encodeURIComponent(formData.toDate);
     const sortOrder = encodeURIComponent(formData.sortOrder);
     const category = encodeURIComponent(formData.category);
-    // Here you would make an API call or filter local expenses
     resetForm();
     closeModal();
     navigate(

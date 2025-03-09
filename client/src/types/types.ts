@@ -46,3 +46,7 @@ export type ModalProps = {
   isOpen: boolean; // Controls the visibility of the modal
   onClose: () => void; // Callback function to close the modal
 };
+
+export type AddToBalanceProps = {
+  totalBalance: number;
+};

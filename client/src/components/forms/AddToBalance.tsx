@@ -6,18 +6,22 @@ import { AddToBalanceWrapper, StyledForm } from "./AddToBalance.styles";
 import { useDispatch } from "react-redux";
 import { updateUserBalance } from "../../redux/userSlice";
 import Spinner from "../spinner/Spinner";
-
-type AddToBalanceProps = {
-  totalBalance: number;
-};
+import { AddToBalanceProps } from "../../types/types";
 
 const AddToBalance: React.FC<AddToBalanceProps> = ({ totalBalance }) => {
+  //Import Redux store dispatch
   const dispatch = useDispatch();
+
+  //Reusable custom from hook
   const { resetForm, handleChange, formData } = useForm({
     initialValues: {
       sumToAdd: "",
     },
   });
+
+  /**
+   * Custom update user hook. Uses React Query
+   */
   const {
     mutate: updateUserMutation,
     isPending,
@@ -25,6 +29,8 @@ const AddToBalance: React.FC<AddToBalanceProps> = ({ totalBalance }) => {
     isSuccess,
     error,
   } = useUpdateUser();
+
+  //Form submit handler --> Updates the Redux store state and the user data in the DB
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const updatedUser = {
@@ -34,6 +40,7 @@ const AddToBalance: React.FC<AddToBalanceProps> = ({ totalBalance }) => {
     updateUserMutation(updatedUser);
     resetForm();
   };
+
   return (
     <AddToBalanceWrapper>
       <h2>Add to balance</h2>

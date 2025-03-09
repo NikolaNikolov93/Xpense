@@ -18,7 +18,7 @@ export const Container = styled.section`
   gap: 3em;
   flex-grow: 1; /* Allows the content to fill the remaining space */
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
-  padding: 3.5em 1em;
+  padding: 3.5em 0.5em;
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 export const ToggleButton = styled.button`

@@ -14,32 +14,17 @@ export const RecentExpensesWrapper = styled.section`
     margin-bottom: 1em;
     /* width: 100%; */
   }
-  table {
-  }
 
-  th,
-  td {
-    padding: 0.8em 0.2em;
-    border-bottom: 1px solid ${(props) => props.theme.accentColor};
-    text-align: center;
-  }
-
-  th {
-    background-color: ${(props) => props.theme.accentColor};
-    color: #fff;
-    text-transform: uppercase;
-  }
-
-  tbody tr:hover {
-    background-color: ${(props) => props.theme.fieldHover};
-  }
   @media (max-width: 1003px) {
     flex-basis: 100%;
   }
 `;
-export const TableWrapper = styled.div`
-  padding: 0.5em;
+export const CardsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 `;
+
 export const LoadingWrapper = styled.div`
   flex-basis: calc((100% - 2em) / 2);
   font-size: 1.5em;

@@ -1,12 +1,13 @@
 import {
+  CardsWrapper,
   LoadingWrapper,
   RecentExpensesWrapper,
-  TableWrapper,
 } from "./RecentExpenses.styles"; // Import styled components for layout
 import { useFetchExpenses } from "../../hooks/useFetchExpenses"; // Custom hook to fetch expenses
 import Spinner from "../../components/spinner/Spinner"; // Spinner component for loading state
 import { useSelector } from "react-redux"; // Redux hook to access state
 import { RootState } from "../../redux/store"; // RootState type from Redux store
+import RecentExpenseCard from "./RecentExpenseCard";
 
 // RecentExpenses component - Displays a list of recent expenses in a table format
 const RecentExpenses: React.FC = () => {
@@ -32,38 +33,19 @@ const RecentExpenses: React.FC = () => {
   return (
     <RecentExpensesWrapper>
       <h3>Recent Expenses</h3>
-      <TableWrapper>
+      <CardsWrapper>
         {expenses && expenses.length > 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Amount</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {expenses.map((expense) => (
-                <tr key={expense._id}>
-                  <td>{expense.title}</td>
-                  <td>{expense.category}</td>
-                  <td>{`${expense.amount.toFixed(2)} ${user?.currency}`}</td>
-                  <td>
-                    {new Intl.DateTimeFormat("en-GB", {
-                      day: "2-digit",
-                      month: "2-digit",
-                      year: "numeric",
-                    }).format(new Date(expense.date))}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          expenses.map((expense) => (
+            <RecentExpenseCard
+              key={expense._id}
+              expense={expense}
+              user={user}
+            />
+          ))
         ) : (
           <p>No expenses found.</p> // Message to display if there are no expenses
         )}
-      </TableWrapper>
+      </CardsWrapper>
     </RecentExpensesWrapper>
   );
 };

@@ -26,6 +26,8 @@ export const useForm = <T,>({ initialValues, validate }: UseFormProps<T>) => {
   const resetForm = () => {
     setFormData(initialValues);
   };
+
+  //Validates the form on submit
   const validateForm = () => {
     if (!validate) return true;
     const newErrors = validate(formData);

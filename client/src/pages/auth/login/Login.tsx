@@ -78,7 +78,7 @@ const Login = () => {
           <AnimatePresence>
             {errors.password && (
               <Error
-                key="email-error"
+                key="password-error"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}

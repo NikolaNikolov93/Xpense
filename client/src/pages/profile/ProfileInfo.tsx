@@ -5,18 +5,21 @@ import { ProfileInfoTypes } from "../../types/types";
 import {
   ButtonsSection,
   FormField,
+  InputError,
   ProfleInfoSection,
   StyledForm,
   StyledProfileInfoErrorMessage,
   StyledUpProfileInfoSuccessMessage,
+  ThemeSwticher,
 } from "./ProfileInfo.styles";
 import { updateUserProfile } from "../../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useUpdateUser } from "../../hooks/useUpdateUser";
 import Spinner from "../../components/spinner/Spinner";
 import { toggleTheme } from "../../redux/themeSlice";
-import { ThemeSwticher } from "../dashboard/Dashboard.styles";
 import { RootState } from "../../redux/store";
+import { validateProfileInfoForm } from "../../utils/validateProfileInfoForm";
+import { AnimatePresence } from "framer-motion";
 
 const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   currency,
@@ -29,12 +32,13 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   const [isEditModeOff, setIsEditModeOff] = useState(true);
 
   //Custom from hanlding hook
-  const { formData, handleChange } = useForm({
+  const { formData, handleChange, validateForm, errors } = useForm({
     initialValues: {
       currency: currency,
       name: name,
       sumToAdd: "",
     },
+    validate: validateProfileInfoForm,
   });
 
   //Custom hook for updateing user
@@ -49,14 +53,17 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
   //Handle data submiting and updates the Redux state
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const updatedUser = {
-      name: formData.name,
-      currency: formData.currency,
-      totalBalance: totalBalance + Number(formData.sumToAdd),
-    };
-    dispatch(updateUserProfile(updatedUser));
-    updateUserMutation(updatedUser);
-    setIsEditModeOff(true);
+
+    if (validateForm()) {
+      const updatedUser = {
+        name: formData.name,
+        currency: formData.currency,
+        totalBalance: totalBalance + Number(formData.sumToAdd),
+      };
+      dispatch(updateUserProfile(updatedUser));
+      updateUserMutation(updatedUser);
+      setIsEditModeOff(true);
+    }
   };
 
   //Import theme switching handlers
@@ -81,6 +88,19 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
             onChange={handleChange}
           />
         </FormField>
+        <AnimatePresence>
+          {errors.name && (
+            <InputError
+              key="email-error"
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.3 }}
+            >
+              {errors.name}
+            </InputError>
+          )}
+        </AnimatePresence>
         <FormField>
           <label>Currency:</label>
           <input
@@ -91,6 +111,19 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
             onChange={handleChange}
           />
         </FormField>
+        <AnimatePresence>
+          {errors.currency && (
+            <InputError
+              key="currency-error"
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.3 }}
+            >
+              {errors.currency}
+            </InputError>
+          )}
+        </AnimatePresence>
         <FormField>
           <label>Add to balance:</label>
           <input
@@ -101,7 +134,20 @@ const ProfileInfo: React.FC<ProfileInfoTypes> = ({
             onChange={handleChange}
           />
         </FormField>
-        <p>{`Current balance is: ${totalBalance} ${currency}`}</p>
+        <AnimatePresence>
+          {errors.sumToAdd && (
+            <InputError
+              key="sumbToAdd-error"
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.3 }}
+            >
+              {errors.sumToAdd}
+            </InputError>
+          )}
+        </AnimatePresence>
+        <p>{`Current balance is: ${totalBalance.toFixed(2)} ${currency}`}</p>
         {isError && (
           <StyledProfileInfoErrorMessage>
             {error.message}

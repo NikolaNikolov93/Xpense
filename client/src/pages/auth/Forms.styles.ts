@@ -21,7 +21,7 @@ export const Form = styled.form`
   gap: 0.8em;
 `;
 
-export const Input = styled.input`
+export const Input = styled(motion.input)`
   padding: 0.8em;
   border: 1px solid ${(props) => props.theme.accentColor};
   background-color: ${(props) => props.theme.sidebarBackgroundColor};
@@ -44,5 +44,5 @@ export const Message = styled(motion.p)<{ type: "success" | "error" }>`
 export const Error = styled(motion.p)`
   color: ${(props) => props.theme.errorMessageColor}; // Use your error color
   font-size: 0.9em;
-  text-align: left;
+  text-align: center;
 `;

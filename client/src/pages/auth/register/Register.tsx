@@ -25,6 +25,10 @@ const Register = () => {
       });
     }
   };
+  const shakeAnimation = {
+    x: [-5, 5, -5, 5, 0], // Shake effect
+    transition: { duration: 0.3 },
+  };
 
   return (
     <AnimatePresence>
@@ -39,6 +43,7 @@ const Register = () => {
         <h2>Register</h2>
         <Form onSubmit={handleRegister}>
           <Input
+            animate={errors.name ? shakeAnimation : {}}
             type="text"
             placeholder="Name"
             name="name"
@@ -60,6 +65,7 @@ const Register = () => {
             )}
           </AnimatePresence>
           <Input
+            animate={errors.email ? shakeAnimation : {}}
             type="email"
             placeholder="Email"
             name="email"
@@ -81,6 +87,7 @@ const Register = () => {
             )}
           </AnimatePresence>
           <Input
+            animate={errors.password ? shakeAnimation : {}}
             type="password"
             placeholder="Password"
             name="password"

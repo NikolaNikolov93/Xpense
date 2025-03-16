@@ -41,3 +41,8 @@ export const Message = styled(motion.p)<{ type: "success" | "error" }>`
       : props.theme.errorMessageColor};
   padding: 0.8em;
 `;
+export const Error = styled(motion.p)`
+  color: ${(props) => props.theme.errorMessageColor}; // Use your error color
+  font-size: 0.9em;
+  text-align: left;
+`;

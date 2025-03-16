@@ -5,6 +5,7 @@ import { useForm } from "../../../hooks/useForm.tsx";
 import { useRegister } from "../../../hooks/useRegister.tsx";
 import Spinner from "../../../components/spinner/Spinner.tsx";
 import { validateRegisterForm } from "../../../utils/validateRegisterForm.ts";
+import { shakeAnimation } from "../../../constants.ts";
 
 const Register = () => {
   const { formData, handleChange, resetForm, errors, validateForm } = useForm({
@@ -24,10 +25,6 @@ const Register = () => {
         onSuccess: () => resetForm(),
       });
     }
-  };
-  const shakeAnimation = {
-    x: [-5, 5, -5, 5, 0], // Shake effect
-    transition: { duration: 0.3 },
   };
 
   return (

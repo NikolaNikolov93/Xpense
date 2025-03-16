@@ -1,9 +1,5 @@
 import { useState } from "react";
-
-type UseFormProps<T> = {
-  initialValues: T;
-  validate?: (values: T) => Partial<Record<keyof T, string>>; // Validation function
-};
+import { UseFormProps } from "../types/types";
 
 export const useForm = <T,>({ initialValues, validate }: UseFormProps<T>) => {
   const [formData, setFormData] = useState<T>(initialValues);

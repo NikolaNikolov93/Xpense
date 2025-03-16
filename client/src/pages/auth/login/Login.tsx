@@ -6,6 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import Spinner from "../../../components/spinner/Spinner.tsx";
 import { useNavigate } from "react-router-dom";
 import { validateLoginForm } from "../../../utils/validateLoginFrom.ts";
+import { shakeAnimation } from "../../../constants.ts";
 
 const Login = () => {
   const { formData, handleChange, resetForm, errors, validateForm } = useForm({
@@ -44,6 +45,7 @@ const Login = () => {
         <h2>Login</h2>
         <Form onSubmit={handleLogin}>
           <Input
+            animate={errors.email ? shakeAnimation : {}}
             type="email"
             placeholder="Email"
             required
@@ -65,6 +67,7 @@ const Login = () => {
             )}
           </AnimatePresence>
           <Input
+            animate={errors.password ? shakeAnimation : {}}
             type="password"
             placeholder="Password"
             required

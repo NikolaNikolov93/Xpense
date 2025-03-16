@@ -35,3 +35,7 @@ export const DarkThemePieChartColors = [
   "#66cdaa",
   "#d77cf8",
 ];
+export const shakeAnimation = {
+  x: [-5, 5, -5, 5, 0], // Shake effect
+  transition: { duration: 0.3 },
+};

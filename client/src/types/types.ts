@@ -1,3 +1,7 @@
+export type UseFormProps<T> = {
+  initialValues: T;
+  validate?: (values: T) => Partial<Record<keyof T, string>>; // Validation function
+};
 export type Expense = {
   _id: string;
   title: string;

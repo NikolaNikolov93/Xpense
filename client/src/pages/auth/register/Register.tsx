@@ -1,25 +1,29 @@
 import Button from "../../../components/button/Button.tsx";
-import { Form, Input, FormContainer, Message } from "../Forms.styles.ts";
+import { Form, Input, FormContainer, Message, Error } from "../Forms.styles.ts";
 import { AnimatePresence } from "framer-motion";
 import { useForm } from "../../../hooks/useForm.tsx";
 import { useRegister } from "../../../hooks/useRegister.tsx";
 import Spinner from "../../../components/spinner/Spinner.tsx";
+import { validateRegisterForm } from "../../../utils/validateRegisterForm.ts";
 
 const Register = () => {
-  const { formData, handleChange, resetForm } = useForm({
+  const { formData, handleChange, resetForm, errors, validateForm } = useForm({
     initialValues: {
       name: "",
       email: "",
       password: "",
     },
+    validate: validateRegisterForm,
   });
   const { mutation, message } = useRegister(); // Destructure message and mutation
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    mutation.mutate(formData, {
-      onSuccess: () => resetForm(),
-    });
+    if (validateForm()) {
+      mutation.mutate(formData, {
+        onSuccess: () => resetForm(),
+      });
+    }
   };
 
   return (
@@ -42,6 +46,19 @@ const Register = () => {
             value={formData.name}
             onChange={handleChange}
           />
+          <AnimatePresence>
+            {errors.name && (
+              <Error
+                key="email-error"
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                {errors.name}
+              </Error>
+            )}
+          </AnimatePresence>
           <Input
             type="email"
             placeholder="Email"
@@ -50,6 +67,19 @@ const Register = () => {
             value={formData.email}
             onChange={handleChange}
           />
+          <AnimatePresence>
+            {errors.email && (
+              <Error
+                key="email-error"
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                {errors.email}
+              </Error>
+            )}
+          </AnimatePresence>
           <Input
             type="password"
             placeholder="Password"
@@ -58,6 +88,19 @@ const Register = () => {
             value={formData.password}
             onChange={handleChange}
           />
+          <AnimatePresence>
+            {errors.password && (
+              <Error
+                key="email-error"
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                {errors.password}
+              </Error>
+            )}
+          </AnimatePresence>
 
           <AnimatePresence>
             {message && (

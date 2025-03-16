@@ -1,7 +1,11 @@
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts"; // Import recharts components for the pie chart
 import Spinner from "../../components/spinner/Spinner"; // Import the Spinner component
 import EmptyData from "../../components/emptyData/EmptyData"; // Import the EmptyData component
-import { ChartWrapper, LoadingWrapper } from "./PieChartReport.styles"; // Import styled components for layout
+import {
+  ChartWrapper,
+  LoadingWrapper,
+  TotalSpent,
+} from "./PieChartReport.styles"; // Import styled components for layout
 import { PieChartReportProps } from "../../types/types"; // Import component props
 import {
   DarkThemePieChartColors,
@@ -111,11 +115,11 @@ const PieChartReport: React.FC<PieChartReportProps> = ({
         </PieChart>
       </ResponsiveContainer>
       {totalAmountSpent !== undefined && (
-        <div>
+        <TotalSpent>
           <strong>{`Total: ${totalAmountSpent.toFixed(2)} ${
             user?.currency
           }`}</strong>
-        </div>
+        </TotalSpent>
       )}
     </ChartWrapper>
   );

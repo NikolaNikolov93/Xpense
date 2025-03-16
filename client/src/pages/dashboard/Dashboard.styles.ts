@@ -8,6 +8,7 @@ export const DashboardWrapper = styled.section`
   max-width: 100%;
   h1 {
     flex: 1 1 100%;
+    font-weight: bold;
   }
   > * {
     border-radius: 30px;

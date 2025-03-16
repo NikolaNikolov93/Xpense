@@ -11,17 +11,28 @@ export const RecentExpensesWrapper = styled.section`
 
   h3 {
     margin-bottom: 1em;
-    /* width: 100%; */
+    font-weight: bold;
   }
 
   @media (max-width: 1003px) {
     flex-basis: 100%;
   }
 `;
+
 export const CardsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+`;
+
+export const HeaderRow = styled.div`
+  color: ${(props) => props.theme.accentColor};
+  display: flex;
+  gap: 2em;
+  margin-bottom: 0.5em;
+  span {
+    padding: 0.5em;
+  }
 `;
 
 export const LoadingWrapper = styled.div`

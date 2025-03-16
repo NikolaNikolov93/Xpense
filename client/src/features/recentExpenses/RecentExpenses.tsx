@@ -1,5 +1,6 @@
 import {
   CardsWrapper,
+  HeaderRow,
   LoadingWrapper,
   RecentExpensesWrapper,
 } from "./RecentExpenses.styles"; // Import styled components for layout
@@ -33,6 +34,11 @@ const RecentExpenses: React.FC = () => {
   return (
     <RecentExpensesWrapper>
       <h3>Recent Expenses</h3>
+      <HeaderRow>
+        <span>Title</span>
+        <span>Currency</span>
+        <span>Date</span>
+      </HeaderRow>
       <CardsWrapper>
         {expenses && expenses.length > 0 ? (
           expenses.map((expense) => (

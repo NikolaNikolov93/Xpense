@@ -15,8 +15,8 @@ const UserBalance = () => {
     <UserBalanceWrapper>
       {user && (
         <>
-          <h4>{`Hello, ${user?.name}!`}</h4>
-          <h5>{`Your current total balance is: `}</h5>
+          <h3>{`Hello, ${user?.name}!`}</h3>
+          <h4>{`Your current total balance is: `}</h4>
           <h5>{`${user?.totalBalance.toFixed(2)} ${user?.currency}`}</h5>
           <Button onClick={() => setIsModalOpen(true)}>Add to balance</Button>
           <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

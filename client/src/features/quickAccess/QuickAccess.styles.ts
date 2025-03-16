@@ -8,6 +8,7 @@ export const QuickAccessWrapper = styled.section`
 
   h3 {
     margin-bottom: 1em;
+    font-weight: bold;
   }
 `;
 

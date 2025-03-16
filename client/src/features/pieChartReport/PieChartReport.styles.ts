@@ -22,9 +22,15 @@ export const ChartWrapper = styled.div`
   img {
     width: 200px;
   }
+  h4 {
+    font-weight: bold;
+  }
   @media (max-width: 660px) {
     flex-basis: 100%;
   }
+`;
+export const TotalSpent = styled.div`
+  font-weight: bold;
 `;
 export const LoadingWrapper = styled.div`
   flex-basis: calc((100% - 2em) / 2);

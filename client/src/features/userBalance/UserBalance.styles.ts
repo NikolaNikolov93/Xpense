@@ -9,6 +9,10 @@ export const UserBalanceWrapper = styled.div`
   align-items: center;
   gap: 1em;
   box-shadow: ${(props) => props.theme.boxShadow};
+  h5 {
+    font-weight: bold;
+  }
+
   @media (max-width: 1003px) {
     flex-basis: 100%;
   }

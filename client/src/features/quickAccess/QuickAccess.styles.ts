@@ -7,7 +7,6 @@ export const QuickAccessWrapper = styled.section`
   box-shadow: ${(props) => props.theme.boxShadow};
 
   h3 {
-    border-bottom: 1px solid ${(props) => props.theme.secondaryAccentColor};
     margin-bottom: 1em;
   }
 `;

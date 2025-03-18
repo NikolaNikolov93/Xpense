@@ -9,8 +9,10 @@ import {
   LogoWrapper,
 } from "./Home.styles";
 import Button from "../../components/button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <HeadlineWrapper>
@@ -18,8 +20,12 @@ const Home = () => {
         <h2>Effortlessly track, manage, and optimize your spending.</h2>
         <h4>🚧 Currently in Development 🚧</h4>
         <h4>❗ Do NOT use real email addresses or sensitive data.</h4>
+        <h4>
+          ⚠️ Note: Initial loading times are slower due to backend hosting
+          settings.
+        </h4>
         <HeadlineButtonsWrapper>
-          <Button>Log in</Button>
+          <Button onClick={() => navigate("/login")}>Log in</Button>
           <Button>Try Demo Account</Button>
         </HeadlineButtonsWrapper>
       </HeadlineWrapper>

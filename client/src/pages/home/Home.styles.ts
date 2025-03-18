@@ -1,33 +1,43 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   text-align: center;
   gap: 1em;
   text-shadow: 2px 2px 5px rgba(31, 31, 31, 0.5);
 `;
-
-export const Logo = styled.img`
-  width: 200px;
+export const HeadlineWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 0.5em;
+  h1 {
+    font-weight: bold;
+  }
+  h4 {
+    color: ${(props) => props.theme.accentColor};
+  }
 `;
-
-export const Warning = styled.p`
-  background-color: ${(props) => props.theme.errorMessageColor};
-  color: ${(props) => props.theme.textColor};
-  padding: 1em;
-  font-weight: bold;
-  max-width: 400px;
+export const HeadlineButtonsWrapper = styled.div`
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
 `;
-
-export const TestCredentials = styled.p`
-  background-color: ${(props) => props.theme.accentColor};
-  color: ${(props) => props.theme.textColor};
-  padding: 1em;
-  font-weight: bold;
-  max-width: 400px;
+export const LogoWrapper = styled.div`
+  flex-grow: 1;
+`;
+export const Logo = styled(motion.img)`
+  max-width: 350px;
+`;
+export const GitHubLinkWrapper = styled.div`
+  flex: 1 1 100%;
 `;
 export const GitHubLink = styled.a`
   color: ${(props) => props.theme.accentColor};

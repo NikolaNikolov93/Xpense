@@ -9,4 +9,8 @@ export const CardWrapper = styled(motion.create(Link))`
   gap: 0.5em;
   box-shadow: ${(props) => props.theme.boxShadow};
   color: ${(props) => props.theme.secondaryAccentColor};
+  background-color: ${(props) => props.theme.cardBackgroundColor};
+  &:hover {
+    background-color: ${(props) => props.theme.fieldHover};
+  }
 `;

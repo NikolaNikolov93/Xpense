@@ -10,9 +10,21 @@ import {
 } from "./Home.styles";
 import Button from "../../components/button/Button";
 import { useNavigate } from "react-router-dom";
+import { useLogin } from "../../hooks/useLogin";
+import { DemoUser } from "../../constants";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { mutation } = useLogin(); // Use the login hook
+
+  const handleDemoLogin = () => {
+    mutation.mutate(DemoUser, {
+      onSuccess: () => {
+        navigate("/dashboard");
+      },
+    });
+  };
+
   return (
     <Container>
       <HeadlineWrapper>
@@ -26,7 +38,7 @@ const Home = () => {
         </h4>
         <HeadlineButtonsWrapper>
           <Button onClick={() => navigate("/login")}>Log in</Button>
-          <Button>Try Demo Account</Button>
+          <Button onClick={handleDemoLogin}>Try Demo Account</Button>
         </HeadlineButtonsWrapper>
       </HeadlineWrapper>
       <LogoWrapper>

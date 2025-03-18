@@ -39,3 +39,7 @@ export const shakeAnimation = {
   x: [-5, 5, -5, 5, 0], // Shake effect
   transition: { duration: 0.3 },
 };
+export const DemoUser = {
+  email: "test@abv.bg",
+  password: "123123",
+};

@@ -5,10 +5,10 @@ import {
   FeaturesSection,
   GitHubLink,
   GitHubLinkWrapper,
+  HeadingAndLogoWrapepr,
   HeadlineButtonsWrapper,
   HeadlineWrapper,
   Logo,
-  LogoWrapper,
 } from "./Home.styles";
 import Button from "../../components/button/Button";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +31,26 @@ const Home = () => {
   return (
     <Container>
       <HeadlineWrapper>
-        <h1>Xpense</h1>
+        <HeadingAndLogoWrapepr>
+          <h1>Xpense</h1>
+          <Logo
+            animate={{
+              filter: [
+                "brightness(100%)",
+                "brightness(130%)",
+                "brightness(100%)",
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            src="logo-new.png"
+            alt="Xpense Logo"
+          />
+        </HeadingAndLogoWrapepr>
+
         <h2>Your Smart Expense Tracker</h2>
         <h3>Effortlessly track, manage, and optimize your spending.</h3>
         <HeadlineButtonsWrapper>
@@ -49,24 +68,6 @@ const Home = () => {
           settings.
         </h4>
       </HeadlineWrapper>
-      <LogoWrapper>
-        <Logo
-          animate={{
-            filter: [
-              "brightness(100%)",
-              "brightness(130%)",
-              "brightness(100%)",
-            ],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          src="logo-new.png"
-          alt="Xpense Logo"
-        />
-      </LogoWrapper>
       <FeaturesSection>
         <FeatureSectionElement>
           <img src="smart-expense-tracking.png" alt="" />

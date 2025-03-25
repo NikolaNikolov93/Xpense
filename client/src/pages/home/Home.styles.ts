@@ -22,6 +22,11 @@ export const HeadlineWrapper = styled.div`
     color: ${(props) => props.theme.accentColor};
   }
 `;
+export const HeadingAndLogoWrapepr = styled.div`
+  display: flex;
+  gap: 1em;
+  align-self: center;
+`;
 export const HeadlineButtonsWrapper = styled.div`
   margin-top: 2em;
   margin-bottom: 2em;
@@ -30,19 +35,16 @@ export const HeadlineButtonsWrapper = styled.div`
   gap: 2em;
   justify-content: center;
 `;
-export const LogoWrapper = styled.div`
-  @media (max-width: 1240px) {
-    flex-basis: 100%;
-  }
-`;
+
 export const Logo = styled(motion.img)`
-  max-width: 350px;
+  max-width: 50px;
 `;
 export const FeaturesSection = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1em;
+  flex-basis: 100%;
   img {
     max-width: 150px;
   }

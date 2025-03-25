@@ -31,7 +31,9 @@ export const HeadlineButtonsWrapper = styled.div`
   justify-content: center;
 `;
 export const LogoWrapper = styled.div`
-  flex-grow: 1;
+  @media (max-width: 1240px) {
+    flex-basis: 100%;
+  }
 `;
 export const Logo = styled(motion.img)`
   max-width: 350px;
@@ -46,6 +48,7 @@ export const FeaturesSection = styled.div`
   }
 `;
 export const FeatureSectionElement = styled.div`
+  flex-basis: calc((100% - 2 * 1em) / 3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,6 +56,9 @@ export const FeatureSectionElement = styled.div`
   justify-content: space-between;
   h6 {
     font-weight: bold;
+  }
+  @media (max-width: 600px) {
+    flex-basis: 100%;
   }
 `;
 export const GitHubLinkWrapper = styled.div`

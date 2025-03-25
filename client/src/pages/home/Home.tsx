@@ -1,6 +1,8 @@
 import { FiGithub } from "react-icons/fi";
 import {
   Container,
+  FeatureSectionElement,
+  FeaturesSection,
   GitHubLink,
   GitHubLinkWrapper,
   HeadlineButtonsWrapper,
@@ -12,6 +14,7 @@ import Button from "../../components/button/Button";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../../hooks/useLogin";
 import { DemoUser } from "../../constants";
+import Spinner from "../../components/spinner/Spinner";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -28,18 +31,23 @@ const Home = () => {
   return (
     <Container>
       <HeadlineWrapper>
-        <h1>Xpense - Your Smart Expense Tracker</h1>
-        <h2>Effortlessly track, manage, and optimize your spending.</h2>
+        <h1>Xpense</h1>
+        <h2>Your Smart Expense Tracker</h2>
+        <h3>Effortlessly track, manage, and optimize your spending.</h3>
+        <HeadlineButtonsWrapper>
+          <Button onClick={() => navigate("/login")}>Log in</Button>
+          {mutation.isPending ? (
+            <Spinner />
+          ) : (
+            <Button onClick={handleDemoLogin}>Try Demo Account</Button>
+          )}
+        </HeadlineButtonsWrapper>
         <h4>🚧 Currently in Development 🚧</h4>
         <h4>❗ Do NOT use real email addresses or sensitive data.</h4>
         <h4>
           ⚠️ Note: Initial loading times are slower due to backend hosting
           settings.
         </h4>
-        <HeadlineButtonsWrapper>
-          <Button onClick={() => navigate("/login")}>Log in</Button>
-          <Button onClick={handleDemoLogin}>Try Demo Account</Button>
-        </HeadlineButtonsWrapper>
       </HeadlineWrapper>
       <LogoWrapper>
         <Logo
@@ -59,6 +67,20 @@ const Home = () => {
           alt="Xpense Logo"
         />
       </LogoWrapper>
+      <FeaturesSection>
+        <FeatureSectionElement>
+          <img src="smart-expense-tracking.png" alt="" />
+          <h6>Smart Expense Tracking</h6>
+        </FeatureSectionElement>
+        <FeatureSectionElement>
+          <img src="pie-chart-img.png" alt="" />
+          <h6>Budget Optimization</h6>
+        </FeatureSectionElement>
+        <FeatureSectionElement>
+          <img src="categorize-expenses.png" alt="" />
+          <h6>Categorized Expenses</h6>
+        </FeatureSectionElement>
+      </FeaturesSection>
       <GitHubLinkWrapper>
         {`Stay updated with the latest features and development progress on `}
         <GitHubLink

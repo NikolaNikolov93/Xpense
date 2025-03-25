@@ -14,7 +14,6 @@ export const HeadlineWrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  align-items: center;
   gap: 0.5em;
   h1 {
     font-weight: bold;
@@ -25,6 +24,7 @@ export const HeadlineWrapper = styled.div`
 `;
 export const HeadlineButtonsWrapper = styled.div`
   margin-top: 2em;
+  margin-bottom: 2em;
   display: flex;
   flex-wrap: wrap;
   gap: 2em;
@@ -35,6 +35,25 @@ export const LogoWrapper = styled.div`
 `;
 export const Logo = styled(motion.img)`
   max-width: 350px;
+`;
+export const FeaturesSection = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  img {
+    max-width: 150px;
+  }
+`;
+export const FeatureSectionElement = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  justify-content: space-between;
+  h6 {
+    font-weight: bold;
+  }
 `;
 export const GitHubLinkWrapper = styled.div`
   flex: 1 1 100%;

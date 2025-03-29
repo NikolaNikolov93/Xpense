@@ -17,6 +17,7 @@ import { fetchFreshUserData } from "./redux/userSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./theme";
+import PublicRoute from "./components/publicRoute/PublicRoute";
 
 const queryClinet = new QueryClient();
 
@@ -53,8 +54,11 @@ function App() {
               <Container>
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
+                  <Route element={<PublicRoute />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                  </Route>
+
                   <Route element={<PrivateRoute />}>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/profile" element={<Profile />} />

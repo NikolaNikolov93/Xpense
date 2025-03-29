@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ReportContainer = styled.div`
-  padding: 1em 0em;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -38,7 +38,10 @@ const Register = () => {
         transition={{ duration: 0.2 }}
       >
         <h2>Register</h2>
+
         <Form onSubmit={handleRegister}>
+          <h6>❗ Do NOT use real email addresses or sensitive data.</h6>
+
           <Input
             animate={errors.name ? shakeAnimation : {}}
             type="text"
@@ -48,6 +51,7 @@ const Register = () => {
             value={formData.name}
             onChange={handleChange}
           />
+
           <AnimatePresence>
             {errors.name && (
               <Error

@@ -56,17 +56,18 @@ const Home = () => {
         <HeadlineButtonsWrapper>
           <Button onClick={() => navigate("/login")}>Log in</Button>
           {mutation.isPending ? (
-            <Spinner />
+            <div>
+              <h6>
+                ⚠️ Note: Initial loading times are slower due to backend hosting
+                settings.
+              </h6>
+              <Spinner />
+            </div>
           ) : (
             <Button onClick={handleDemoLogin}>Try Demo Account</Button>
           )}
         </HeadlineButtonsWrapper>
         <h4>🚧 Currently in Development 🚧</h4>
-        <h4>❗ Do NOT use real email addresses or sensitive data.</h4>
-        <h4>
-          ⚠️ Note: Initial loading times are slower due to backend hosting
-          settings.
-        </h4>
       </HeadlineWrapper>
       <FeaturesSection>
         <FeatureSectionElement>

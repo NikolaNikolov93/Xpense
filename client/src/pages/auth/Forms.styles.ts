@@ -9,6 +9,9 @@ export const FormContainer = styled(motion.div)`
   color: ${(props) => props.theme.textColor};
   flex: 1;
   max-width: 350px;
+  & h6 {
+    color: ${(props) => props.theme.errorMessageColor};
+  }
 `;
 
 export const Form = styled.form`
@@ -17,7 +20,6 @@ export const Form = styled.form`
   background-color: ${(props) => props.theme.cardBackgroundColor};
   padding: 2em;
   box-shadow: ${(props) => props.theme.boxShadow};
-  width: 100%;
   gap: 0.8em;
 `;
 

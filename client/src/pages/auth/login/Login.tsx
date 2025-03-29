@@ -44,6 +44,11 @@ const Login = () => {
       >
         <h2>Login</h2>
         <Form onSubmit={handleLogin}>
+          <h6>
+            ⚠️ Note: Initial loading times are slower due to backend hosting
+            settings.
+          </h6>
+
           <Input
             animate={errors.email ? shakeAnimation : {}}
             type="email"

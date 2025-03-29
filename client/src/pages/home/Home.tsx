@@ -50,7 +50,7 @@ const Home = () => {
             alt="Xpense Logo"
           />
         </HeadingAndLogoWrapepr>
-
+        <h4>🚧 Currently in Development 🚧</h4>
         <h2>Your Smart Expense Tracker</h2>
         <h3>Effortlessly track, manage, and optimize your spending.</h3>
         <HeadlineButtonsWrapper>
@@ -67,7 +67,6 @@ const Home = () => {
             <Button onClick={handleDemoLogin}>Try Demo Account</Button>
           )}
         </HeadlineButtonsWrapper>
-        <h4>🚧 Currently in Development 🚧</h4>
       </HeadlineWrapper>
       <FeaturesSection>
         <FeatureSectionElement>

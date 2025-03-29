@@ -68,7 +68,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
           <>
             <li>
               <Link to={"/login"} onClick={handleClose}>
-                Login
+                Log in
               </Link>
             </li>
             <li>

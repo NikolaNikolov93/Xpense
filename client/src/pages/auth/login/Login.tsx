@@ -110,7 +110,7 @@ const Login = () => {
           {mutation.isPending ? (
             <Spinner />
           ) : (
-            <Button type="submit">Login</Button>
+            <Button type="submit">Log in</Button>
           )}
         </Form>
       </FormContainer>

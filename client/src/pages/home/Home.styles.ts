@@ -19,6 +19,7 @@ export const HeadlineWrapper = styled.div`
     font-weight: bold;
   }
   h4 {
+    margin-bottom: 2em;
     color: ${(props) => props.theme.accentColor};
   }
 `;

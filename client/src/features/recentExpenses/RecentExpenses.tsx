@@ -8,7 +8,7 @@ import { useFetchExpenses } from "../../hooks/useFetchExpenses"; // Custom hook 
 import Spinner from "../../components/spinner/Spinner"; // Spinner component for loading state
 import { useSelector } from "react-redux"; // Redux hook to access state
 import { RootState } from "../../redux/store"; // RootState type from Redux store
-import RecentExpenseCard from "./RecentExpenseCard";
+import ExpenseCard from "../../components/expenseCard/ExpenseCard";
 
 // RecentExpenses component - Displays a list of recent expenses in a table format
 const RecentExpenses: React.FC = () => {
@@ -42,11 +42,7 @@ const RecentExpenses: React.FC = () => {
       <CardsWrapper>
         {expenses && expenses.length > 0 ? (
           expenses.map((expense) => (
-            <RecentExpenseCard
-              key={expense._id}
-              expense={expense}
-              user={user}
-            />
+            <ExpenseCard key={expense._id} expense={expense} user={user} />
           ))
         ) : (
           <p>No expenses found.</p> // Message to display if there are no expenses

@@ -4,17 +4,18 @@ import Spinner from "../../components/spinner/Spinner";
 import {
   ReportContainer,
   FiltersWrapper,
-  Table,
-  TableHeader,
-  TableRow,
-  TableCell,
-  TableHeaderCell,
   NoDataMessage,
+  ExpensesWrapper,
+  HeaderRow,
 } from "./ReportPage.styles"; // Import styled components
 import { formatDate } from "../../utils/formatDate";
+import ExpenseCard from "../../components/expenseCard/ExpenseCard";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 const ReportPage: React.FC = () => {
   const location = useLocation();
+  const user = useSelector((state: RootState) => state.user.user);
 
   // Get the query parameters from the URL
   const queryParams = new URLSearchParams(location.search);
@@ -49,31 +50,17 @@ const ReportPage: React.FC = () => {
 
         {query.category != "" ? <p>Category: {query.category}</p> : <></>}
       </FiltersWrapper>
+      <HeaderRow>
+        <span>Title</span>
+        <span>Currency</span>
+        <span>Date</span>
+      </HeaderRow>
 
-      {/* Report Table */}
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHeaderCell>ID</TableHeaderCell>
-            <TableHeaderCell>Amount</TableHeaderCell>
-            <TableHeaderCell>Date</TableHeaderCell>
-            <TableHeaderCell>Category</TableHeaderCell>
-          </TableRow>
-        </TableHeader>
-        <tbody>
-          {data?.map((expense: any) => (
-            <TableRow key={expense._id}>
-              <TableCell>{expense.title}</TableCell>
-              <TableCell>${expense.amount.toFixed(2)}</TableCell>
-              <TableCell>
-                {new Date(expense.date).toLocaleDateString()}
-              </TableCell>
-              <TableCell>{expense.category}</TableCell>
-            </TableRow>
-          ))}
-        </tbody>
-      </Table>
-
+      <ExpensesWrapper>
+        {data?.map((expense: any) => (
+          <ExpenseCard key={expense._id} expense={expense} user={user} />
+        ))}
+      </ExpensesWrapper>
       {/* If no data */}
       {data?.length === 0 && (
         <NoDataMessage>No expenses match the filter criteria.</NoDataMessage>

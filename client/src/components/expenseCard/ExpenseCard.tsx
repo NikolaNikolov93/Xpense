@@ -1,14 +1,11 @@
 import { Expense, User } from "../../types/types";
-import { CardWrapper } from "./RecentExpenseCard.styles";
+import { CardWrapper } from "./ExpenseCard.styles";
 
-interface RecentExpenseCardProps {
+interface ExpenseCardProps {
   expense: Expense;
   user: User | null;
 }
-const RecentExpenseCard: React.FC<RecentExpenseCardProps> = ({
-  expense,
-  user,
-}) => {
+const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense, user }) => {
   return (
     <CardWrapper
       to={`${expense.title}/${expense._id}`}
@@ -28,4 +25,4 @@ const RecentExpenseCard: React.FC<RecentExpenseCardProps> = ({
   );
 };
 
-export default RecentExpenseCard;
+export default ExpenseCard;

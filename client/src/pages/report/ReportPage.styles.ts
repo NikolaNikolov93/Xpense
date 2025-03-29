@@ -17,41 +17,20 @@ export const FiltersWrapper = styled.div`
   border-radius: 8px;
   box-shadow: ${(props) => props.theme.boxShadow};
 `;
-
-export const Table = styled.table`
-  width: 100%;
-
-  border-collapse: collapse;
-  background: ${(props) => props.theme.cardBackgroundColor};
-  box-shadow: ${(props) => props.theme.boxShadow};
-  border-radius: 8px;
-  overflow: hidden;
+export const ExpensesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 `;
-
-export const TableHeader = styled.thead`
-  background: ${(props) => props.theme.accentColor};
-  color: white;
-`;
-
-export const TableRow = styled.tr`
-  border-bottom: 1px solid #ccc;
-
-  &:last-child {
-    border-bottom: none;
+export const HeaderRow = styled.div`
+  color: ${(props) => props.theme.accentColor};
+  display: flex;
+  gap: 2em;
+  margin-bottom: 0.5em;
+  span {
+    padding: 0.5em;
   }
 `;
-
-export const TableCell = styled.td`
-  padding: 0.7em 0.3em;
-  text-align: left;
-`;
-
-export const TableHeaderCell = styled.th`
-  padding: 0.6em;
-  text-align: left;
-  font-weight: bold;
-`;
-
 export const NoDataMessage = styled.p`
   margin-top: 1em;
   color: ${(props) => props.theme.errorMessageColor};

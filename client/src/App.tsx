@@ -18,6 +18,7 @@ import { ThunkDispatch } from "@reduxjs/toolkit";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./theme";
 import PublicRoute from "./components/publicRoute/PublicRoute";
+import ExpenseDetails from "./pages/expenseDetails/ExpenseDetails";
 
 const queryClinet = new QueryClient();
 
@@ -63,6 +64,10 @@ function App() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/report" element={<ReportPage />} />
+                    <Route
+                      path="/expense/:expenseId"
+                      element={<ExpenseDetails />}
+                    />
                   </Route>
                   <Route path="*" element={<NotFound />} />
                 </Routes>

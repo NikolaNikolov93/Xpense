@@ -6,8 +6,6 @@ export const ExpenseDetailsWrapper = styled.div`
   border-radius: 10px;
   box-shadow: ${({ theme }) => theme.boxShadow};
   color: ${({ theme }) => theme.primaryText};
-  max-width: 600px;
-  margin: 2em auto;
   h2 {
     margin-bottom: 10px;
   }

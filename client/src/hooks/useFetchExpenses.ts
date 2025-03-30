@@ -1,14 +1,8 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { BASE_URL } from "../constants";
+import { Expense } from "../types/types";
 
 // Define the type for the Expense
-interface Expense {
-  _id: string;
-  title: string;
-  amount: number;
-  category: string;
-  date: string;
-}
 
 const fetchExpenses = async (): Promise<Expense[]> => {
   const token = localStorage.getItem("token");

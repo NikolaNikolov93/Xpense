@@ -3,6 +3,7 @@ import { authMiddleware } from "../middlewares/authMiddleware";
 import {
   addExpense,
   getCustomReport,
+  getExpenseById,
   getExpensesForLastNDays,
   getLatestExpenses,
 } from "../controllers/expenseController";
@@ -15,5 +16,6 @@ router.get("/latest", authMiddleware, getLatestExpenses);
 // router.get("/last30days", authMiddleware, getLatestExpensesForLast30Days);
 router.get("/lastNDays", authMiddleware, getExpensesForLastNDays);
 router.get("/getCustomRerport", authMiddleware, getCustomReport);
+router.get("/:id", authMiddleware, getExpenseById);
 
 export default router;

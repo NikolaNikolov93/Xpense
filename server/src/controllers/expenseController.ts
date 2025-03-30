@@ -133,3 +133,18 @@ export const getCustomReport = async (req: AuthRequest, res) => {
     res.status(500).json({ message: "Server error, please try again" });
   }
 };
+export const getExpenseById = async (req: AuthRequest, res) => {
+  try {
+    const { id } = req.params;
+
+    const expense = await Expense.findOne({ _id: id, userId: req.user.id });
+
+    if (!expense) {
+      throw new AppError("Expense not found", 404);
+    }
+
+    res.status(200).json(expense);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

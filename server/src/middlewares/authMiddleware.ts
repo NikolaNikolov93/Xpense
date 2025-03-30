@@ -8,6 +8,7 @@ export interface AuthRequest extends Request {
   body: any; // Or use a more specific type for the body, like { title: string; amount: number; category: string }
   headers: any;
   query: any;
+  params: any;
 }
 export const authMiddleware = async (
   req: AuthRequest, // Use AuthRequest type here

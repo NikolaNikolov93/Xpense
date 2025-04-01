@@ -69,15 +69,15 @@ const Home = () => {
       <FeaturesSection>
         <FeatureSectionElement>
           <img src="smart-expense-tracking.png" alt="" />
-          <h6>Smart Expense Tracking</h6>
+          <h4>Smart Expense Tracking</h4>
         </FeatureSectionElement>
         <FeatureSectionElement>
           <img src="pie-chart-img.png" alt="" />
-          <h6>Budget Optimization</h6>
+          <h4>Budget Optimization</h4>
         </FeatureSectionElement>
         <FeatureSectionElement>
           <img src="categorize-expenses.png" alt="" />
-          <h6>Categorized Expenses</h6>
+          <h4>Categorized Expenses</h4>
         </FeatureSectionElement>
       </FeaturesSection>
       <SiteShowcase>

@@ -49,7 +49,7 @@ export const FeaturesSection = styled.div`
   img {
     max-width: 150px;
     @media (max-width: 600px) {
-      max-width: 250px;
+      max-width: 200px;
     }
   }
 `;
@@ -60,7 +60,7 @@ export const FeatureSectionElement = styled.div`
   align-items: center;
   gap: 1em;
   justify-content: space-between;
-  h6 {
+  h4 {
     font-weight: bold;
   }
   @media (max-width: 600px) {

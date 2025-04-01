@@ -31,10 +31,10 @@ export const HeadingAndLogoWrapepr = styled.div`
 export const HeadlineButtonsWrapper = styled.div`
   margin-top: 2em;
   margin-bottom: 2em;
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   gap: 2em;
-  justify-content: center;
+  justify-content: center; */
 `;
 
 export const Logo = styled(motion.img)`
@@ -48,6 +48,9 @@ export const FeaturesSection = styled.div`
   flex-basis: 100%;
   img {
     max-width: 150px;
+    @media (max-width: 600px) {
+      max-width: 250px;
+    }
   }
 `;
 export const FeatureSectionElement = styled.div`

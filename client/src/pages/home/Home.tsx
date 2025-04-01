@@ -52,7 +52,7 @@ const Home = () => {
         </HeadingAndLogoWrapepr>
         <h2>Effortlessly track, manage, and optimize your spending.</h2>
         <HeadlineButtonsWrapper>
-          <Button onClick={() => navigate("/login")}>Log in</Button>
+          {/* <Button onClick={() => navigate("/login")}>Log in</Button> */}
           {mutation.isPending ? (
             <div>
               <h6>

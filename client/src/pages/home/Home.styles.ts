@@ -64,16 +64,28 @@ export const FeatureSectionElement = styled.div`
     flex-basis: 100%;
   }
 `;
-export const GitHubLinkWrapper = styled.div`
-  flex: 1 1 100%;
-`;
-export const GitHubLink = styled.a`
-  color: ${(props) => props.theme.accentColor};
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
 
-  &:hover {
-    color: ${(props) => props.theme.buttonHover};
+export const SiteShowcase = styled.div`
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 6em;
+`;
+export const SiteShowcaseItem = styled.div`
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  h2 {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  img {
+    max-width: 350px;
+  }
+  @media (max-width: 700px) {
+    flex-direction: column;
   }
 `;

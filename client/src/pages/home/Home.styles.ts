@@ -81,6 +81,11 @@ export const SiteShowcaseItem = styled.div`
   display: flex;
   align-items: center;
   gap: 2em;
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
   h2 {
     font-weight: bold;
     margin-bottom: 0.5em;
@@ -92,5 +97,9 @@ export const SiteShowcaseItem = styled.div`
   }
   @media (max-width: 700px) {
     flex-direction: column;
+
+    &:nth-child(even) {
+      flex-direction: column;
+    }
   }
 `;

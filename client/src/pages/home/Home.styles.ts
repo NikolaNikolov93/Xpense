@@ -81,7 +81,9 @@ export const SiteShowcaseItem = styled.div`
   h2 {
     font-weight: bold;
     margin-bottom: 0.5em;
+    color: ${(props) => props.theme.accentColor};
   }
+
   img {
     max-width: 350px;
   }

@@ -1,3 +1,4 @@
+import { CATEGORY_ICONS } from "../../categories-icon";
 import { Expense, User } from "../../types/types";
 import { CardWrapper } from "./ExpenseCard.styles";
 
@@ -12,6 +13,7 @@ const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense, user }) => {
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.2 }}
     >
+      {CATEGORY_ICONS[expense.category] || CATEGORY_ICONS["Other"]}
       <p>{expense.title}</p>
       <p>{`${expense.amount.toFixed(2)} ${user?.currency}`}</p>
       <p>

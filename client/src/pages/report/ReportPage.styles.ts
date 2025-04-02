@@ -22,7 +22,6 @@ export const ExpensesWrapper = styled.div`
   gap: 0.5em;
 `;
 export const HeaderRow = styled.div`
-  color: ${(props) => props.theme.accentColor};
   display: flex;
   gap: 2em;
   margin-bottom: 0.5em;

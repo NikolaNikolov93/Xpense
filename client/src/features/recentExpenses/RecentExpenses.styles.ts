@@ -26,7 +26,6 @@ export const CardsWrapper = styled.div`
 `;
 
 export const HeaderRow = styled.div`
-  color: ${(props) => props.theme.accentColor};
   display: flex;
   gap: 2em;
   margin-bottom: 0.5em;

@@ -8,7 +8,6 @@ export const Container = styled.section`
   justify-content: center;
   text-align: center;
   gap: 1em;
-  text-shadow: 2px 2px 5px rgba(31, 31, 31, 0.5);
 `;
 export const HeadlineWrapper = styled.div`
   display: flex;

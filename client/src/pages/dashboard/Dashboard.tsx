@@ -3,7 +3,7 @@ import QuickAccess from "../../features/quickAccess/QuickAccess";
 import RecentExpenses from "../../features/recentExpenses/RecentExpenses";
 import UserBalance from "../../features/userBalance/UserBalance";
 import { useFetchExpensesForLastNDays } from "../../hooks/useFetchExpensesForLastNDays";
-import { DashboardWrapper } from "./Dashboard.styles";
+import { DashboardWrapper, UserActionsWrapper } from "./Dashboard.styles";
 
 const Dashboard = () => {
   const {
@@ -20,9 +20,11 @@ const Dashboard = () => {
   return (
     <DashboardWrapper>
       <h1>Dashboard</h1>
-      <UserBalance />
+      <UserActionsWrapper>
+        <UserBalance />
+        <QuickAccess />
+      </UserActionsWrapper>
       <RecentExpenses />
-      <QuickAccess />
       <PieChartReport
         expenses={expensesForLast7Days}
         isLoading={is7DaysLoading}

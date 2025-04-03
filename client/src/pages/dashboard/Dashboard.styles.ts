@@ -14,3 +14,17 @@ export const DashboardWrapper = styled.section`
     border-radius: 30px;
   }
 `;
+export const UserActionsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  > * {
+    border-radius: 30px;
+  }
+
+  flex-basis: calc((100% - 2em) / 2);
+  @media (max-width: 1003px) {
+    flex-basis: 100%;
+  }
+`;
